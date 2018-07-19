@@ -8,19 +8,19 @@ public class Cart
 	
 	public void addProduct(int productId, String name, double price, int quantity)
     	{
-    		int update = 0, newQuantity;
+    		int updateList = 0, newQuantity;
     		Product item;
 		for(Product product : cartItems)
 		{
 			if(product.getName().equals(name))
 			{
-				update = 1;
+				updateList = 1;
 				newQuantity = product.getQuantity();
 				product.setQuantity(quantity + newQuantity);
 				break;
 			}
 		}
-		if(update == 0)
+		if(updateList == 0)
 		{
 			item = new Product(productId, name, price, quantity);
 			cartItems.add(item);
@@ -32,7 +32,7 @@ public class Cart
     {
     	for(Product product : cartItems)
     	{
-    		if(productId == product.getPid())
+    		if(productId == product.getProductId())
 			{
 				cartItems.remove(product);
 				break;
@@ -44,7 +44,7 @@ public class Cart
     public void generateBill()
 	{
 		double sum = 0;
-		System.out.println("pid\t\tname\t\tprice\t\tquantity\ttotal price");
+		System.out.println("productId\t\tname\t\tprice\t\tquantity\ttotal price");
 		for(Product product : cartItems)
 		{
 			product.display();
