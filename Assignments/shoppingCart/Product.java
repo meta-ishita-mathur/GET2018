@@ -2,22 +2,17 @@ package shoppingCart;
 
 public class Product 
 {
-	private int pid;
+	private int productId;
 	private String name;
 	private double price;
 	private int quantity;
 	
-	public Product()
+	public Product(int productId, String name, double price, int quantity)
 	{
-		
-	}
-	
-	public Product(int pid,String name,double price,int quantity)
-	{
-		this.pid=pid;
-		this.name=name;
-		this.price=price;
-		this.quantity=quantity;
+		this.productId = productId;
+		this.name = name;
+		this.price = price;
+		this.quantity = quantity;
 	}
 	
 	public String getName()
@@ -27,7 +22,7 @@ public class Product
 	
 	public void setName(String name)
 	{
-		this.name=name;
+		this.name = name;
 	}
 	
 	public double getPrice()
@@ -37,7 +32,7 @@ public class Product
 	
 	public void setPrice(double price)
 	{
-		this.price=price;
+		this.price = price;
 	}
 	
 	public int getQuantity()
@@ -47,27 +42,27 @@ public class Product
 	
 	public void setQuantity(int quantity)
 	{
-		this.quantity=quantity;
+		this.quantity = quantity;
 	}
 	
-	public int getPid()
+	public int getProductId()
 	{
-		return pid;
+		return productId;
 	}
 	
-	public void setPid(int pid)
+	public void setProductId(int productId)
 	{
-		this.pid=pid;
+		this.productId = productId;
 	}
 	
 	public double totalPrice()
 	{
-		return price*quantity;
+		return price * quantity;
 	}
 	
 	public void display()
 	{
-		System.out.println(pid+"\t\t"+name+"\t\t"+price+"\t\t"+quantity+"\t\t"+totalPrice());
+		System.out.println(productId + "\t\t" + name + "\t\t" + price + "\t\t" + quantity + "\t\t" + totalPrice());
 	}
 
 }
