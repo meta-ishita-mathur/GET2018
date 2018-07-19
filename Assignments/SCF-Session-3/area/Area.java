@@ -69,44 +69,43 @@ public class Area
 			System.out.println("Enter your choice:");
 			choice = sc.nextInt();
 			
-		    try
-		    {
-		    	switch(choice)
+		    	try
 		    	{
+		    		switch(choice)
+		    		{
 					case 1: System.out.println("Enter width and height of triangle: ");
-							width = sc.nextDouble();
-							height = sc.nextDouble();
-							System.out.println("Area of Triangle: " + area.triangleArea(width, height));
-							break;
+						width = sc.nextDouble();
+						height = sc.nextDouble();
+						System.out.println("Area of Triangle: " + area.triangleArea(width, height));
+						break;
 					
 					case 2: System.out.println("Enter width and height of rectangle: ");
-							width = sc.nextDouble();
-							height = sc.nextDouble();
-							System.out.println("Area of Rectangle: " + area.rectangleArea(width, height));
-							break;
+						width = sc.nextDouble();
+						height = sc.nextDouble();
+						System.out.println("Area of Rectangle: " + area.rectangleArea(width, height));
+						break;
 					
 					case 3: System.out.println("Enter width of square: ");
-							width = sc.nextDouble();
-							System.out.println("Area of Square: " + area.squareArea(width));
-							break;
+						width = sc.nextDouble();
+						System.out.println("Area of Square: " + area.squareArea(width));
+						break;
 					
 					case 4: System.out.println("Enter radius of circle: ");
-							radius = sc.nextDouble();
-							System.out.println("Area of Circle: " + area.circleArea(radius));
-							break;
+						radius = sc.nextDouble();
+						System.out.println("Area of Circle: " + area.circleArea(radius));
+						break;
 					
 					case 5: break;
 			
 					default: System.out.println("Wrong input!! Try again!!");
-			
+		    		}
 		    	}
-		    }
 		    
-		    catch(ArithmeticException exception)
-		    {
-		    	System.out.println("Arithmetic Exception encountered");
-		    }
+		    	catch(ArithmeticException exception)
+		    	{
+		    		System.out.println("Arithmetic Exception encountered");
+		    	}
+			
 		}while(choice != 5);
 	}
-	
 }
