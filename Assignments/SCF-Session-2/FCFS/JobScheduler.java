@@ -7,9 +7,11 @@ class Fcfs
 	
 	int[] findWaitingTime (int processes, int inputTimes[][])
 	{
-		int serviceTime[] = new int[processes];
+		int[] serviceTime, waitingTime;
+		
+		serviceTime = new int[processes];
 		serviceTime[0] = 0;
-		int waitingTime[] = new int[processes];
+		waitingTime = new int[processes];
 		waitingTime[0] = 0; //waiting time for first process is 0
 		
 		for(int i = 1 ; i < processes ; i++)
@@ -34,9 +36,11 @@ class Fcfs
 	
 	int[] findTurnAroundTime (int processes, int inputTimes[][])
 	{
-		int turnAroundTime[] = new int[processes];
+		int[] turnAroundTime, waitingTime1;
 		
-		int waitingTime1[] = findWaitingTime(processes, inputTimes);
+		turnAroundTime = new int[processes];
+		
+		waitingTime1 = findWaitingTime(processes, inputTimes);
 		
 		for(int i = 0 ; i < processes ; i++)
 		{
@@ -48,9 +52,11 @@ class Fcfs
 	
 	int[] findCompletionTime (int processes, int inputTimes[][])
 	{
-		int completionTime[] = new int[processes];
+		int[] completionTime, turnAroundTime1; 
 		
-		int turnAroundTime1[] = findTurnAroundTime(processes, inputTimes);
+		completionTime = new int[processes];
+		
+		turnAroundTime1 = findTurnAroundTime(processes, inputTimes);
 		
 		for(int i = 0 ; i < processes ; i++)
 		{
@@ -63,7 +69,7 @@ class Fcfs
 	float findAvgWT (int processes, int inputTimes[][])
 	{
 		int totalWT = 0;
-		
+		float avgWT;
 		int waitingTime1[] = findWaitingTime(processes, inputTimes);
 		
 		for(int i = 0 ; i < processes ; i++)
@@ -71,15 +77,18 @@ class Fcfs
 			totalWT = totalWT + waitingTime1[i];	
 		}
 		
-		float avgWT = totalWT/processes;
+		avgWT = totalWT/processes;
 		
 		return avgWT;
 	}
 	
 	int maxWT (int processes, int inputTimes[][])
 	{
-		int waitingTime1[] = findWaitingTime(processes, inputTimes);
-		int max = waitingTime1[0];
+		int[] waitingTime1;
+		int max;
+		
+		waitingTime1 = findWaitingTime(processes, inputTimes);
+		max = waitingTime1[0];
 		
 		for(int i = 1 ; i < processes ; i++)
 		{
@@ -121,13 +130,16 @@ public class JobScheduler
 	{
 
 		int[][] inputTimes;
+		int[] ct, wt, tat;
+		float avgwt;
+		int max, processes;
 		
 		Scanner sc = new Scanner(System.in);
 		
 		Fcfs fcfs = new Fcfs();
 		
 		System.out.println("Enter number of processes: ");
-		int processes = sc.nextInt();
+		processes = sc.nextInt();
 		
 		inputTimes = new int[processes][2];
 		
@@ -144,11 +156,11 @@ public class JobScheduler
 		inputTimes = fcfs.sortArray(processes, inputTimes);
 		
 		System.out.println("Arrival Time\t\tBurst Time\t\tCompletion Time\t\tWaiting Time\t\tTurn Around Time\t\t");
-		int ct[] = fcfs.findCompletionTime(processes, inputTimes);
+		ct = fcfs.findCompletionTime(processes, inputTimes);
 		
-		int wt[] = fcfs.findWaitingTime(processes, inputTimes);
+		wt = fcfs.findWaitingTime(processes, inputTimes);
 		
-		int tat[] = fcfs.findTurnAroundTime(processes, inputTimes);
+		tat = fcfs.findTurnAroundTime(processes, inputTimes);
 		for(int i = 0 ; i < processes ; i++)
 		{
 			for(int j = 0 ; j < 2 ; j++)
@@ -163,12 +175,12 @@ public class JobScheduler
 		
 		
 		System.out.println("Average waiting Time:");
-		float avgwt = fcfs.findAvgWT(processes, inputTimes);
+		avgwt = fcfs.findAvgWT(processes, inputTimes);
 		
 		System.out.println(avgwt);
 		
 		System.out.println("Maximum Waiting Time:");
-		int max = fcfs.maxWT(processes, inputTimes);
+		max = fcfs.maxWT(processes, inputTimes);
 		
 		System.out.print(max);
 	}
