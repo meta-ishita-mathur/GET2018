@@ -41,9 +41,7 @@ public class MyString
 		int string2Length = stringLength(string2);
 		
 		if(string1Length != string2Length)
-		{
 			equal = 0;
-		}
 		else
 		{
 			for(int i = 0; i < string1Length; i++)
@@ -68,7 +66,7 @@ public class MyString
 		String reverse = "";
 		int stringLength = stringLength(string);
 		
-		for(int i = stringLength-1; i >= 0; i--)
+		for(int i = stringLength - 1; i >= 0; i--)
 		{
 			reverse += string.charAt(i);
 		}
@@ -91,20 +89,17 @@ public class MyString
 			if(string.charAt(i) >= 'a' && string.charAt(i) <= 'z')
 			{
 				lowerCase = (int) string.charAt(i);
-		        lowerCase = lowerCase - 32;
-		        changeCase += (char)lowerCase;
-		        
+		        	lowerCase = lowerCase - 32;
+		        	changeCase += (char)lowerCase;
 			}
 			else if(string.charAt(i) >= 'A' && string.charAt(i) <= 'Z')
 			{
 				upperCase = (int) string.charAt(i);
-		        upperCase = upperCase + 32;
-		        changeCase += (char)upperCase;
+		        	upperCase = upperCase + 32;
+		        	changeCase += (char)upperCase;
 			}
 			else
-			{
 				changeCase += string.charAt(i);
-			}
 		}
 		return changeCase;
 	}
@@ -125,9 +120,7 @@ public class MyString
 		{
 			char ch = string.charAt(i);
 			if(ch != ' ')
-			{
 				newString += ch;
-			}
 			else
 			{
 				newStringLength = stringLength(newString);
@@ -138,9 +131,9 @@ public class MyString
 					maxWord = newString;
 				}
 				newString = "";
-            }
-        }
-        return maxWord;
+            		}
+        	}
+        	return maxWord;
 	}
 
 }
@@ -170,38 +163,37 @@ class Main
 				switch(choice)
 				{
 					case 1: System.out.println("Enter two strings:");
-							String string1 = sc.next();
-							string1 += sc.nextLine();
-							String string2 = sc.next();
-							string2 += sc.nextLine();
-							System.out.println("Strings are equal if 1 and unequal if 0: " + my.compareStrings(string1, string2));
-							break;
+						String string1 = sc.next();
+						string1 += sc.nextLine();
+						String string2 = sc.next();
+						string2 += sc.nextLine();
+						System.out.println("Strings are equal if 1 and unequal if 0: " + my.compareStrings(string1, string2));
+						break;
 					
 					case 2: System.out.println("Enter the string:");
-							String string = sc.next();
-							string += sc.nextLine();
-							String reverseString = my.reverseString(string);
-							System.out.println("Reverse of string is: " + reverseString);
-							break;
+						String string = sc.next();
+						string += sc.nextLine();
+						String reverseString = my.reverseString(string);
+						System.out.println("Reverse of string is: " + reverseString);
+						break;
 			
 					case 3: System.out.println("Enter the string:");
-							String strings = sc.next();
-							strings += sc.nextLine();
-							String newString = my.caseString(strings);
-							System.out.println("The new string is :" + newString);
-							break;
+						String strings = sc.next();
+						strings += sc.nextLine();
+						String newString = my.caseString(strings);
+						System.out.println("The new string is :" + newString);
+						break;
 					
 					case 4: System.out.println("Enter the string:");
-							String sentence = sc.next();
-							sentence += sc.nextLine();
-							String maxString = my.largestWord(sentence);
-							System.out.println("Largest word is: " + maxString);
-							break;
+						String sentence = sc.next();
+						sentence += sc.nextLine();
+						String maxString = my.largestWord(sentence);
+						System.out.println("Largest word is: " + maxString);
+						break;
 					
 					case 5: break;
 			
-					default: System.out.println("Wrong input!! Try again!!");
-			
+					default: System.out.println("Wrong input!! Try again!!");	
 				}
 			}
 			
