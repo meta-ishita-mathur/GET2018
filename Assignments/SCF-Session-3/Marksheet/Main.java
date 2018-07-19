@@ -60,7 +60,7 @@ class Marksheet
 		for( i = 0; i < totalStudents; i++)
 		{
 			if(max < grade[i])
-				max = grade[i];
+			max = grade[i];
 		}
 		return max;
 	}
@@ -75,7 +75,7 @@ class Marksheet
 		for(int i = 0; i < totalStudents; i++)
 		{
 			if(min > grade[i])
-				min = grade[i];
+			min = grade[i];
 		}
 		return min;
 	}
@@ -92,7 +92,7 @@ class Marksheet
 		for(int i = 0; i < totalStudents; i++)
 		{
 			if(grade[i] >= 40)
-				totalPass++;
+			totalPass++;
 		}
 		
 		percentPass = (totalPass / totalStudents) * 100;
