@@ -1,42 +1,40 @@
 package shoppingCart;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Cart 
 {
-    List<Product> cartItems = new ArrayList<Product>();
-    
-    public void addProduct(int pid,String name,double price,int quantity)
-    {
-    	int update = 0;
-		for(Product p : cartItems)
+	ArrayList<Product> cartItems = new ArrayList<Product>();
+	
+	public void addProduct(int productId, String name, double price, int quantity)
+    	{
+    		int update = 0, newQuantity;
+    		Product item;
+		for(Product product : cartItems)
 		{
-			if(p.getName().equals(name))
+			if(product.getName().equals(name))
 			{
 				update = 1;
-				int q = p.getQuantity();
-				p.setQuantity(quantity + q);
+				newQuantity = product.getQuantity();
+				product.setQuantity(quantity + newQuantity);
 				break;
 			}
 		}
 		if(update == 0)
 		{
-		Product item = new Product(pid,name, price, quantity);
-		cartItems.add(item);
+			item = new Product(productId, name, price, quantity);
+			cartItems.add(item);
 		}
        
     }
 
-   
-
-    public void removeProduct(int pid) 
+    public void removeProduct (int productId) 
     {
-    	for(Product p:cartItems)
+    	for(Product product : cartItems)
     	{
-    		if(pid==p.getPid())
+    		if(productId == product.getPid())
 			{
-				cartItems.remove(p);
+				cartItems.remove(product);
 				break;
 			}
     	}
@@ -45,12 +43,12 @@ public class Cart
 
     public void generateBill()
 	{
-		double sum=0;
+		double sum = 0;
 		System.out.println("pid\t\tname\t\tprice\t\tquantity\ttotal price");
-		for(Product p:cartItems)
+		for(Product product : cartItems)
 		{
-			p.display();
-			sum += p.totalPrice();
+			product.display();
+			sum += product.totalPrice();
 		}
 		System.out.println();
 		System.out.println("Grand Total:  " + sum);
