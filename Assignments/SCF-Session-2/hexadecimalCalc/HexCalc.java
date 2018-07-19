@@ -4,32 +4,28 @@ import java.util.Scanner;
 
 class Functions
 {
-	public String add(String hexNum1,String hexNum2)
+	public String add(String hexNum1, String hexNum2)
 	{
 		int decNum1 = hexToDec(hexNum1);
 		int decNum2 = hexToDec(hexNum2);
 		
-		int decAdd = decNum1+decNum2;
+		int decAdd = decNum1 + decNum2;
 		String hexAdd = decToHex(decAdd);
 		
 		return hexAdd;
 		
 	}
 	
-	public String substract(String hexNum1,String hexNum2)
+	public String substract(String hexNum1, String hexNum2)
 	{
-		int decSub=0;
+		int decSub = 0;
 		int decNum1 = hexToDec(hexNum1);
 		int decNum2 = hexToDec(hexNum2);
 		
-		if(decNum1>=decNum2)
-		{
-			decSub = decNum1-decNum2;
-		}
+		if(decNum1 >= decNum2)
+			decSub = decNum1 - decNum2;
 		else
-		{
-			decSub = decNum2-decNum1;
-		}
+			decSub = decNum2 - decNum1;
 		
 		String hexSub = decToHex(decSub);
 		
@@ -37,32 +33,28 @@ class Functions
 		
 	}
 	
-	public String multiply(String hexNum1,String hexNum2)
+	public String multiply(String hexNum1, String hexNum2)
 	{
 		int decNum1 = hexToDec(hexNum1);
 		int decNum2 = hexToDec(hexNum2);
 		
-		int decMul = decNum1*decNum2;
+		int decMul = decNum1 * decNum2;
 		String hexMul = decToHex(decMul);
 		
 		return hexMul;
 		
 	}
 	
-	public String divide(String hexNum1,String hexNum2)
+	public String divide(String hexNum1, String hexNum2)
 	{
-		int decDiv=0;
+		int decDiv = 0;
 		int decNum1 = hexToDec(hexNum1);
 		int decNum2 = hexToDec(hexNum2);
 		
-		if(decNum2!=0)
-		{
-			decDiv = decNum1/decNum2;
-		}
+		if(decNum2 != 0)
+			decDiv = decNum1 / decNum2;
 		else
-		{
 			System.out.println("Cannot divide by 0");
-		}
 		
 		String hexDiv = decToHex(decDiv);
 		
@@ -74,28 +66,28 @@ class Functions
 	{
 		String digits = "0123456789ABCDEF";
 		hexNum = hexNum.toUpperCase();  
-        int value = 0;  
-        for (int i = 0; i < hexNum.length(); i++)  
-        {  
-            char character = hexNum.charAt(i);  
-            int digit = digits.indexOf(character);  
-            value = 16*value + digit;  
-        }  
-        return value;  
+        	int value = 0;  
+        	for (int i = 0; i < hexNum.length(); i++)  
+        	{
+			char character = hexNum.charAt(i);  
+            		int digit = digits.indexOf(character);  
+            		value = 16 * value + digit;  
+        	}  
+        	return value;  
 	}
 	
 	public String decToHex(int decNum)
 	{
 		int remender;  
-	    String hex="";   
-	    char hexchars[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};  
-	    while(decNum>0)  
-	    {
-	    	remender=decNum%16;   
-	        hex=hexchars[remender]+hex;   
-	        decNum=decNum/16;  
-	    }  
-	    return hex;  
+	    	String hex = "";   
+	    	char hexchars[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};  
+	    	while(decNum > 0)  
+	    	{
+	    		remender = decNum % 16;   
+	        	hex = hexchars[remender] + hex;   
+	        	decNum = decNum / 16;  
+	    	}  
+	    	return hex;  
 	}
 	
 	public boolean greater(String hexNum1, String hexNum2)
@@ -108,13 +100,11 @@ class Functions
 		hexNum2 = hexNum2.toUpperCase();
 		
 		if(hexNum1.length() > hexNum2.length())
-		{
 			greaterNum = true;
-		}
 		else 
 			if(hexNum1.length() == hexNum2.length())
-		    {
-				for(int i = 0 ; i < hexNum1.length() ; i++)
+		    	{
+				for(int i = 0; i < hexNum1.length(); i++)
 				{
 					if(digits.indexOf(hexNum1.charAt(i)) > digits.indexOf(hexNum2.charAt(i)))
 					{
@@ -122,14 +112,12 @@ class Functions
 						break;
 					}
 					else if(hexNum1.charAt(i) == hexNum2.charAt(i))
-					{
 						continue;
-					}
 					else
 						break;
 				}
-		    }
-		return greaterNum;
+		    	}
+			return greaterNum;
 	}
 	
 	public boolean smaller(String hexNum1, String hexNum2)
@@ -142,13 +130,11 @@ class Functions
 		hexNum2 = hexNum2.toUpperCase();
 		
 		if(hexNum1.length() < hexNum2.length())
-		{
 			smallerNum = true;
-		}
 		else 
 			if(hexNum1.length() == hexNum2.length())
-		    {
-				for(int i = 0 ; i < hexNum1.length() ; i++)
+		    	{
+				for(int i = 0; i < hexNum1.length(); i++)
 				{
 					if(digits.indexOf(hexNum1.charAt(i)) < digits.indexOf(hexNum2.charAt(i)))
 					{
@@ -156,14 +142,12 @@ class Functions
 						break;
 					}
 					else if(hexNum1.charAt(i) == hexNum2.charAt(i))
-					{
 						continue;
-					}
 					else
 						break;
 				}
-		    }
-		return smallerNum;
+		    	}
+			return smallerNum;
 	}
 	
 	public boolean equality(String hexNum1, String hexNum2)
@@ -173,10 +157,7 @@ class Functions
 		boolean equal = false;
 		
 		if(hexNum1.equals(hexNum2))
-		{
 			equal = true;
-		}
-		
 		return equal;
 	}
 	
@@ -185,10 +166,8 @@ class Functions
 		int i = 0;
 		String newString = "";
 		while(hexNum.charAt(i) == '0')
-		{
 			i++;
-		}
-		while(i<hexNum.length())
+		while(i	< hexNum.length())
 		{
 			newString += hexNum.charAt(i);
 			i++;
@@ -229,44 +208,44 @@ public class HexCalc
 			switch(choice)
 			{
 				case 1: System.out.println("Enter two hexadecimal numbers:");
-						hexNum1 = sc.next();
-						hexNum2 = sc.next();
-						String hexAdd = fun.add(hexNum1, hexNum2);
-						System.out.println("Addition:" + hexAdd);
-						break;
+					hexNum1 = sc.next();
+					hexNum2 = sc.next();
+					String hexAdd = fun.add(hexNum1, hexNum2);
+					System.out.println("Addition:" + hexAdd);
+					break;
 						
 				case 2: System.out.println("Enter two hexadecimal numbers:");
 				        hexNum1 = sc.next();
 				        hexNum2 = sc.next();
 				        String hexSub = fun.substract(hexNum1, hexNum2);
-						System.out.println("Substraction:" + hexSub);
-						break;
+					System.out.println("Substraction:" + hexSub);
+					break;
 						
 				case 3: System.out.println("Enter two hexadecimal numbers:");
-						hexNum1 = sc.next();
-						hexNum2 = sc.next();
-						String hexMul = fun.multiply(hexNum1, hexNum2);
-						System.out.println("Multiplication:" + hexMul);
-						break;
+					hexNum1 = sc.next();
+					hexNum2 = sc.next();
+					String hexMul = fun.multiply(hexNum1, hexNum2);
+					System.out.println("Multiplication:" + hexMul);
+					break;
 						
 				case 4: System.out.println("Enter two hexadecimal numbers:");
-						hexNum1 = sc.next();
-						hexNum2 = sc.next();
-						String hexDiv = fun.divide(hexNum1, hexNum2);
-						System.out.println("Division:" + hexDiv);
-						break;
+					hexNum1 = sc.next();
+					hexNum2 = sc.next();
+					String hexDiv = fun.divide(hexNum1, hexNum2);
+					System.out.println("Division:" + hexDiv);
+					break;
 						
 				case 5: System.out.println("Enter hexadecimal number:");
-						hexNum = sc.next(); 
-						decNum = fun.hexToDec(hexNum);
-						System.out.println("Decimal value:" + decNum);
-						break;
+					hexNum = sc.next(); 
+					decNum = fun.hexToDec(hexNum);
+					System.out.println("Decimal value:" + decNum);
+					break;
 						
 				case 6: System.out.println("Enter decimal number:");
-						decNum = sc.nextInt(); 
-						hexNum = fun.decToHex(decNum);
-						System.out.println("Hexadecimal value:" + hexNum);
-						break;
+					decNum = sc.nextInt(); 
+					hexNum = fun.decToHex(decNum);
+					System.out.println("Hexadecimal value:" + hexNum);
+					break;
 						
 				case 7: System.out.println("Enter two hexadecimal numbers:");
 		         		hexNum1 = sc.next();
