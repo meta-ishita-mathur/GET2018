@@ -60,9 +60,7 @@ class Marksheet
 		for( i = 0; i < totalStudents; i++)
 		{
 			if(max < grade[i])
-			{
 				max = grade[i];
-			}
 		}
 		return max;
 	}
@@ -77,9 +75,7 @@ class Marksheet
 		for(int i = 0; i < totalStudents; i++)
 		{
 			if(min > grade[i])
-			{
 				min = grade[i];
-			}
 		}
 		return min;
 	}
@@ -96,9 +92,7 @@ class Marksheet
 		for(int i = 0; i < totalStudents; i++)
 		{
 			if(grade[i] >= 40)
-			{
 				totalPass++;
-			}
 		}
 		
 		percentPass = (totalPass / totalStudents) * 100;
@@ -106,6 +100,7 @@ class Marksheet
 		return percentPass;
 	}
 }
+
 public class Main 
 {
 	public static void main(String[] args)
@@ -147,24 +142,24 @@ public class Main
 				switch(choice)
 				{
 					case 1: average = marksheet.avgGrade();
-							System.out.printf("Average is %.2f", average); //printing till two decimal places
-							System.out.println();
-							break;
+						System.out.printf("Average is %.2f", average); //printing till two decimal places
+						System.out.println();
+						break;
 						
 					case 2: max = marksheet.maxGrade();
-							System.out.printf("Maximum is %.2f", max);
-							System.out.println();
-							break;
+						System.out.printf("Maximum is %.2f", max);
+						System.out.println();
+						break;
 						
 					case 3: min = marksheet.minGrade();
-							System.out.printf("Minimum is %.2f", min);
-							System.out.println();
-							break;
+						System.out.printf("Minimum is %.2f", min);
+						System.out.println();
+						break;
 						
 					case 4: percent = marksheet.studentsPass();
-							System.out.printf("Percentage of pass student is %.2f", percent);
-							System.out.println();
-							break;
+						System.out.printf("Percentage of pass student is %.2f", percent);
+						System.out.println();
+						break;
 						
 					case 5: break;
 				
@@ -179,5 +174,4 @@ public class Main
 			
 		}while(choice != 5);
 	}
-
 }
