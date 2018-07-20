@@ -2,7 +2,7 @@ package FCFS;
 
 import java.util.Scanner;
 
-class Fcfs
+class FirstComeFirstServe
 {
 	
 	int[] findWaitingTime (int processes, int inputTimes[][])
@@ -123,7 +123,7 @@ public class JobScheduler
 		int max, processes;
 		
 		Scanner sc = new Scanner(System.in);	
-		Fcfs fcfs = new Fcfs();
+		FirstComeFirstServe fcfs = new Fcfs();
 		
 		System.out.println("Enter number of processes: ");
 		processes = sc.nextInt();
