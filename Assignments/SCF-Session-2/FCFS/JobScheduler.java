@@ -1,13 +1,12 @@
 package FCFS;
 import java.util.Scanner;
 
-public class FirstComeFirstServe 
+class FirstComeFirstServe 
 {
 	int arrivalTime = 0, burstTime = 1;
 	public int[] findWaitingTime (int processes, int inputTimes[][])
 	{
-		int[] serviceTime, waitingTime;
-		
+		int[] serviceTime, waitingTime;		
 		serviceTime = new int[processes];
 		serviceTime[0] = 0;
 		waitingTime = new int[processes];
@@ -31,9 +30,7 @@ public class FirstComeFirstServe
 	public int[] findTurnAroundTime (int processes, int inputTimes[][])
 	{
 		int[] turnAroundTime, waitingTime;
-		
 		turnAroundTime = new int[processes];
-		
 		waitingTime = findWaitingTime(processes, inputTimes);
 		
 		for(int i = 0; i < processes; i++)
@@ -47,9 +44,7 @@ public class FirstComeFirstServe
 	public int[] findCompletionTime (int processes, int inputTimes[][])
 	{
 		int[] completionTime, turnAroundTime; 
-		
 		completionTime = new int[processes];
-		
 		turnAroundTime = findTurnAroundTime(processes, inputTimes);
 		
 		for(int i = 0; i < processes; i++)
@@ -112,7 +107,7 @@ public class FirstComeFirstServe
 	}
 }
 
-class JobScheduler 
+public class JobScheduler 
 {
 	public static void main(String[] args)
 	{
@@ -125,8 +120,7 @@ class JobScheduler
 		FirstComeFirstServe fcfs = new FirstComeFirstServe();
 		
 		System.out.println("Enter number of processes: ");
-		processes = sc.nextInt();
-		
+		processes = sc.nextInt();	
 		inputTimes = new int[processes][fixColumn];
 		
 		System.out.println("Enter the arrival time and burst time :");
@@ -161,13 +155,9 @@ class JobScheduler
 		
 		System.out.println("Average waiting Time:");
 		avgWaitingTime = fcfs.findAvgWaitingTime(processes, inputTimes);
-		
 		System.out.println(avgWaitingTime);
-		
 		System.out.println("Maximum Waiting Time:");
 		max = fcfs.maxWaitingTime(processes, inputTimes);
-		
 		System.out.print(max);
 	}
-
 }
