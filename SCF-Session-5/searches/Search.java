@@ -15,7 +15,7 @@ public class Search
 	 * @return the index at which the element is found.
 	 */
 	public int linearSearch(int inputArray[], int element)
-    {
+    	{
 		int upperLimit;
 		if (inputArray.length == 0)
 			throw new AssertionError("Array is empty");
@@ -23,14 +23,14 @@ public class Search
 		upperLimit = inputArray.length - 1;
         
 		if (upperLimit < lowerLimit)
-        	return -1;
+        		return -1;
         
-         if (inputArray[lowerLimit] == element)
-            return lowerLimit;
+         	if (inputArray[lowerLimit] == element)
+		 	return lowerLimit;
          
-         lowerLimit++;    
-         return linearSearch(inputArray, element);
-    }
+         	lowerLimit++;    
+         	return linearSearch(inputArray, element);
+    	}
 	
 	/**
 	 * This method performs binary search on an input array.
