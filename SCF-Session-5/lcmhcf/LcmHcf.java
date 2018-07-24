@@ -21,8 +21,8 @@ public class LcmHcf
 		
 		if(firstNum % secondNum == 0)
 			return firstNum;
-	     else
-	        return lcm(firstNum + firstNum / i++, secondNum);
+	     	else
+	        	return lcm(firstNum + firstNum / i++, secondNum);
 	}
 	
 	/**
@@ -37,8 +37,8 @@ public class LcmHcf
 			throw new AssertionError("Enter positive number");
 		
 		if (secondNum != 0)
-            return hcf(secondNum, firstNum % secondNum);
-        else
-            return firstNum;
+            		return hcf(secondNum, firstNum % secondNum);
+        	else
+            		return firstNum;
 	}
 }
