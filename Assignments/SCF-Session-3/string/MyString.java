@@ -135,7 +135,7 @@ public class MyString
 
 }
 
-class myStringMain
+class MyStringMain
 {
 	public static void main(String[] args)
 	{
