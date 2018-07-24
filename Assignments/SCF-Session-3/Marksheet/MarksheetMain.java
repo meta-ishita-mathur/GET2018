@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Contains all the methods to calculate average, maximum &
  * minimum grades & the percent of students passed.
  *
- * @author Ishita Mathur
+ * @author Ishita_Mathur
  */
 class Marksheet
 {
@@ -60,7 +60,7 @@ class Marksheet
 		for( i = 0; i < totalStudents; i++)
 		{
 			if(max < grade[i])
-			max = grade[i];
+				max = grade[i];
 		}
 		return max;
 	}
@@ -75,7 +75,7 @@ class Marksheet
 		for(int i = 0; i < totalStudents; i++)
 		{
 			if(min > grade[i])
-			min = grade[i];
+				min = grade[i];
 		}
 		return min;
 	}
@@ -86,28 +86,25 @@ class Marksheet
 	 */
 	public float studentsPass() throws ArithmeticException 
 	{
-		float totalPass = 0;
-		float percentPass;
+		float totalPass = 0, percentPass;
 		
 		for(int i = 0; i < totalStudents; i++)
 		{
 			if(grade[i] >= 40)
-			totalPass++;
+				totalPass++;
 		}
 		
 		percentPass = (totalPass / totalStudents) * 100;
-		
 		return percentPass;
 	}
 }
-
-public class Main 
+public class MarksheetMain 
 {
 	public static void main(String[] args)
 	{
 		int choice, totalStudents;
 		float grade[];
-		float average, max, min, percent;
+		
 		Scanner sc = new Scanner(System.in);
 		Marksheet marksheet = new Marksheet();
 		
@@ -128,37 +125,24 @@ public class Main
 		
 		do
 		{
-			System.out.println("MENU");
-			System.out.println("1. Average of all grades");
-			System.out.println("2. Maximum of all grades");
-			System.out.println("3. Minimum of all grades");
-			System.out.println("4. Percentage of students passed");
-			System.out.println("5. Exit");
-			System.out.println("Enter your choice:");
+			System.out.print("MENU\n1. Average of all grades\n2. Maximum of all grades\n3. Minimum of all grades\n");
+			System.out.print("4. Percentage of students passed\n5. Exit\nEnter your choice:");
 			choice = sc.nextInt();
 			
 			try
 			{
 				switch(choice)
 				{
-					case 1: average = marksheet.avgGrade();
-						System.out.printf("Average is %.2f", average); //printing till two decimal places
-						System.out.println();
+					case 1: System.out.printf("Average is %.2f\n", marksheet.avgGrade()); //printing till two decimal places
 						break;
 						
-					case 2: max = marksheet.maxGrade();
-						System.out.printf("Maximum is %.2f", max);
-						System.out.println();
+					case 2: System.out.printf("Maximum is %.2f\n", marksheet.maxGrade());
 						break;
 						
-					case 3: min = marksheet.minGrade();
-						System.out.printf("Minimum is %.2f", min);
-						System.out.println();
+					case 3: System.out.printf("Minimum is %.2f\n", marksheet.minGrade());
 						break;
 						
-					case 4: percent = marksheet.studentsPass();
-						System.out.printf("Percentage of pass student is %.2f", percent);
-						System.out.println();
+					case 4: System.out.printf("Percentage of pass student is %.2f\n", marksheet.studentsPass());
 						break;
 						
 					case 5: break;
@@ -170,8 +154,7 @@ public class Main
 			catch(ArithmeticException exception)
 			{
 				System.out.println("Arithmetic exception encountered");
-			}
-			
+			}		
 		}while(choice != 5);
 	}
 }
