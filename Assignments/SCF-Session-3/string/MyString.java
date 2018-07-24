@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * This class performs operations on strings without using Java APIs.
- * @author Ishita Mathur
+ * @author Ishita_Mathur
  *
  */
 public class MyString 
@@ -14,12 +14,12 @@ public class MyString
 	 * @param string, string != null
 	 * @return length of string
 	 */
-	public int stringLength(String string)
+	public int stringLength(String inputString)
 	{
-		string = string + '\0'; //add null to the given string
+		inputString += '\0'; //add null to the given string
 		int count = 0;
 
-		for (int i = 0; string.charAt(i) != '\0'; i++) 
+		for (int i = 0; inputString.charAt(i) != '\0'; i++) 
 		{
 			count++;
 		}
@@ -33,19 +33,18 @@ public class MyString
 	 * @param string2 != null
 	 * @return returns 1 if strings are equal and 0 if unequal
 	 */
-	public int compareStrings(String string1, String string2) throws ArithmeticException
+	public int compareStrings(String firstString, String secondString) throws ArithmeticException
 	{
-		int equal = 1;
-		int string1Length = stringLength(string1);
-		int string2Length = stringLength(string2);
+		int equal = 1, firstStringLength = stringLength(firstString);
+		int secondStringLength = stringLength(secondString);
 		
-		if(string1Length != string2Length)
+		if(firstStringLength != secondStringLength)
 			equal = 0;
 		else
 		{
-			for(int i = 0; i < string1Length; i++)
+			for(int i = 0; i < firstStringLength; i++)
 			{
-				if(string1.charAt(i) != string2.charAt(i))
+				if(firstString.charAt(i) != secondString.charAt(i))
 				{
 					equal = 0;
 					break;
@@ -60,14 +59,14 @@ public class MyString
 	 * @param string != null
 	 * @return reverse of string
 	 */
-	public String reverseString(String string) throws ArithmeticException
+	public String reverseString(String inputString) throws ArithmeticException
 	{
 		String reverse = "";
-		int stringLength = stringLength(string);
+		int stringLength = stringLength(inputString);
 		
 		for(int i = stringLength - 1; i >= 0; i--)
 		{
-			reverse += string.charAt(i);
+			reverse += inputString.charAt(i);
 		}
 		return reverse;
 	}
@@ -77,28 +76,28 @@ public class MyString
 	 * @param string !=0
 	 * @return string after exchanging the case of each character
 	 */
-	public String caseString(String string) throws ArithmeticException
+	public String caseString(String inputString) throws ArithmeticException
 	{
-		int lowerCase, upperCase;
+		int lowerCase, upperCase, stringLength = stringLength(inputString), asciiDifference = 32;
 		String changeCase = "";
-		int stringLength = stringLength(string);
 		
 		for(int i = 0; i < stringLength; i++)
 		{
-			if(string.charAt(i) >= 'a' && string.charAt(i) <= 'z')
+			if(inputString.charAt(i) >= 'a' && inputString.charAt(i) <= 'z')
 			{
-				lowerCase = (int) string.charAt(i);
-		        	lowerCase = lowerCase - 32;
+				lowerCase = (int) inputString.charAt(i);
+		        	lowerCase = lowerCase - asciiDifference;
 		        	changeCase += (char)lowerCase;
+		        
 			}
-			else if(string.charAt(i) >= 'A' && string.charAt(i) <= 'Z')
+			else if(inputString.charAt(i) >= 'A' && inputString.charAt(i) <= 'Z')
 			{
-				upperCase = (int) string.charAt(i);
-		        	upperCase = upperCase + 32;
+				upperCase = (int) inputString.charAt(i);
+		        	upperCase = upperCase + asciiDifference;
 		        	changeCase += (char)upperCase;
 			}
 			else
-				changeCase += string.charAt(i);
+				changeCase += inputString.charAt(i);
 		}
 		return changeCase;
 	}
@@ -108,16 +107,15 @@ public class MyString
 	 * @param string != 0
 	 * @return largest word from sentence
 	 */
-	public String largestWord(String string) throws ArithmeticException
+	public String largestWord(String inputString) throws ArithmeticException
 	{
-		string += " ";
-		int stringLength = stringLength(string);
+		inputString += " ";
 		String newString = "", maxWord = "";
-		int maxLength = 0, newStringLength;
+		int maxLength = 0, newStringLength, stringLength = stringLength(inputString);
 		
 		for(int i = 0; i < stringLength; i++)
 		{
-			char ch = string.charAt(i);
+			char ch = inputString.charAt(i);
 			if(ch != ' ')
 				newString += ch;
 			else
@@ -137,49 +135,44 @@ public class MyString
 
 }
 
-class Main
+class myStringMain
 {
 	public static void main(String[] args)
 	{
-		Scanner sc = new Scanner(System.in);
-		
-		MyString my = new MyString();
 		int choice;
+		Scanner sc = new Scanner(System.in);
+		MyString my = new MyString();
 		
 		do
 		{
-			System.out.println("MENU");
-			System.out.println("1. Compare two strings");
-			System.out.println("2. Reverse of string");
-			System.out.println("3. Exchange the case of a string");
-			System.out.println("4. Largest word of string");
-			System.out.println("5. Exit");
-			System.out.println("Enter your choice:");
+			System.out.println("MENU\n");
+			System.out.print("1. Compare two strings\n2. Reverse of string\n");
+			System.out.print("3. Exchange the case of a string\n4. Largest word of string\n5. Exit\n");
+			System.out.print("Enter your choice:");
 			choice = sc.nextInt();
-	
 			try
 			{
 				switch(choice)
 				{
 					case 1: System.out.println("Enter two strings:");
-						String string1 = sc.next();
-						string1 += sc.nextLine();
-						String string2 = sc.next();
-						string2 += sc.nextLine();
-						System.out.println("Strings are equal if 1 and unequal if 0: " + my.compareStrings(string1, string2));
+						String firstString = sc.next();
+						firstString += sc.nextLine();
+						String secondString = sc.next();
+						secondString += sc.nextLine();
+						System.out.println("Strings are equal if 1 and unequal if 0: " + my.compareStrings(firstString, secondString));
 						break;
 					
 					case 2: System.out.println("Enter the string:");
-						String string = sc.next();
-						string += sc.nextLine();
-						String reverseString = my.reverseString(string);
+						String inputString = sc.next();
+						inputString += sc.nextLine();
+						String reverseString = my.reverseString(inputString);
 						System.out.println("Reverse of string is: " + reverseString);
 						break;
 			
 					case 3: System.out.println("Enter the string:");
-						String strings = sc.next();
-						strings += sc.nextLine();
-						String newString = my.caseString(strings);
+						String newInputString = sc.next();
+						newInputString += sc.nextLine();
+						String newString = my.caseString(newInputString);
 						System.out.println("The new string is :" + newString);
 						break;
 					
@@ -195,14 +188,10 @@ class Main
 					default: System.out.println("Wrong input!! Try again!!");	
 				}
 			}
-			
 			catch(ArithmeticException exception)
 			{
 				System.out.println("Arithmetic exception encountered");
 			}
-			
-		
-		}while(choice != 5);
-
+		}while(choice != 5)
 	}
 }
