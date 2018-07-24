@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * Calculates area of different shapes.
- * @author Ishita Mathur
+ * @author Ishita_Mathur
  */
 class shapesArea
 {
@@ -14,9 +14,11 @@ class shapesArea
 	 * @param height, height > 0
 	 * @return area of triangle
 	 */
+	static final float PI = 3.14f, HALF = 0.5f;
+	
 	public double triangleArea(double width, double height) throws ArithmeticException
 	{
-		return 0.5 * width * height;
+		return HALF * width * height;
 	}
 	
 	/**
@@ -47,32 +49,29 @@ class shapesArea
 	 */
 	public double circleArea(double radius) throws ArithmeticException
 	{
-		return 3.14 * radius * radius;
+		return PI * radius * radius;
 	}
 }
 public class Area 
 {
 	public static void main(String[] args)
 	{
+		int choice;
+		double width, height;
 		Scanner sc = new Scanner(System.in);
 		shapesArea area = new shapesArea();
-		int choice;
-		double width, height, radius;
+		
 		do
 		{
-			System.out.println("MENU");
-			System.out.println("1. Area of Triangle");
-			System.out.println("2. Area of Rectangle");
-			System.out.println("3. Area of Square");
-			System.out.println("4. Area of Circle");
-			System.out.println("5. Exit");
-			System.out.println("Enter your choice:");
+			System.out.print("MENU\n1. Area of Triangle\n2. Area of Rectangle\n");
+			System.out.print("3. Area of Square\n4. Area of Circle\n5. Exit\n");
+			System.out.print("Enter your choice:");
 			choice = sc.nextInt();
 			
 		    	try
 		    	{
-		    		switch(choice)
-		    		{
+				switch(choice)
+			    	{
 					case 1: System.out.println("Enter width and height of triangle: ");
 						width = sc.nextDouble();
 						height = sc.nextDouble();
@@ -86,26 +85,22 @@ public class Area
 						break;
 					
 					case 3: System.out.println("Enter width of square: ");
-						width = sc.nextDouble();
-						System.out.println("Area of Square: " + area.squareArea(width));
+						System.out.println("Area of Square: " + area.squareArea(sc.nextDouble()));
 						break;
 					
 					case 4: System.out.println("Enter radius of circle: ");
-						radius = sc.nextDouble();
-						System.out.println("Area of Circle: " + area.circleArea(radius));
+						System.out.println("Area of Circle: " + area.circleArea(sc.nextDouble()));
 						break;
 					
 					case 5: break;
 			
 					default: System.out.println("Wrong input!! Try again!!");
 		    		}
-		    	}
-		    
-		    	catch(ArithmeticException exception)
-		    	{
-		    		System.out.println("Arithmetic Exception encountered");
-		    	}
-			
+		    }
+		    catch(ArithmeticException exception)
+		    {
+		    	System.out.println("Arithmetic Exception encountered");
+		    }
 		}while(choice != 5);
 	}
 }
