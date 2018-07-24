@@ -9,7 +9,6 @@ import java.util.Scanner;
  */
 public class MyString 
 {
-	
 	/**
 	 * Calculates length of string
 	 * @param string, string != null
