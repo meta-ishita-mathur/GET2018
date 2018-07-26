@@ -5,8 +5,8 @@ package polynomial;
  * @author Ishita_Mathur
  *
  */
-public final class Poly {
-
+public final class Poly 
+{
     private int[][] polynomial;
     private static final int COEFFICIENT = 0;
     private static final int POWER = 1;
@@ -33,7 +33,7 @@ public final class Poly {
      */
     public Poly(int[][] inputPolynomial)
     {
-    	int noOfRows, duplicateTerm;
+        int noOfRows, duplicateTerm;
     	if(inputPolynomial == null || inputPolynomial.length == 0)
     		throw new AssertionError("Invalid input");
     	 
