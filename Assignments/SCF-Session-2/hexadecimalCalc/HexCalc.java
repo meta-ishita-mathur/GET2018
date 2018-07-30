@@ -2,8 +2,19 @@ package hexadecimalCalc;
 
 import java.util.Scanner;
 
-class ArithematicFunctions
+/**
+ * This class performs arithmetic functions on Hexadecimal values.
+ * @author Ishita_Mathur
+ *
+ */
+class ArithmeticFunctions
 {
+	/**
+	 * Adds two hexadecimal values.
+	 * @param firstHexNum
+	 * @param secondHexNum
+	 * @return addition of hexadecimal values
+	 */
 	public String add(String firstHexNum, String secondHexNum)
 	{
 		int firstDecNum, secondDecNum, decAdd;
@@ -18,7 +29,13 @@ class ArithematicFunctions
 		
 	}
 	
-	public String substract(String firstHexNum, String secondHexNum)
+	/**
+	 * Subtracts two hexadecimal values.
+	 * @param firstHexNum
+	 * @param secondHexNum
+	 * @return difference of hexadecimal values
+	 */
+	public String subtract(String firstHexNum, String secondHexNum)
 	{
 		int decSub, firstDecNum, secondDecNum;
 		String hexSub;
@@ -36,6 +53,12 @@ class ArithematicFunctions
 		
 	}
 	
+	/**
+	 * Multiplies two hexadecimal values.
+	 * @param firstHexNum
+	 * @param secondHexNum
+	 * @return product of hexadecimal values
+	 */
 	public String multiply(String firstHexNum, String secondHexNum)
 	{
 		int firstDecNum, secondDecNum, decMul;
@@ -50,6 +73,12 @@ class ArithematicFunctions
 		
 	}
 	
+	/**
+	 * Divides two hexadecimal values.
+	 * @param firstHexNum
+	 * @param secondHexNum
+	 * @return division of hexadecimal values
+	 */
 	public String divide(String firstHexNum, String secondHexNum)
 	{
 		int decDiv = 0, firstDecNum, secondDecNum;
@@ -68,6 +97,11 @@ class ArithematicFunctions
 		
 	}
 	
+	/**
+	 * Converts hexadecimal value to decimal number.
+	 * @param hexNum
+	 * @return Decimal number
+	 */
 	public int hexToDec(String hexNum)
 	{
         int value = 0, digit, i;
@@ -84,6 +118,11 @@ class ArithematicFunctions
         return value;  
 	}
 	
+	/**
+	 * Converts decimal numbers to hexadecimal values.
+	 * @param decNum
+	 * @return Hexadecimal value
+	 */
 	public String decToHex(int decNum)
 	{
 		int remainder;  
@@ -98,6 +137,12 @@ class ArithematicFunctions
 	    return hex;  
 	}
 	
+	/**
+	 * Finds the greater number between two hexadecimal numbers
+	 * @param firstHexNum
+	 * @param secondHexNum
+	 * @return the greater number
+	 */
 	public boolean greater(String firstHexNum, String secondHexNum)
 	{
 		boolean greaterNum  = false;
@@ -130,6 +175,12 @@ class ArithematicFunctions
 			return greaterNum;
 	}
 	
+	/**
+	 * Finds the smaller number between two hexadecimal numbers
+	 * @param firstHexNum
+	 * @param secondHexNum
+	 * @return Smaller number
+	 */
 	public boolean smaller(String firstHexNum, String secondHexNum)
 	{
 		boolean smallerNum  = false;
@@ -162,6 +213,12 @@ class ArithematicFunctions
 			return smallerNum;
 	}
 	
+	/**
+	 * Checks if the two hexadecimal numbers equal.
+	 * @param firstHexNum
+	 * @param secondHexNum
+	 * @return true if equal else false
+	 */
 	public boolean equality(String firstHexNum, String secondHexNum)
 	{
 		boolean equal = false;
@@ -174,6 +231,11 @@ class ArithematicFunctions
 		return equal;
 	}
 	
+	/**
+	 * Removes the extra Zeros from the beginning of hexadecimal number.
+	 * @param hexNum
+	 * @return Hexadecimal number after removing zeros
+	 */
 	public String removeZeros(String hexNum)
 	{
 		int i = 0;
@@ -192,6 +254,7 @@ class ArithematicFunctions
 	}
 }
 
+/*
 public class HexCalc 
 {
 	public static void main(String[] args)
@@ -199,14 +262,14 @@ public class HexCalc
 		int decNum, choice;
 		String hexNum, firstHexNum, secondHexNum;
 		
-		ArithematicFunctions fun = new ArithematicFunctions();
+		ArithmeticFunctions fun = new ArithmeticFunctions();
 		
 		Scanner sc = new Scanner(System.in);
 		
 		do
 		{
 			System.out.print("MENU\n");
-			System.out.print("1. Add\n2. Substract\n3. Multiply\n4. Divide\n");
+			System.out.print("1. Add\n2. Subtract\n3. Multiply\n4. Divide\n");
 			System.out.print("5. Hexadecimal to Decimal\n6. Decimal to Hexadecimal\n");
 			System.out.print("7. Greater Hexadecimal number\n");
 			System.out.print("8. Smaller Hexadecimal number\n");
@@ -226,7 +289,7 @@ public class HexCalc
 				case 2: System.out.println("Enter two hexadecimal numbers:");
 						firstHexNum = sc.next();
 						secondHexNum = sc.next();
-				        System.out.println("Substraction:" + fun.substract(firstHexNum, secondHexNum));
+				        System.out.println("Substraction:" + fun.subtract(firstHexNum, secondHexNum));
 				        break;
 						
 				case 3: System.out.println("Enter two hexadecimal numbers:");
@@ -275,4 +338,4 @@ public class HexCalc
 			}
 		}while(choice != 10);
 	}
-}
+}*/
