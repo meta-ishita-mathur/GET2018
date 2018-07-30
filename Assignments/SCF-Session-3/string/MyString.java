@@ -192,6 +192,6 @@ class MyStringMain
 			{
 				System.out.println("Arithmetic exception encountered");
 			}
-		}while(choice != 5)
+		}while(choice != 5);
 	}
 }
