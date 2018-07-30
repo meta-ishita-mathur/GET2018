@@ -1,9 +1,20 @@
 package FCFS;
 import java.util.Scanner;
 
+/**
+ * This class is used to perform First come first serve scheduling
+ * @author Ishita_Mathur
+ *
+ */
 class FirstComeFirstServe 
 {
 	int arrivalTime = 0, burstTime = 1;
+	/**
+	 * Finds the waiting time of each process.
+	 * @param processes, number of processes
+	 * @param inputTimes, arrival time and burst time
+	 * @return the waiting time
+	 */
 	public int[] findWaitingTime (int processes, int inputTimes[][])
 	{
 		int[] serviceTime, waitingTime;		
@@ -27,6 +38,12 @@ class FirstComeFirstServe
 		return waitingTime;
 	}
 	
+	/**
+	 * Finds the turn around time of each process
+	 * @param processes
+	 * @param inputTimes
+	 * @return the turn around time 
+	 */
 	public int[] findTurnAroundTime (int processes, int inputTimes[][])
 	{
 		int[] turnAroundTime, waitingTime;
@@ -41,6 +58,12 @@ class FirstComeFirstServe
 		return turnAroundTime;
 	}
 	
+	/**
+	 * Finds the completion time of each process
+	 * @param processes
+	 * @param inputTimes
+	 * @return completion time
+	 */
 	public int[] findCompletionTime (int processes, int inputTimes[][])
 	{
 		int[] completionTime, turnAroundTime; 
@@ -54,6 +77,12 @@ class FirstComeFirstServe
 		return completionTime;
 	}
 	
+	/**
+	 * Finds the average waiting time of all processes
+	 * @param processes
+	 * @param inputTimes
+	 * @return average waiting time
+	 */
 	public float findAvgWaitingTime (int processes, int inputTimes[][])
 	{
 		int totalWaitingTime = 0;
@@ -69,6 +98,12 @@ class FirstComeFirstServe
 		return avgWaitingTime;
 	}
 	
+	/**
+	 * Finds maximum waiting time 
+	 * @param processes
+	 * @param inputTimes
+	 * @return maximum waiting time
+	 */
 	public int maxWaitingTime (int processes, int inputTimes[][])
 	{
 		int[] waitingTime;
@@ -85,6 +120,12 @@ class FirstComeFirstServe
 		return max;
 	}
 	
+	/**
+	 * This method is used to sort the array according to the arrival time.
+	 * @param processes
+	 * @param inputTimes
+	 * @return sorted array
+	 */
 	public int[][] sortArray(int processes, int inputTimes[][])
 	{
 		for(int i = 0; i < processes; i++)
@@ -107,6 +148,7 @@ class FirstComeFirstServe
 	}
 }
 
+/*
 public class JobScheduler 
 {
 	public static void main(String[] args)
@@ -160,4 +202,4 @@ public class JobScheduler
 		max = fcfs.maxWaitingTime(processes, inputTimes);
 		System.out.print(max);
 	}
-}
+}*/
