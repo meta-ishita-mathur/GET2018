@@ -18,6 +18,9 @@ class shapesArea
 	
 	public double triangleArea(double width, double height) throws ArithmeticException
 	{
+		if (width < 0 || height < 0)
+			throw new AssertionError("Enter positive number");
+		
 		return HALF * width * height;
 	}
 	
@@ -29,6 +32,9 @@ class shapesArea
 	 */
 	public double rectangleArea(double width, double height) throws ArithmeticException
 	{
+		if (width < 0 || height < 0)
+			throw new AssertionError("Enter positive number");
+		
 		return width * height;
 	}
 	
@@ -39,6 +45,9 @@ class shapesArea
 	 */
 	public double squareArea(double width) throws ArithmeticException
 	{
+		if (width < 0)
+			throw new AssertionError("Enter positive number");
+		
 		return width * width;
 	}
 	
@@ -49,6 +58,9 @@ class shapesArea
 	 */
 	public double circleArea(double radius) throws ArithmeticException
 	{
+		if (radius < 0)
+			throw new AssertionError("Enter positive number");
+		
 		return PI * radius * radius;
 	}
 }
