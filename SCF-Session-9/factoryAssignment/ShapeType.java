@@ -1,6 +1,10 @@
 package factoryAssignment;
 
-public enum ShapeType
+/**
+ * enum to store the available shape types
+ * @author Ishita_Mathur
+ */
+public enum ShapeType 
 {
 	SQUARE, RECTANGLE, TRIANGLE, CIRCLE, POLYGON;
 }
