@@ -75,16 +75,16 @@ public class Triangle implements Shape
 		base = Math.sqrt(Math.pow(thirdSide, 2) - Math.pow(height, 2));
         
 		secondPoint = new Point(origin.getX() + firstSide, origin.getY());
-        thirdPoint = new Point(origin.getX() + base, origin.getY() + height);
+        	thirdPoint = new Point(origin.getX() + base, origin.getY() + height);
                 
-        if(Math.abs(getArea() - ((getAreaByVertices(point, origin, secondPoint)) + getAreaByVertices(point, secondPoint, thirdPoint) + getAreaByVertices(point, origin, thirdPoint))) <= 0.001)
-            enclosed = true;        
+        	if(Math.abs(getArea() - ((getAreaByVertices(point, origin, secondPoint)) + getAreaByVertices(point, secondPoint, thirdPoint) + getAreaByVertices(point, origin, thirdPoint))) <= 0.001)
+            		enclosed = true;        
         
-        return enclosed;
+        	return enclosed;
 	}
 	
 	public double getAreaByVertices(Point origin, Point secondPoint, Point thirdPoint)
-    {
-        return Math.abs((origin.getX() * (secondPoint.getY() - thirdPoint.getY()) + secondPoint.getX() * (thirdPoint.getY() - origin.getY()) + thirdPoint.getX() * (origin.getY() - secondPoint.getY())) / 2.0);
-    } 
+    	{
+        	return Math.abs((origin.getX() * (secondPoint.getY() - thirdPoint.getY()) + secondPoint.getX() * (thirdPoint.getY() - origin.getY()) + thirdPoint.getX() * (origin.getY() - secondPoint.getY())) / 2.0);
+    	} 
 }
