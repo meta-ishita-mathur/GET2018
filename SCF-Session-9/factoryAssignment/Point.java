@@ -1,8 +1,14 @@
 package factoryAssignment;
 
+/**
+ * this class represents coordinates 
+ * @author Ishita_Mathur
+ */
 public class Point
 {
-	private double X, Y;
+	private double X, Y; //to store x and y coordinates
+	
+	//constructor of class
 	public Point(double X, double Y)
 	{
 		this.X = X;
