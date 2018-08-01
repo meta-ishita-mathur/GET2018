@@ -51,16 +51,16 @@ public class Rectangle implements Shape
 	}
 	
 	@Override
-    public Date getTimestamp()
+    	public Date getTimestamp()
 	{
-        return timestamp;
-    }
+        	return timestamp;
+    	}
 	
 	@Override
-    public void setTimestamp(Date timestamp)
+    	public void setTimestamp(Date timestamp)
 	{
-        this.timestamp = timestamp;
-    }
+        	this.timestamp = timestamp;
+    	}
 	
 	@Override
 	public boolean isPointEnclosed(Point point)
