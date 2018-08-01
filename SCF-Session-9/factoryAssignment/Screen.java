@@ -16,7 +16,7 @@ public class Screen
 	public Screen(double xMax, double yMax)
 	{
 		this.xMax = xMax;
-	    this.yMax = yMax;
+	    	this.yMax = yMax;
 	}
 	    
 	    
@@ -28,25 +28,25 @@ public class Screen
 	public boolean addShape(Shape shapeObject)
 	{
 		try
-	    {
+	    	{
 			if(shapeObject == null)
 				throw new AssertionError("Object is null! Cannot add!");
 	        
 			Point shapeOrigin = shapeObject.getOrigin();
 	        
-	        if(shapeOrigin.getX() < 0 || shapeOrigin.getX() > xMax || shapeOrigin.getY() < 0 || shapeOrigin.getY() > yMax)
-	            throw new AssertionError("Object lies outside the screen!");
+	        	if(shapeOrigin.getX() < 0 || shapeOrigin.getX() > xMax || shapeOrigin.getY() < 0 || shapeOrigin.getY() > yMax)
+	            		throw new AssertionError("Object lies outside the screen!");
 	        
-	        screenObjects.add(shapeObject);
-	        shapeObject.setTimestamp(new Date());
+	        	screenObjects.add(shapeObject);
+	        	shapeObject.setTimestamp(new Date());
 	        
-	        return true;
-	    }
+	        	return true;
+	    	}
 	    
 		catch(AssertionError error)
-	    {
+	    	{
 			return false;
-	    }
+	    	}
 	}
 	
 	/**
@@ -57,19 +57,19 @@ public class Screen
 	public boolean deleteShape(Shape shapeObject)
 	{
 		try
-	    {
+	    	{
 			if(screenObjects.contains(shapeObject))
 				screenObjects.remove(shapeObject);
-	        else
-	            throw new AssertionError("The given shape object is not present on screen!");
+	        	else
+	            		throw new AssertionError("The given shape object is not present on screen!");
 	            
-	        return true;
-	    }
+	        	return true;
+	    	}
 	        
 		catch(AssertionError error)
-	    {
+	    	{
 			return false;
-	    }
+	    	}
 	}
 	
 	/**
@@ -80,33 +80,33 @@ public class Screen
 	public boolean deleteShapeType(ShapeType shapeType)
 	{
 		boolean flag = false;
-	    ArrayList<Shape> removeList = new ArrayList<Shape>();
+	    	ArrayList<Shape> removeList = new ArrayList<Shape>();
 	        
-	    for(Shape shape : screenObjects)
-	    {
-	    	if(shape.getShape() == shapeType)
-	        {
-	    		flag = true;
-	            removeList.add(shape);              
-	        }
-	    }
+	    	for(Shape shape : screenObjects)
+	    	{
+	    		if(shape.getShape() == shapeType)
+	        	{
+	    			flag = true;
+	            		removeList.add(shape);              
+	        	}
+	    	}
 	        
-	    for(Shape shape: removeList)
-	    {
-	    	screenObjects.remove(shape);
-	    }
+	    	for(Shape shape: removeList)
+	    	{
+	    		screenObjects.remove(shape);
+	    	}
 	        
-	    try
-	    {
-	    	if(!flag)
-	    		throw new AssertionError("No object of the given type!");
-	    }
+	    	try
+	    	{
+	    		if(!flag)
+	    			throw new AssertionError("No object of the given type!");
+	    	}
 	    
-	    catch(AssertionError error)
-	    {
-	    	return false;
-	    }
-	    return flag;
+	    	catch(AssertionError error)
+	    	{
+	    		return false;
+	    	}
+	    	return flag;
 	}
 	
 	/**
@@ -119,22 +119,22 @@ public class Screen
 		Shape temp;
 		ArrayList<Shape> sortedListByArea = new ArrayList<Shape>(screenObjects);
 	    
-	    if(noOfObjects == 0)
-	    	throw new AssertionError("List is empty! Cannot sort");
+	    	if(noOfObjects == 0)
+	    		throw new AssertionError("List is empty! Cannot sort");
 	        
-	    for(int i = 0; i < noOfObjects; i++)
-	    {
-	    	for(int j = 0; j < noOfObjects - 1 - i; j++)
-	        {
-	    		if(sortedListByArea.get(j).getArea() > sortedListByArea.get(j + 1).getArea())
-	            {
-	    			temp = sortedListByArea.get(j);
-	                sortedListByArea.set(j, sortedListByArea.get(j + 1));
-	                sortedListByArea.set(j + 1, temp);
-	            }
-	        }
-	    }
-	    return sortedListByArea;
+	    	for(int i = 0; i < noOfObjects; i++)
+	    	{
+	    		for(int j = 0; j < noOfObjects - 1 - i; j++)
+	        	{
+	    			if(sortedListByArea.get(j).getArea() > sortedListByArea.get(j + 1).getArea())
+	            		{
+	    				temp = sortedListByArea.get(j);
+	                		sortedListByArea.set(j, sortedListByArea.get(j + 1));
+	                		sortedListByArea.set(j + 1, temp);
+	            		}
+	        	}
+	    	}
+	    	return sortedListByArea;
 	}
 	
 	/**
@@ -150,19 +150,19 @@ public class Screen
 		if(noOfObjects == 0)
 			throw new AssertionError("List is empty! Cannot sort");
 	        
-	    for(int i = 0; i < noOfObjects; i++)
-	    {
-	    	for(int j = 0; j < noOfObjects - 1 - i; j++)
-	        {
-	    		if(sortedListByPerimeter.get(j).getPerimeter() > sortedListByPerimeter.get(j + 1).getPerimeter())
-	            {
-	    			temp = sortedListByPerimeter.get(j);
-	                sortedListByPerimeter.set(j, sortedListByPerimeter.get(j + 1));
-	                sortedListByPerimeter.set(j + 1, temp);
-	            }
-	        }
-	    }
-	    return sortedListByPerimeter;
+	    	for(int i = 0; i < noOfObjects; i++)
+	    	{
+	    		for(int j = 0; j < noOfObjects - 1 - i; j++)
+	        	{
+	    			if(sortedListByPerimeter.get(j).getPerimeter() > sortedListByPerimeter.get(j + 1).getPerimeter())
+	            		{
+	    				temp = sortedListByPerimeter.get(j);
+	                		sortedListByPerimeter.set(j, sortedListByPerimeter.get(j + 1));
+	                		sortedListByPerimeter.set(j + 1, temp);
+	            		}
+	        	}
+	    	}
+	    	return sortedListByPerimeter;
 	}
 	
 	/**
@@ -175,23 +175,23 @@ public class Screen
 		Shape temp;
 		ArrayList<Shape> sortedListByOriginDistance = new ArrayList<Shape>(screenObjects);
 	    
-	    if(noOfObjects == 0)
-	    	throw new AssertionError("List is empty! Cannot sort");
+	    	if(noOfObjects == 0)
+	    		throw new AssertionError("List is empty! Cannot sort");
 	        
-	    for(int i = 0; i < noOfObjects; i++)
-	    {
-	    	for(int j = 0; j < noOfObjects - 1 - i; j++)
-	        {
+	    	for(int i = 0; i < noOfObjects; i++)
+	    	{
+	    		for(int j = 0; j < noOfObjects - 1 - i; j++)
+	        	{
 	    		
-	    		if(sortedListByOriginDistance.get(j).getOriginDistance() > sortedListByOriginDistance.get(j + 1).getOriginDistance())
-	            {
-	    			temp = sortedListByOriginDistance.get(j);
-	                sortedListByOriginDistance.set(j, sortedListByOriginDistance.get(j + 1));
-	                sortedListByOriginDistance.set(j + 1, temp);
-	            }
-	        }
-	    }
-	    return sortedListByOriginDistance;
+	    			if(sortedListByOriginDistance.get(j).getOriginDistance() > sortedListByOriginDistance.get(j + 1).getOriginDistance())
+	            		{
+	    				temp = sortedListByOriginDistance.get(j);
+	                		sortedListByOriginDistance.set(j, sortedListByOriginDistance.get(j + 1));
+	                		sortedListByOriginDistance.set(j + 1, temp);
+	            		}
+	        	}
+	    	}
+	    	return sortedListByOriginDistance;
 	}
 	
 	/**
@@ -202,7 +202,7 @@ public class Screen
 	{
 		if(screenObjects.size() == 0)
 			throw new AssertionError("List is empty! Cannot sort");
-	    return screenObjects;
+	    	return screenObjects;
 	}
 	
 	/**
@@ -214,14 +214,14 @@ public class Screen
 	{
 		ArrayList<Shape> listOfShapes = new ArrayList<Shape>();
 	        
-	    if(point == null)
-	    	throw new AssertionError("Enter a valid point");
+	    	if(point == null)
+	    		throw new AssertionError("Enter a valid point");
 	        
-	    for(Shape shape : screenObjects)
-	    {
-	    	if(shape.isPointEnclosed(point))
-	    		listOfShapes.add(shape);
-	    }
-	    return listOfShapes;
+	    	for(Shape shape : screenObjects)
+	    	{
+	    		if(shape.isPointEnclosed(point))
+	    			listOfShapes.add(shape);
+	    	}
+	    	return listOfShapes;
 	}
 }
