@@ -95,7 +95,7 @@ public class GraphicsLibraryTest
      */
     @Test
     public void deleteShapeTestFirst()
-    {    
+    {
         Screen objScreen = new Screen(100, 100);
         Shape objShape = ShapeFactory.createShape(new Point(1, 1), ShapeType.RECTANGLE, new ArrayList<Double>(){{add(4.0); add(2.0);}});
         objScreen.addShape(objShape);
@@ -109,12 +109,12 @@ public class GraphicsLibraryTest
     @Test
     public void deleteShapeTestSecond()
     {
-    	Shape objShapeFirst, objShapeSecond;
+        Shape objShapeFirst, objShapeSecond;
         Screen objScreen = new Screen(100, 100);
         
         objShapeFirst = ShapeFactory.createShape(new Point(1, 1), ShapeType.RECTANGLE, new ArrayList<Double>(){{add(4.0); add(2.0);}});
         objScreen.addShape(objShapeFirst);
-        objShapeSecond = ShapeFactory.createShape(new Point(1, 3), ShapeType.RECTANGLE, new ArrayList<Double>(){{add(5.0); add(2.0);}});        
+        objShapeSecond = ShapeFactory.createShape(new Point(1, 3), ShapeType.RECTANGLE, new ArrayList<Double>(){{add(5.0); add(2.0);}});
         
         assertFalse(objScreen.deleteShape(objShapeSecond));
         assertFalse(objScreen.deleteShape(null));
@@ -126,13 +126,13 @@ public class GraphicsLibraryTest
     @Test
     public void deleteShapeTypeTestFirst()
     {
-    	Shape objShapeFirst, objShapeSecond, objShapeThird;
-    	
+        Shape objShapeFirst, objShapeSecond, objShapeThird;
+        
         Screen objScreen = new Screen(100, 100);
         objShapeFirst = ShapeFactory.createShape(new Point(1, 1), ShapeType.RECTANGLE, new ArrayList<Double>(){{add(4.0); add(2.0);}});
         objScreen.addShape(objShapeFirst);
         
-        objShapeSecond = ShapeFactory.createShape(new Point(1, 3), ShapeType.RECTANGLE, new ArrayList<Double>(){{add(5.0); add(2.0);}});        
+        objShapeSecond = ShapeFactory.createShape(new Point(1, 3), ShapeType.RECTANGLE, new ArrayList<Double>(){{add(5.0); add(2.0);}});
         objScreen.addShape(objShapeSecond);
         
         objShapeThird = ShapeFactory.createShape(new Point(1, 1), ShapeType.CIRCLE, new ArrayList<Double>(){{add(4.0);}});
@@ -147,13 +147,13 @@ public class GraphicsLibraryTest
     @Test
     public void deleteShapeTypeTestSecond()
     {
-    	Shape shapeFirst, shapeSecond, shapeThird;
+        Shape shapeFirst, shapeSecond, shapeThird;
         Screen objScreen = new Screen(100, 100);
         
         shapeFirst = ShapeFactory.createShape(new Point(1, 1), ShapeType.RECTANGLE, new ArrayList<Double>(){{add(4.0); add(2.0);}});
         objScreen.addShape(shapeFirst);
         
-        shapeSecond = ShapeFactory.createShape(new Point(1, 3), ShapeType.RECTANGLE, new ArrayList<Double>(){{add(5.0); add(2.0);}});        
+        shapeSecond = ShapeFactory.createShape(new Point(1, 3), ShapeType.RECTANGLE, new ArrayList<Double>(){{add(5.0); add(2.0);}});
         objScreen.addShape(shapeSecond);
         
         shapeThird = ShapeFactory.createShape(new Point(1, 1), ShapeType.CIRCLE, new ArrayList<Double>(){{add(4.0);}});
@@ -169,8 +169,8 @@ public class GraphicsLibraryTest
     @Test
     public void sortByAreaTestFirst()
     {
-    	final Shape shapeFirst, shapeSecond;
-    	ArrayList<Shape> sortedShapeByArea;
+        final Shape shapeFirst, shapeSecond;
+        ArrayList<Shape> sortedShapeByArea;
         Screen objScreen = new Screen(100, 100);
         
         shapeFirst = ShapeFactory.createShape(new Point(1, 1), ShapeType.RECTANGLE, new ArrayList<Double>(){{add(4.0); add(2.0);}});
@@ -180,7 +180,6 @@ public class GraphicsLibraryTest
         objScreen.addShape(shapeSecond);
         
         sortedShapeByArea = objScreen.sortByArea();
-        
         assertEquals(sortedShapeByArea, new ArrayList<Shape>(){{add(shapeSecond); add(shapeFirst);}}); 
     }
     
@@ -189,9 +188,8 @@ public class GraphicsLibraryTest
      */
     @Test(expected = AssertionError.class)
     public void sortByAreaTestSecond()
-    {    
+    {
         Screen objScreen = new Screen(100, 100);
-        
         objScreen.sortByArea();
     }
     
@@ -200,9 +198,9 @@ public class GraphicsLibraryTest
      */
     @Test
     public void sortByPerimeterTestFirst()
-    {   
-    	final Shape shapeFirst, shapeSecond;
-    	ArrayList<Shape> sortedShapeByPerimeter;
+    {
+        final Shape shapeFirst, shapeSecond;
+        ArrayList<Shape> sortedShapeByPerimeter;
         Screen objScreen = new Screen(100, 100);
         
         shapeFirst = ShapeFactory.createShape(new Point(1, 1), ShapeType.RECTANGLE, new ArrayList<Double>(){{add(4.0); add(2.0);}});
@@ -220,9 +218,8 @@ public class GraphicsLibraryTest
      */
     @Test(expected = AssertionError.class)
     public void sortByPerimeterTestSecond()
-    {    
+    {
         Screen objScreen = new Screen(100, 100);
-        
         objScreen.sortByPerimeter();
     }
     
@@ -231,10 +228,10 @@ public class GraphicsLibraryTest
      */
     @Test
     public void sortByOriginDistanceTestFirst()
-    {   
-    	final Shape shapeFirst, shapeSecond, shapeThird;
-    	ArrayList<Shape> sortedShapeByOriginDistance;
-    	Screen objScreen = new Screen(100, 100);
+    {
+        final Shape shapeFirst, shapeSecond, shapeThird;
+        ArrayList<Shape> sortedShapeByOriginDistance;
+        Screen objScreen = new Screen(100, 100);
         
         shapeFirst = ShapeFactory.createShape(new Point(1, 1), ShapeType.RECTANGLE, new ArrayList<Double>(){{add(4.0); add(2.0);}});
         objScreen.addShape(shapeFirst);
@@ -254,9 +251,8 @@ public class GraphicsLibraryTest
      */
     @Test(expected = AssertionError.class)
     public void sortByOriginDistanceTestSecond()
-    {    
+    {
         Screen objScreen = new Screen(100, 100);
-        
         objScreen.sortByOriginDistance();
     }
     
@@ -265,10 +261,10 @@ public class GraphicsLibraryTest
      */
     @Test
     public void sortByTimestampTestFirst()
-    {   
-    	final Shape shapeFirst, shapeSecond, shapeThird;
-    	ArrayList<Shape> sortedShapeByTimestamp;
-    	Screen objScreen = new Screen(100, 100);
+    {
+        final Shape shapeFirst, shapeSecond, shapeThird;
+        ArrayList<Shape> sortedShapeByTimestamp;
+        Screen objScreen = new Screen(100, 100);
         
         shapeFirst = ShapeFactory.createShape(new Point(1, 1), ShapeType.RECTANGLE, new ArrayList<Double>(){{add(4.0); add(2.0);}});
         objScreen.addShape(shapeFirst);
@@ -288,9 +284,8 @@ public class GraphicsLibraryTest
      */
     @Test(expected = AssertionError.class)
     public void sortByTimestampTestSecond()
-    {    
+    {
         Screen objScreen = new Screen(100, 100);
-   
         objScreen.sortByTimestamp();
     }
     
@@ -300,11 +295,11 @@ public class GraphicsLibraryTest
     @Test
     public void shapesEnclosingPointTestFirst()
     {
-    	final Shape shapeFirst, shapeSecond, shapeThird;
-    	ArrayList<Shape> shapesEnclosingPoint;
-    	Screen objScreen = new Screen(100, 100);
+        final Shape shapeFirst, shapeSecond, shapeThird;
+        ArrayList<Shape> shapesEnclosingPoint;
+        Screen objScreen = new Screen(100, 100);
         
-    	shapeFirst = ShapeFactory.createShape(new Point(1, 1), ShapeType.RECTANGLE, new ArrayList<Double>(){{add(4.0); add(2.0);}});
+        shapeFirst = ShapeFactory.createShape(new Point(1, 1), ShapeType.RECTANGLE, new ArrayList<Double>(){{add(4.0); add(2.0);}});
         objScreen.addShape(shapeFirst);
         
         shapeSecond = ShapeFactory.createShape(new Point(2, 1), ShapeType.SQUARE, new ArrayList<Double>(){{add(2.0);}});
@@ -322,9 +317,8 @@ public class GraphicsLibraryTest
      */
     @Test
     public void shapesEnclosingPointTestSecond()
-    {    
+    {
         Screen objScreen = new Screen(100, 100);
-        
         objScreen.shapesEnclosingPoint(new Point(2, 1));
     }
 }
