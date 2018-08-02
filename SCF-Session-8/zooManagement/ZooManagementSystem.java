@@ -17,8 +17,8 @@ public class ZooManagementSystem
 		
 		Zoo zoo = new Zoo(); // create object of zoo class
 		
-		// a while loop which is true for each situation
-		while(true)
+		// a do while loop which is true for each situation
+		do
 		{
 			System.out.print("\nMENU!!!!\n1. Add Zone to the Zoo\n2. Add Cage to the Zone\n3. Add Animal to cage\n4. Remove animal from cage\n");
 			System.out.print("Enter your choice..");
@@ -57,7 +57,7 @@ public class ZooManagementSystem
 						System.out.println("Remove successfully");
 					break;
 			}
-		}
+		}while(choice != 4);
 	}
 
 	/**
