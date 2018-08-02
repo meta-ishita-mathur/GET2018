@@ -1,7 +1,5 @@
 package dataSructure;
-
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class TestStack
@@ -18,11 +16,28 @@ public class TestStack
 	}
 	
 	@Test
+	public void testPushArrayNegative()
+	{
+		stackUsingArray.push(3);
+		stackUsingArray.push(6);
+		assertNotEquals(3, stackUsingArray.peek());
+	}
+	
+	@Test
 	public void testPopArray()
 	{
 		stackUsingArray.push(3);
 		stackUsingArray.push(6);
 		assertEquals(6, stackUsingArray.pop());
+		assertEquals(3, stackUsingArray.peek());
+	}
+	
+	@Test
+	public void testPopArrayNegative()
+	{
+		stackUsingArray.push(3);
+		stackUsingArray.push(6);
+		assertNotEquals(3, stackUsingArray.pop());
 		assertEquals(3, stackUsingArray.peek());
 	}
 	
@@ -48,12 +63,13 @@ public class TestStack
 	@Test
 	public void testPopAllArray()
 	{
-		try{
-		stackUsingArray.push(3);
-		stackUsingArray.push(6);
-		stackUsingArray.pop();
-		stackUsingArray.pop();
-		stackUsingArray.pop();
+		try
+		{
+			stackUsingArray.push(3);
+			stackUsingArray.push(6);
+			stackUsingArray.pop();
+			stackUsingArray.pop();
+			stackUsingArray.pop();
 		}
 		catch(AssertionError e)
 		{
@@ -64,12 +80,13 @@ public class TestStack
 	@Test
 	public void testPeekEmptyArray()
 	{
-		try{
-		stackUsingArray.push(3);
-		stackUsingArray.push(6);
-		stackUsingArray.pop();
-		stackUsingArray.pop();
-		stackUsingArray.peek();
+		try
+		{
+			stackUsingArray.push(3);
+			stackUsingArray.push(6);
+			stackUsingArray.pop();
+			stackUsingArray.pop();
+			stackUsingArray.peek();
 		}
 		catch(AssertionError e)
 		{
@@ -86,11 +103,28 @@ public class TestStack
 	}
 	
 	@Test
+	public void testPushLinkedListNegative()
+	{
+		stackUsingLinkedList.push(3);
+		stackUsingLinkedList.push(6);
+		assertNotEquals(3, stackUsingLinkedList.peek());
+	}
+	
+	@Test
 	public void testPopLinkedList()
 	{
 		stackUsingLinkedList.push(3);
 		stackUsingLinkedList.push(6);
 		assertEquals(6, stackUsingLinkedList.pop());
+		assertEquals(3, stackUsingLinkedList.peek());
+	}
+	
+	@Test
+	public void testPopLinkedListNegative()
+	{
+		stackUsingLinkedList.push(3);
+		stackUsingLinkedList.push(6);
+		assertNotEquals(3, stackUsingLinkedList.pop());
 		assertEquals(3, stackUsingLinkedList.peek());
 	}
 	
