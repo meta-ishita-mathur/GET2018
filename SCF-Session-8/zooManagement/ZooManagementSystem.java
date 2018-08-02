@@ -28,23 +28,23 @@ public class ZooManagementSystem
 			switch (choice) // this switch case will show various operations of zoo class
 			{
 				case 1: zoneType = chooseZone(sc);
-						System.out.println("Please enter the capacity");
-						capacity = sc.nextInt();
-						System.out.println("Does the zone has a park? (Enter true or false)");
-						hasPark = sc.nextBoolean();
-						System.out.println("Does the zone has a canteen? (Enter true or false)");
-						hasCanteen = sc.nextBoolean();
+					System.out.println("Please enter the capacity");
+					capacity = sc.nextInt();
+					System.out.println("Does the zone has a park? (Enter true or false)");
+					hasPark = sc.nextBoolean();
+					System.out.println("Does the zone has a canteen? (Enter true or false)");
+					hasCanteen = sc.nextBoolean();
 			
-						zoo.addZone(zoneType, capacity, hasPark, hasCanteen);
-						break;
+					zoo.addZone(zoneType, capacity, hasPark, hasCanteen);
+					break;
 			
 				case 2: cageType = chooseCage(sc);
-						System.out.println("Enter the capacity of the cage");
-						capacityOfCage = sc.nextInt();
+					System.out.println("Enter the capacity of the cage");
+					capacityOfCage = sc.nextInt();
 		
-						if(zoo.addCage(cageType, capacityOfCage))
-							System.out.println("Cage is successfully added");
-						break;
+					if(zoo.addCage(cageType, capacityOfCage))
+						System.out.println("Cage is successfully added");
+					break;
 		    
 				case 3: animalType = chooseCage(sc);
 			        	Animal animal = addNewAnimal(sc, animalType);
@@ -53,9 +53,9 @@ public class ZooManagementSystem
 			        	break;
 			
 				case 4: firstAnimalType = chooseCage(sc);
-						if(zoo.removeAnimal(firstAnimalType))
-							System.out.println("Remove successfully");
-						break;
+					if(zoo.removeAnimal(firstAnimalType))
+						System.out.println("Remove successfully");
+					break;
 			}
 		}
 	}
@@ -75,42 +75,42 @@ public class ZooManagementSystem
 		switch(animalType)
 		{
 			case CROCODILE: System.out.println("Enter the weight and age of crocodile");
-		     				weight = sc.nextDouble();
-		     				age = sc.nextInt();
-		     				animal = new Crocodile(weight, age);
-		     				break;
+		     			weight = sc.nextDouble();
+		     			age = sc.nextInt();
+		     			animal = new Crocodile(weight, age);
+		    			break;
 			
 			case ELEPHANT: System.out.println("Enter the weight and age of elephant");
-	         			   weight = sc.nextDouble();
-	         			   age = sc.nextInt();
-	         			   animal = new Elephant(weight, age);
-	         			   break;
+	         		       weight = sc.nextDouble();
+	         		       age = sc.nextInt();
+	         		       animal = new Elephant(weight, age);
+	         		       break;
 			
 			case LION: System.out.println("Enter the weight and age of Lion");
-					   weight = sc.nextDouble();
-					   age = sc.nextInt();
-					   animal = new Lion(weight, age);
-					   break;
+				   weight = sc.nextDouble();
+				   age = sc.nextInt();
+				   animal = new Lion(weight, age);
+				   break;
 			
 			case PARROT: System.out.println("Enter the weight, age and wing span of Parrot");
-	         			 weight = sc.nextDouble();
-	         			 age = sc.nextInt();
-	         			 wingSpan = sc.nextDouble();
-	         			 animal = new Parrot(weight, age, wingSpan);
-	         			 break;
+	                  	     weight = sc.nextDouble();
+	         		     age = sc.nextInt();
+	         		     wingSpan = sc.nextDouble();
+	         		     animal = new Parrot(weight, age, wingSpan);
+	         		     break;
 			
 			case PEACOCK: System.out.println("Enter the weight, age and wing span of Peacock");
-						  weight = sc.nextDouble();
-						  age = sc.nextInt();
-						  wingSpan = sc.nextDouble();
-						  animal = new Peacock(weight, age, wingSpan);
-						  break;
+				      weight = sc.nextDouble();
+				      age = sc.nextInt();
+				      wingSpan = sc.nextDouble();
+				      animal = new Peacock(weight, age, wingSpan);
+				      break;
 			
 			case SNAKE: System.out.println("Enter the weight and age of snake");
-						weight = sc.nextDouble();
-						age = sc.nextInt();
-						animal = new Snake(weight, age);
-						break;
+				    weight = sc.nextDouble();
+				    age = sc.nextInt();
+				    animal = new Snake(weight, age);
+				    break;
 		}
 		return animal;
 	}
@@ -126,26 +126,26 @@ public class ZooManagementSystem
 		AnimalName cageType = null;
 		
 		System.out.print("\nList of Cage Types\n1. Lion\n2. Elephant\n3. Parrot\n4. Peacock\n5. Snake\n6. Crocodile\n");
-	    System.out.print("Choose from the cage types..");
-	    cage = sc.nextInt();
+	    	System.out.print("Choose from the cage types..");
+	    	cage = sc.nextInt();
 	    
-	    switch(cage)
-	    {
-	    	case 1: cageType = AnimalName.LION;
+	    	switch(cage)
+	    	{
+	    		case 1: cageType = AnimalName.LION;
 	    			break;
-	    	case 2: cageType = AnimalName.ELEPHANT;
+	    		case 2: cageType = AnimalName.ELEPHANT;
 	    			break;
-	    	case 3: cageType = AnimalName.PARROT;
+	    		case 3: cageType = AnimalName.PARROT;
 	    			break;
-	    	case 4: cageType = AnimalName.PEACOCK;
+	    		case 4: cageType = AnimalName.PEACOCK;
 	    			break;
-	    	case 5: cageType = AnimalName.SNAKE;
+	    		case 5: cageType = AnimalName.SNAKE;
 	    			break;
-	    	case 6: cageType = AnimalName.CROCODILE;
+	    		case 6: cageType = AnimalName.CROCODILE;
 	    			break;
-	    	default: System.out.println("No result found!!");
-					 break;	
-	    }
+	    		default: System.out.println("No result found!!");
+				 break;	
+	    	}
 		return cageType;
 	}
 	
@@ -159,19 +159,19 @@ public class ZooManagementSystem
 		int zone;
 		AnimalFamily zoneType = null;
 		System.out.print("\nList of Zones\n1. Bird\n2. Mammal\n3. Reptile\n");
-	    System.out.print("Choose from the zone types: ");
-	    zone = sc.nextInt();
+	    	System.out.print("Choose from the zone types: ");
+	    	zone = sc.nextInt();
 	    
-	    switch (zone)
-	    {
+	    	switch (zone)
+	    	{
 			case 1: zoneType = AnimalFamily.BIRD;
-					break;
+				break;
 			case 2: zoneType = AnimalFamily.MAMMAL;
-					break;
+				break;
 			case 3: zoneType = AnimalFamily.REPTILE;
-					break;
+				break;
 			default: System.out.println("No result found!!");
-					 break;
+				 break;
 		}
 		return zoneType;
 	}
