@@ -21,8 +21,7 @@ public class Bird extends Animal
 	 * @param wingsSpan
 	 * @param animalType
 	 */
-	public Bird(String name, double weight, int age, String sound,
-			int numberOfLegs, boolean isAbleToFly, double wingsSpan, AnimalName animalType)
+	public Bird(String name, double weight, int age, String sound, int numberOfLegs, boolean isAbleToFly, double wingsSpan, AnimalName animalType)
 	{	
 		super(name, weight, age, sound, numberOfLegs, AnimalFamily.BIRD, animalType);
 		
