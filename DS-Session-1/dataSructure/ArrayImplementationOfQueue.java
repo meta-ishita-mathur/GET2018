@@ -9,7 +9,7 @@ public class ArrayImplementationOfQueue implements Queue
 {
 	private int capacity;
     	int queueArray[];
-    	int front = 0, rear = 0, currentSize = 0;
+    	int front = 0, rear = -1, currentSize = 0;
     
     	//constructor
     	public ArrayImplementationOfQueue(int capacity)
@@ -31,7 +31,7 @@ public class ArrayImplementationOfQueue implements Queue
 		else
 		{
             		rear++;
-            		if(rear == capacity - 1)
+            		if(rear == capacity)
                 		rear = 0;
             		queueArray[rear] = element;
             		currentSize++;
@@ -52,7 +52,7 @@ public class ArrayImplementationOfQueue implements Queue
 		{
 			front++;
 			currentSize--;
-	        	if(front == capacity - 1)
+	        	if(front == capacity)
 	        	{
 	        		popElement = queueArray[front - 1];
 	        		front = 0;
