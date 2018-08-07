@@ -18,9 +18,7 @@ public class PriorityQueueArray implements PriorityQueue
 	{
 		int position = -1;
 		if(isFull())
-		{
 			throw new AssertionError("The queue is full!");
-		}
 		else
 		{
 			if(rear == -1)
