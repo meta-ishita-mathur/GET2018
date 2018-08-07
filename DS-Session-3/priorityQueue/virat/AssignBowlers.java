@@ -31,11 +31,7 @@ public class AssignBowlers
 	public List<String> findOrderOfBowling(int numberOfBowlers, int totalBalls, ArrayList<Bowler> listOfBallers)
 	{          
 		if((numberOfBowlers <= 0 || totalBalls <= 0) || (numberOfBowlers > totalBalls))
-		{
-			String string = "Invalid Input!";
-			nameOfBallers.add(string);
-			return nameOfBallers;
-		}
+			throw new AssertionError("Invalid Input!");
 
 		for( int i = 0; i < totalBalls; i++)
 		{       
