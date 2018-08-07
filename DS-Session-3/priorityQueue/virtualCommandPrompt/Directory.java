@@ -4,38 +4,36 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Directory {
-
+public class Directory
+{
 	private final String name;
 	private final Date dateOfCreation;
 	private List<Directory> listOfSubDirectory;
-	
-	
-	public Directory(String name, Date dateOfCreation) {
+		
+	public Directory(String name, Date dateOfCreation)
+	{
 		this.dateOfCreation = dateOfCreation;
 		this.name = name;
 		this.listOfSubDirectory = new ArrayList<Directory>();
 	}
 
-
-	public List<Directory> getListOfSubDirectory() {
+	public List<Directory> getListOfSubDirectory()
+	{
 		return listOfSubDirectory;
 	}
 
-
-	public void setListOfSubDirectory(List<Directory> listOfSubDirectory) {
+	public void setListOfSubDirectory(List<Directory> listOfSubDirectory)
+	{
 		this.listOfSubDirectory = listOfSubDirectory;
 	}
-
-
-	public String getName() {
+	
+	public String getName()
+	{
 		return name;
 	}
 
-
-	public Date getDateOfCreation() {
+	public Date getDateOfCreation()
+	{
 		return dateOfCreation;
 	}
-	
-	
 }
