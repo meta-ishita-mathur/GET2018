@@ -1,65 +1,124 @@
 package virat;
-
 import static org.junit.Assert.*;
-
 import org.junit.Test;
-import java.util.ArrayList;
+import java.util.*;
 
 public class TestAssignBowlers
 {
-	AssignBowlers assign = new AssignBowlers();
-	
-	public void Initialize()
+	AssignBowlers findOrder = new AssignBowlers();
+
+	public ArrayList<Bowler> initialize()
 	{
-		assign.addBowler(8, "rahul");
-		assign.addBowler(3, "utkarsh");
-		assign.addBowler(1, "ajay");
+		Bowler firstBowler, secondBowler, thirdBowler, fourthBowler;
+		ArrayList<Bowler> listOfBowlers = new ArrayList<Bowler>();
+
+		firstBowler = new Bowler("A", 7);
+		secondBowler = new Bowler("B", 3);
+		thirdBowler = new Bowler("C", 4);
+		fourthBowler = new Bowler("D", 1);
+
+		listOfBowlers.add(firstBowler);
+		listOfBowlers.add(secondBowler);
+		listOfBowlers.add(thirdBowler);
+		listOfBowlers.add(fourthBowler);
+
+		return listOfBowlers;
 	}
-	
+	/**
+	 * To test the order of bowlers such that runs scored by opponent are minimum
+	 */
 	@Test
-	public void testPositive()
-	{	
-		assign.totalBowl();
-		ArrayList<Bowler> names = assign.viratMinimumRun();
-		ArrayList<Bowler>  result = new ArrayList<Bowler>();
-		result.add(new Bowler(6, "rahul"));
-		result.add(new Bowler(1, "utkarsh"));
-		result.add(new Bowler(1, "rahul"));
-		result.add(new Bowler(1, "utkarsh"));
-		result.add(new Bowler(1, "rahul"));
-		result.add(new Bowler(1, "utkarsh"));
-		result.add(new Bowler(1, "ajay"));
-		for(int i = 0; i < result.size(); i++)
+	public void testResult()
+	{
+		int numberOfBowlers = 4, totalBalls = 15;
+		ArrayList<Bowler> listOfBowlers = initialize();
+		List<String> namesInOrderActualList, expectedListOfOrder;
+
+		namesInOrderActualList = findOrder.findOrderOfBowling(numberOfBowlers, totalBalls, listOfBowlers);
+		expectedListOfOrder = new ArrayList<String>(totalBalls);
+
+		expectedListOfOrder.add("A");   
+		expectedListOfOrder.add("A");     
+		expectedListOfOrder.add("A");     
+		expectedListOfOrder.add("C");     
+		expectedListOfOrder.add("A");     
+		expectedListOfOrder.add("C");     
+		expectedListOfOrder.add("B");     
+		expectedListOfOrder.add("A");     
+		expectedListOfOrder.add("C");     
+		expectedListOfOrder.add("B");     
+		expectedListOfOrder.add("A");     
+		expectedListOfOrder.add("D");     
+		expectedListOfOrder.add("C");     
+		expectedListOfOrder.add("B");     
+		expectedListOfOrder.add("A");     
+
+		assertEquals(expectedListOfOrder, namesInOrderActualList);    
+	}
+
+	/**
+	 * To test the order of bowlers such that runs scored by opponent are minimum with number of 
+	 * bowlers less than or equal to zero
+	 */
+	@Test
+	public void testResultWithNumberOfBowlersLessThanOne()
+	{
+		try
 		{
-			assertEquals(names.get(i).getQuota(), result.get(i).getQuota());
-			assertEquals(names.get(i).getBowler(), result.get(i).getBowler());
+			int numberOfBowlers = 0, totalBalls = 15;
+			ArrayList<Bowler> listOfBowlers = initialize();
+			List<String> namesInOrderActualList, expectedListOfOrder;
+
+			namesInOrderActualList = findOrder.findOrderOfBowling(numberOfBowlers, totalBalls, listOfBowlers);
+			expectedListOfOrder = new ArrayList<String>(totalBalls);
+		}
+		catch(AssertionError error)
+		{
+			assertEquals("Invalid Input!", error);
 		}
 	}
 
+	/**
+	 * To test the order of bowlers such that runs scored by opponent are minimum with number of 
+	 * balls less than or equal to zero
+	 */
 	@Test
-	public void test2()
+	public void testResultWithNumberOfBallsLessThanOne()
 	{
-		assign.addBowler(4, "bobby");
-		
-		assign.totalBowl();
-		ArrayList<Bowler> names = assign.viratMinimumRun();
-		ArrayList<Bowler>  result = new ArrayList<Bowler>();
-		result.add(new Bowler(5, "rahul"));
-		result.add(new Bowler(1, "bobby"));
-		result.add(new Bowler(1, "rahul"));
-		result.add(new Bowler(1, "utkarsh"));
-		result.add(new Bowler(1, "bobby"));
-		result.add(new Bowler(1, "rahul"));
-		result.add(new Bowler(1, "utkarsh"));
-		result.add(new Bowler(1, "bobby"));
-		result.add(new Bowler(1, "rahul"));
-		result.add(new Bowler(1, "utkarsh"));
-		result.add(new Bowler(1, "ajay"));
-		result.add(new Bowler(1, "bobby"));
-		for(int i = 0; i < result.size(); i++)
+		try
 		{
-			assertEquals(names.get(i).getQuota(), result.get(i).getQuota());
-			assertEquals(names.get(i).getBowler(), result.get(i).getBowler());
+			int numberOfBowlers = 4, totalBalls = 0;
+			ArrayList<Bowler> listOfBowlers = initialize();
+			List<String> namesInOrderActualList, expectedListOfOrder;
+
+			namesInOrderActualList = findOrder.findOrderOfBowling(numberOfBowlers, totalBalls, listOfBowlers);
+			expectedListOfOrder = new ArrayList<String>(totalBalls);
 		}
+		catch(AssertionError error)
+		{
+			assertEquals("Invalid Input!", error);
+		}    
+	}
+
+	/**
+	 * To test the order of bowlers such that runs scored by opponent are minimum with number of 
+	 * balls less than the number of bowlers
+	 */
+	@Test
+	public void testResultWithNumberOfBallsLessThanNumberOfBowlers()
+	{
+		try
+		{
+			int numberOfBowlers = 4, totalBalls = 2;
+			ArrayList<Bowler> listOfBowlers = initialize();
+			List<String> namesInOrderActualList, expectedListOfOrder;
+
+			namesInOrderActualList = findOrder.findOrderOfBowling(numberOfBowlers, totalBalls, listOfBowlers);
+			expectedListOfOrder = new ArrayList<String>(totalBalls);
+		}
+		catch(AssertionError error)
+		{
+			assertEquals("Invalid Input!", error);
+		}  
 	}
 }
