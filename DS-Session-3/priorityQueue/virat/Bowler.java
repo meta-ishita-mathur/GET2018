@@ -6,34 +6,40 @@ package virat;
  */
 public class Bowler
 {
-	private int quota;
-	private String bowlerName;
-	
-	public Bowler(int quota, String bowlerName)
+	String name;
+	int quotaOfBalls;
+
+	// Parameterized constructor for bowler class
+	public Bowler(String name, int quotaOfBalls)
 	{
-		if(quota == 0)
-			throw new AssertionError("Bowler not allowed with zero bowl");
-		
-		if(bowlerName == null)
-			throw new NullPointerException("Bowler name can'nt be null");
-		
-		this.quota = quota;
-		this.bowlerName = bowlerName;
+		this.name = name;
+		this.quotaOfBalls = quotaOfBalls;
 	}
-	
-	public void setQuota(int quota)
+
+	/**
+	 * To get name of bowler
+	 * @return name, name of bowler
+	 */
+	public String getName()
 	{
-		if(quota >= 0)
-			this.quota = quota;
+		return name;
 	}
-	
+
+	/**
+	 * To get quota of balls of bowler i.e number of balls assigned to the bowler
+	 * @return quotaOfBalls, number of balls assigned to bowler
+	 */
 	public int getQuota()
 	{
-		return quota;
+		return quotaOfBalls;
 	}
-	
-	public String getBowler()
+
+	/**
+	 * To decrement number of balls in the quota of a baller, after he has bowled one time
+	 */
+	public void decrementNumberOfBalls()
 	{
-		return bowlerName;
+		if(quotaOfBalls != 0)
+			quotaOfBalls--;
 	}
 }
