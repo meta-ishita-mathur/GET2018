@@ -74,7 +74,7 @@ public class TestAssignBowlers
 		}
 		catch(AssertionError error)
 		{
-			assertEquals("Invalid Input!", error);
+			assertEquals("Invalid Input!", error.getMessage());
 		}
 	}
 
@@ -96,7 +96,7 @@ public class TestAssignBowlers
 		}
 		catch(AssertionError error)
 		{
-			assertEquals("Invalid Input!", error);
+			assertEquals("Invalid Input!", error.getMessage());
 		}    
 	}
 
@@ -118,7 +118,7 @@ public class TestAssignBowlers
 		}
 		catch(AssertionError error)
 		{
-			assertEquals("Invalid Input!", error);
+			assertEquals("Invalid Input!", error.getMessage());
 		}  
 	}
 }
