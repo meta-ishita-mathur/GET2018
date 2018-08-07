@@ -5,21 +5,24 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-public class VirtualCommandPrompt {
-
+public class VirtualCommandPrompt
+{
 	static List<Directory> listOfDirectory = new ArrayList<Directory>();
 	static String path = ".\\";
 	
 	public static void virtualCommandPrompt()
 	{
-		Directory root = new Directory("R:", new Date());
-		listOfDirectory.add(root);
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("***Welcome to Virtual Command Prompt***");
 		String signature = "R:\\";
-		System.out.print(signature + ">");
-		Directory currentDirectory = root;
+		Scanner scanner = new Scanner(System.in);
+		Directory root, currentDirectory;
 		
+		root = new Directory("R:", new Date());
+		listOfDirectory.add(root);
+		
+		System.out.println("***Welcome to Virtual Command Prompt***");
+		System.out.print(signature + ">");
+		currentDirectory = root;
+	
 		while(true)
 		{
 			String commandLine = scanner.nextLine();
@@ -49,9 +52,7 @@ public class VirtualCommandPrompt {
 								}
 						   }
 						   else
-						   {
 							   System.out.println(signature + "> No such directory exists");
-						   }
 						   System.out.print(signature + ">");
 						   break;
 						   
@@ -76,11 +77,14 @@ public class VirtualCommandPrompt {
 							System.out.println(currentDirectory.getListOfSubDirectory().size() + " Folder(s)");
 							break;
 							
-			case "find"   : path = ".\\";
-							String directoryPath = findPath(currentDirectory, commandWords[1]);
+			case "find"   : StringBuilder pathToFind;
+							String directoryPath;
+							
+							path = ".\\";
+							directoryPath = findPath(currentDirectory, commandWords[1]);
 							if(directoryPath != null)
 							{
-								StringBuilder pathToFind = new StringBuilder(directoryPath);
+								pathToFind = new StringBuilder(directoryPath);
 								pathToFind.deleteCharAt(pathToFind.length() - 1);
 								System.out.println(pathToFind);
 							}
@@ -95,11 +99,8 @@ public class VirtualCommandPrompt {
 		
 			case "exit"   : System.exit(0); 
 				
-			}
-			
+			}	
 		}
-		
-		
 	}
 	
 	public static boolean search(Directory currentDirectory, String directoryToBeSearched)
@@ -107,9 +108,7 @@ public class VirtualCommandPrompt {
 		boolean found = false;
 		
 		if(currentDirectory.getName().equals(directoryToBeSearched))
-		{
 			found = true;
-		}
 		else
 		{
 			for(Directory directory: currentDirectory.getListOfSubDirectory())
@@ -120,20 +119,16 @@ public class VirtualCommandPrompt {
 						break;
 					}
 			}
-			
 		}
 		return found;
 	}
-	
 	
 	public static String findPath(Directory currentDirectory, String directoryToBeSearched)
 	{
 		boolean found = false;
 		//System.out.println(currentDirectory.getName());
 		if(currentDirectory.getName().equals(directoryToBeSearched))
-		{
 			found = true;
-		}
 		else
 		{
 			for(Directory directory: currentDirectory.getListOfSubDirectory())
@@ -155,17 +150,13 @@ public class VirtualCommandPrompt {
 					}
 				}
 			}
-			
 		}
 		
 		if(found)
-		{
 			return path;
-		}
 		else 
 			return null;
 	}
-	
 	
 	public static void printTree(Directory currentDirectory)
 	{
@@ -173,7 +164,6 @@ public class VirtualCommandPrompt {
 		{
 			System.out.println("\u2514" + subDirectory.getName());
 			printTree(subDirectory);
-		}
-		
+		}	
 	}
 }
