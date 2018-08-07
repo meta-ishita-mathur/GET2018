@@ -2,106 +2,92 @@ package priorityQueue;
 
 public class PriorityQueueArray implements PriorityQueue
 {
-	private Job[] queue;
-    private int rear, front, maxSize;
-    
-    
-    public PriorityQueueArray(int maxSize)
-    {
-    	this.maxSize = maxSize;
-        queue = new Job[maxSize];
-        rear = -1;
-        front = -1;
-	}
-    
-	public boolean enqueue(Job job)
+	private Job[] priorityQueue;
+	private int rear, front, maxSize;
+
+
+	public PriorityQueueArray(int maxSize)
 	{
-		try
-        {
-            if(!isFull())
-            {
-            	if(rear == -1)
-                {
-                    front++;
-                    rear++;
-                }
-                else
-                {
-                    rear = (rear + 1) % maxSize;
-                }
-            	int pos = -1;
-            	for(int i = front; i <= (rear - 1) % maxSize; i++)
-            	{
-            		if(job.getPriority() > queue[i].getPriority())
-            		{
-            			pos = i;
-            			break;
-            		}
-            	}
-            	if(pos != -1)
-            	{
-            		for(int i = (rear - 1) % maxSize; i >= pos; i--)
-                	{
-                		queue[(i + 1) % maxSize] = queue[i];
-                	}
-                	queue[pos] = job;
-            	}
-            	else
-            		queue[rear] = job;
-                
-            }
-            else
-                throw new AssertionError("The queue is full!");
-            
-            return true;
-        }
-        catch(AssertionError error)
-        {
-            return false;
-        } 
+		this.maxSize = maxSize;
+		priorityQueue = new Job[maxSize];
+		rear = -1;
+		front = -1;
 	}
 
-	@Override
+	public void enqueue(Job jobObj)
+	{
+		int position = -1;
+		if(isFull())
+		{
+			throw new AssertionError("The queue is full!");
+		}
+		else
+		{
+			if(rear == -1)
+			{
+				front++;
+				rear++;
+			}
+			else
+				rear = (rear + 1) % maxSize;
+
+			for(int i = front; i <= (rear - 1) % maxSize; i++)
+			{
+				if(jobObj.getPriority() > priorityQueue[i].getPriority())
+				{
+					position = i;
+					break;
+				}
+			}
+			if(position != -1)
+			{
+				for(int i = (rear - 1) % maxSize; i >= position; i--)
+				{
+					priorityQueue[(i + 1) % maxSize] = priorityQueue[i];
+				}
+				priorityQueue[position] = jobObj;
+			}
+			else
+				priorityQueue[rear] = jobObj;
+		}
+	}
+	
 	public Job dequeue()
 	{
-		Job job = null;
-        
-        if(!isEmpty())
-        {
-            if(front == rear)
-            {
-                job = queue[front];
-                front = -1;
-                rear = -1;
-            }
-            else
-            {
-                job = queue[front];
-                front = (front + 1) % maxSize;
-            }
-        }
-        else
-            throw new AssertionError("The queue is empty!");
-        
-        return job;
+		Job jobObj = null;
+
+		if(!isEmpty())
+		{
+			if(front == rear)
+			{
+				jobObj = priorityQueue[front];
+				front = -1;
+				rear = -1;
+			}
+			else
+			{
+				jobObj = priorityQueue[front];
+				front = (front + 1) % maxSize;
+			}
+		}
+		else
+			throw new AssertionError("The queue is empty!");
+
+		return jobObj;
 	}
 
-	@Override
-	public boolean isEmpty() {
-		
+	public boolean isEmpty()
+	{
 		boolean isEmpty = false;
-        
-        if(rear == -1 && front == -1)
-            isEmpty = true;
-        
-        return isEmpty;
+
+		if(rear == -1 && front == -1)
+			isEmpty = true;
+
+		return isEmpty;
 	}
 
-	@Override
-	public boolean isFull() {
-		
+	public boolean isFull()
+	{
 		return (rear + 1) % maxSize == front;
 	}
-
-
 }
