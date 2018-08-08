@@ -39,15 +39,16 @@ public class VirtualCommandPrompt
 
 				//command to create a directory in the current directory
 				case "mkdir": if(commandWords.length >= 2)
-						  	  {
-						          boolean flag = false;
-						          for(Directory directory : currentDirectory.getListOfSubDirectory())
-						          {
-						        	  if (directory.getName().equals(commandWords[1]))
-						        	  {
-						        		  flag = true;
-						        		  break;
-						        	  }
+					      {
+					              boolean flag = false;
+						        for(Directory directory : currentDirectory.getListOfSubDirectory())
+						        {
+								
+						        	if (directory.getName().equals(commandWords[1]))
+						        	{
+						        		flag = true;
+						        		break;
+						        	}
 						          }
 						          if(!flag)
 						          {
@@ -57,16 +58,16 @@ public class VirtualCommandPrompt
 						          }
 						          else
 						        	  System.out.println(signature + ">A subdirectory or file " + commandWords[1] + " already exists.");
-						  	  }
-						  	  else
-						  		  System.out.println(signature + ">The syntax of the command is incorrect.");
-							  System.out.print(signature + ">");
-							  break;
+						}
+						else
+						  	  System.out.println(signature + ">The syntax of the command is incorrect.");
+						System.out.print(signature + ">");
+						break;
 
 				//command to change the current directory				
 				case "cd": if(commandWords.length >= 2)
-					   	   {
-					       	   if(findPath(currentDirectory, commandWords[1]) != null)
+					   {
+					     	  if(findPath(currentDirectory, commandWords[1]) != null)
 					       	   {
 					       		   for(Directory directory: listOfDirectory)
 					       		   {
