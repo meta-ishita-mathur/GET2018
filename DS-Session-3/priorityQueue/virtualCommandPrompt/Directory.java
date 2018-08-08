@@ -4,12 +4,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * class to store the properties of a directory 
+ * @author Ishita_Mathur
+ *
+ */
 public class Directory
 {
 	private final String name;
 	private final Date dateOfCreation;
 	private List<Directory> listOfSubDirectory;
 		
+	//constructor
 	public Directory(String name, Date dateOfCreation)
 	{
 		this.dateOfCreation = dateOfCreation;
