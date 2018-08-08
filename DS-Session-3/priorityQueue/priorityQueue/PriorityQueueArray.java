@@ -1,11 +1,16 @@
 package priorityQueue;
 
+/**
+ * this class implements the PriorityQueue interface
+ * @author Ishita_Mathur
+ *
+ */
 public class PriorityQueueArray implements PriorityQueue
 {
 	private Job[] priorityQueue;
 	private int rear, front, maxSize;
 
-
+	//constructor
 	public PriorityQueueArray(int maxSize)
 	{
 		this.maxSize = maxSize;
@@ -14,6 +19,11 @@ public class PriorityQueueArray implements PriorityQueue
 		front = -1;
 	}
 
+	/**
+	 * method to add a job in the queue
+	 * @param job
+	 * @return true if added, false otherwise
+	 */
 	public void enqueue(Job jobObj)
 	{
 		int position = -1;
@@ -49,7 +59,11 @@ public class PriorityQueueArray implements PriorityQueue
 				priorityQueue[rear] = jobObj;
 		}
 	}
-	
+
+	/**
+	 * method to remove an element from the queue
+	 * @return the removed job
+	 */
 	public Job dequeue()
 	{
 		Job jobObj = null;
@@ -74,6 +88,10 @@ public class PriorityQueueArray implements PriorityQueue
 		return jobObj;
 	}
 
+	/**
+	 * method to check if the queue is empty
+	 * @return boolean value
+	 */
 	public boolean isEmpty()
 	{
 		boolean isEmpty = false;
@@ -84,6 +102,10 @@ public class PriorityQueueArray implements PriorityQueue
 		return isEmpty;
 	}
 
+	/**
+	 * method to check if the queue is full
+	 * @return boolean value
+	 */
 	public boolean isFull()
 	{
 		return (rear + 1) % maxSize == front;
