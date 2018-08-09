@@ -14,7 +14,7 @@ public class LcmHcf
 	 * @param secondNum > 0
 	 * @return LCM of two numbers
 	 */
-	public int lcm(int firstNum, int secondNum) 
+	public int leastCommonMultiple(int firstNum, int secondNum) 
 	{
 		if(firstNum <= 0 || secondNum <= 0)
 			throw new AssertionError("Enter positive number");
@@ -22,7 +22,7 @@ public class LcmHcf
 		if(firstNum % secondNum == 0)
 			return firstNum;
 	     	else
-	        	return lcm(firstNum + firstNum / i++, secondNum);
+	        	return leastCommonMultiple(firstNum + firstNum / i++, secondNum);
 	}
 	
 	/**
@@ -31,13 +31,13 @@ public class LcmHcf
 	 * @param secondNum > 0
 	 * @return HCF of two numbers
 	 */
-	public int hcf(int firstNum, int secondNum)
+	public int highestCommonFactor(int firstNum, int secondNum)
 	{
 		if(firstNum <= 0 || secondNum < 0)
 			throw new AssertionError("Enter positive number");
 		
 		if (secondNum != 0)
-            		return hcf(secondNum, firstNum % secondNum);
+            		return highestCommonFactor(secondNum, firstNum % secondNum);
         	else
             		return firstNum;
 	}
