@@ -10,7 +10,6 @@ public class ArrayClumps
 	/**
 	 * This method returns the number of clumps in an array.
 	 * @param inputArray, should contain a series of 2 or more adjacent elements of the same value
-	 * @param arrayLength > 0
 	 * @return the count of clumps in the array.
 	 */
 	public int countClumps(int[] inputArray)
