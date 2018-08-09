@@ -1,7 +1,6 @@
 package lcmhcf;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class LcmHcfTest 
@@ -11,26 +10,40 @@ public class LcmHcfTest
 	@Test
 	public void lcmTest() 
 	{
-		int lcmOutput = lcmHcfObject.lcm(24, 60);
+		int lcmOutput = lcmHcfObject.leastCommonMultiple(24, 60);
 		assertEquals(120, lcmOutput);
-		
-		int hcfOutput = lcmHcfObject.hcf(24, 60);
-		assertEquals(12, hcfOutput);
-
 	}
 	
-	@org.junit.Test(expected = AssertionError.class)
+	@Test
+	public void hcfTest()
+	{
+		int hcfOutput = lcmHcfObject.highestCommonFactor(24, 60);
+		assertEquals(12, hcfOutput);
+	}
+	
+	@Test
 	public void testExceptionLcm()
 	{
-		int lcmOutput = lcmHcfObject.lcm(-2, 0);
-		assertEquals(0, lcmOutput);
+		try
+		{
+			lcmHcfObject.leastCommonMultiple(-2, 0);
+		}
+		catch(AssertionError error)
+		{
+			assertEquals("Enter positive number", error.getMessage());
+		}
 	}
 	
-	@Test(expected = AssertionError.class)
+	@Test
 	public void testExceptionHcf()
 	{
-		int hcfOutput = lcmHcfObject.hcf(0, 0);
-		assertEquals(0, hcfOutput);
+		try
+		{
+			lcmHcfObject.highestCommonFactor(0, 0);
+		}
+		catch(AssertionError error)
+		{
+			assertEquals("Enter positive number", error.getMessage());
+		}
 	}
-
 }
