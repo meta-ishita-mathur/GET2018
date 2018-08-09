@@ -19,6 +19,8 @@ public final class IntSet
 	 */
 	public IntSet(int inputArray[])
 	{
+		if(inputArray == null)
+            throw new AssertionError("Invalid input");
 		arraySize = removeDuplicate(inputArray);
 		newArray = new int[arraySize];
 		for(int i = 0; i < arraySize; i++)
@@ -38,16 +40,13 @@ public final class IntSet
 		size = inputArray.length;
 		for(int i = 0; i < size - 1; i++)
 		{
-			for(int j = i + 1; j < size; j++)
+			if(inputArray[i] == inputArray[i + 1])
 			{
-				if(inputArray[i] == inputArray[j])
-				{
 					for(int k = i; k < size - 1; k++)
 					{
 						inputArray[k] = inputArray[k + 1];
 					}
 					size--;
-				}
 			}
 		}
 		return size;
@@ -64,7 +63,10 @@ public final class IntSet
 		for(int i = 0; i < arraySize; i++)
 		{
 			if(newArray[i] == element)
+			{
 				memberFound = true;
+				break;
+			}
 		}
 		return memberFound;
 	}
@@ -179,7 +181,9 @@ public final class IntSet
 		
 		finalUnion = new int[unionIndex];
 		for(int i = 0; i < unionIndex; i++)
+		{
 			finalUnion[i] = union[i];
+		}
 		return finalUnion;
 	}
 }
