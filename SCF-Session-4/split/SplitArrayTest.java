@@ -27,10 +27,16 @@ public class SplitArrayTest
 		assertEquals(-1, indexSplit);
 	}
 	
-	@org.junit.Test(expected = AssertionError.class)
+	@org.junit.Test
 	public void testException()
 	{
-		int indexSplit = splitArray.split(new int[]{}, 0);
+		try
+		{
+			splitArray.split(new int[]{}, 0);
+		}
+		catch(AssertionError error)
+		{
+			assertEquals("Array is empty", error.getMessage());
+		}
 	}
-
 }
