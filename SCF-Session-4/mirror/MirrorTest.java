@@ -21,6 +21,7 @@ public class MirrorTest
 		int maxCount = mirror.maxMirror(new int[]{1, 2, 3, 9, 8, 3, 2, 1}, 8);
 		assertNotEquals(4, maxCount);
 	}
+	
 	@Test
 	public void secondMaxTest() 
 	{
@@ -42,9 +43,16 @@ public class MirrorTest
 		assertEquals(7, maxCount);
 	}
 	
-	@Test(expected = AssertionError.class)
+	@Test
 	public void testException()
 	{
-		int maxCount = mirror.maxMirror(new int[]{}, 0);
+		try
+		{
+			mirror.maxMirror(new int[]{}, 0);
+		}
+		catch(AssertionError error)
+		{
+			assertEquals("Array is empty", error.getMessage());
+		}
 	}
 }
