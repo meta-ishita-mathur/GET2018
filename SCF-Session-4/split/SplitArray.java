@@ -12,30 +12,48 @@ public class SplitArray
 	 * This method finds the index of a place to split the input array so that the
 	 * sum of the numbers on one side is equal to the sum of the numbers on the other side
 	 * @param inputArray
-	 * @param arrayLength > 0
 	 * @return the index before which array is split
 	 */
-	public int split (int[] inputArray, int arrayLength)
+	public int split (int[] inputArray)
 	{
-		int i, j, k, firstPart, lastPart, result = -1;
-		
-		if(arrayLength == 0)
+		int index = -1, mid = 1, sumLeft, sumRight;
+
+		if(inputArray.length == 0)
 			throw new AssertionError("Array is empty");
 		
-		for(i = 1; i <= arrayLength - 1; i++)
+		while(mid<inputArray.length)
 		{
-			firstPart = 0;
-			lastPart = 0;
+			sumLeft = sumArray(inputArray, 0, mid-1);
+			sumRight = sumArray(inputArray, mid, inputArray.length-1);
 			
-			for(j = i - 1; j >= 0; j--)
-				firstPart += inputArray[j];
-			
-			for(k = i; k < arrayLength; k++)
-				lastPart += inputArray[k];
-			
-			if(firstPart == lastPart)
-				result = i;
-		}
-		return result;
+			if(sumLeft == sumRight)
+			{
+				index = mid;
+				break;
+			}
+			else
+				if(sumLeft > sumRight)
+					break;
+				else
+					mid++;
+		}	
+		return index;
+	}
+	
+	/**
+	 * method to find sum of elements between indexes start & end
+	 * @param array
+	 * @param start
+	 * @param end
+	 * @return sum
+	 */
+	public int sumArray(int[] array, int start, int end)
+	{
+		int sum = 0;
+		
+		for(int i=start; i<=end; i++)
+			sum += array[i];
+		
+		return sum;
 	}
 }
