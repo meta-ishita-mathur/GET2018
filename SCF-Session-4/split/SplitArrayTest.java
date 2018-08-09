@@ -9,21 +9,21 @@ public class SplitArrayTest
 	@org.junit.Test
 	public void testPositive() 
 	{	
-		int indexSplit = splitArray.split(new int[]{1, 1, 1, 2, 1}, 5);
+		int indexSplit = splitArray.split(new int[]{1, 1, 1, 2, 1});
 		assertEquals(3, indexSplit);
 	}
 	
 	@org.junit.Test
 	public void secondTestNegative() 
 	{	
-		int indexSplit = splitArray.split(new int[]{1, 1, 1, 2, 1}, 5);
+		int indexSplit = splitArray.split(new int[]{1, 1, 1, 2, 1});
 		assertNotEquals(2, indexSplit);
 	}
 	
 	@org.junit.Test
 	public void testNegative()
 	{
-		int indexSplit = splitArray.split(new int[]{2, 1, 1, 2, 1}, 5);
+		int indexSplit = splitArray.split(new int[]{2, 1, 1, 2, 1});
 		assertEquals(-1, indexSplit);
 	}
 	
@@ -32,7 +32,7 @@ public class SplitArrayTest
 	{
 		try
 		{
-			splitArray.split(new int[]{}, 0);
+			splitArray.split(new int[]{});
 		}
 		catch(AssertionError error)
 		{
