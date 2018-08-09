@@ -13,32 +13,25 @@ public class ArrayClumps
 	 * @param arrayLength > 0
 	 * @return the count of clumps in the array.
 	 */
-	public int countClumps(int[] inputArray, int arrayLength)
+	public int countClumps(int[] inputArray)
 	{
-		int occur = 0, count = 0;
+		int count = 0, clump;
 		
-		if (arrayLength == 0)
+		if (inputArray.length == 0)
 			throw new AssertionError("Array is empty");
 		
-		for(int i = 0; i < arrayLength; i++)
+		for(int i = 0; i < inputArray.length; i++)
 		{
-			for(int j = i + 1; j < arrayLength; j++)
+			clump = inputArray[i];
+			
+			if(i + 1 != inputArray.length && inputArray[i + 1] == clump)
 			{
-				if(inputArray[i] == inputArray[j])
-					occur++;
-				else
+				count++;
+				while(i != inputArray.length && inputArray[i] == clump)
 				{
-					if(occur > 0)
-					   count++;
-					i = j - 1;
-					occur = 0;
-					break;
+					i++;
 				}
-			}
-			if (i == arrayLength - 1)
-			{
-				if(occur > 0)
-					count++;
+				i--;
 			}
 		}
 		return count;
