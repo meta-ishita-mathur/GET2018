@@ -2,75 +2,74 @@ package dictionary;
 
 /**
  * class for creating nodes for the Binary Search Tree
- * @author Prakalpa-Rathore
+ * @author Ishita_Mathur
  *
  */
-public class BSTNode {
+public class BSTNode
+{
+	BSTNode left, right;
+	DictionaryEntry data;
 
-    BSTNode left, right;
-    DictionaryEntry data;
-    
-    /**
-     * constructor
-     * @param data
-     */
-    public BSTNode(DictionaryEntry data) {
-       
-        this.data = data;
-    }
+	/**
+	 * constructor
+	 * @param data
+	 */
+	public BSTNode(DictionaryEntry data)
+	{      
+		this.data = data;
+	}
 
-    
-    /**
-     * getter method for left subtree
-     * @return left
-     */
-    public BSTNode getLeft() {
-        return left;
-    }
+	/**
+	 * getter method for left subtree
+	 * @return left
+	 */
+	public BSTNode getLeft()
+	{
+		return left;
+	}
 
-    
-    /**
-     * setter method for left subtree
-     * @param left
-     */
-    public void setLeft(BSTNode left) {
-        this.left = left;
-    }
+	/**
+	 * setter method for left subtree
+	 * @param left
+	 */
+	public void setLeft(BSTNode left)
+	{
+		this.left = left;
+	}
 
-    
-    /**
-     * getter method for right subtree
-     * @return
-     */
-    public BSTNode getRight() {
-        return right;
-    }
+	/**
+	 * getter method for right subtree
+	 * @return
+	 */
+	public BSTNode getRight()
+	{
+		return right;
+	}
 
-    
-    /**
-     * setter method for right subtree
-     * @param right
-     */
-    public void setRight(BSTNode right) {
-        this.right = right;
-    }
+	/**
+	 * setter method for right subtree
+	 * @param right
+	 */
+	public void setRight(BSTNode right)
+	{
+		this.right = right;
+	}
 
-    
-    /**
-     * getter method for data
-     * @return data
-     */
-    public DictionaryEntry getData() {
-        return data;
-    }
+	/**
+	 * getter method for data
+	 * @return data
+	 */
+	public DictionaryEntry getData()
+	{
+		return data;
+	}
 
-    
-    /**
-     * setter method for data
-     * @param data
-     */
-    public void setData(DictionaryEntry data) {
-        this.data = data;
-    }
-      
+	/**
+	 * setter method for data
+	 * @param data
+	 */
+	public void setData(DictionaryEntry data)
+	{
+		this.data = data;
+	}  
 }
