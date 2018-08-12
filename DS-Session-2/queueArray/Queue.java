@@ -1,39 +1,36 @@
-package queueArray;
+package queue;
 
 /**
  * Interface representing the data structure Queue
  * Queue is based on First In First Out approach
  * @author Ishita_Mathur
+ *
+ * @param <E> defines the type of value to be stored in the stack
  */
-public interface Queue
+public interface Queue<E> 
 {
-	/**
-	 * method to add a value at the rear of the queue
-	 * @param element
-	 */
-	public void push(int element);
-
-	/**
-	 * method to remove a value from the front of the queue
-	 * @return value that is removed
-	 */
-	public int pop();
-
-	/**
-	 * reads the value at front of the queue
-	 * @return the value at front
-	 */
-	public int peek();
-
-	/**
-	 * method to check if the queue is empty
-	 * @return boolean value true if empty else false
-	 */
-	public boolean isEmpty();
-
-	/**
-	 * method to check if the queue is full
-	 * @return boolean value true if full else false
-	 */
-	public boolean isFull();
+    /**
+     * method to add a value at the rear of the queue
+     * @param value
+     * @return true if element is added to the queue, false otherwise
+     */
+    public boolean enqueue(E value);
+    
+    /**
+     * method to remove a value from the front of the queue
+     * @return value that is removed
+     */
+    public E dequeue();
+    
+    /**
+     * method to check if the queue is empty
+     * @return boolean value
+     */
+    public boolean isEmpty();
+    
+    /**
+     * method to check if the queue is full
+     * @return boolean value
+     */
+    public boolean isFull();   
 }
