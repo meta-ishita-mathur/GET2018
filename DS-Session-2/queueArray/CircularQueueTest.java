@@ -1,126 +1,127 @@
 package queueArray;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class CircularQueueTest
 {
-	CircularQueue queueUsingArray = new CircularQueue(5);
-
+	/**
+	 * test case to enqueue a value in queue (return true when element is enqueueed and returns false when queue is full)
+	 */
 	@Test
-	public void testPushArray()
-	{
-		queueUsingArray.push(3);
-		queueUsingArray.push(6);
-		assertEquals(3, queueUsingArray.peek());
-	}
-	
-	@Test
-	public void testPushArrayNegative()
-	{
-		queueUsingArray.push(3);
-		queueUsingArray.push(6);
-		assertNotEquals(6, queueUsingArray.peek());
-	}
-
-	@Test
-	public void testPopArray()
-	{
-		queueUsingArray.push(3);
-		queueUsingArray.push(6);
-		assertEquals(3, queueUsingArray.pop());
-		assertEquals(6, queueUsingArray.peek());
-	}
-
-	@Test
-	public void testPopArrayNegative()
-	{
-		queueUsingArray.push(3);
-		queueUsingArray.push(6);
-		assertNotEquals(6, queueUsingArray.pop());
-		assertEquals(6, queueUsingArray.peek());
-	}
-
-	@Test
-	public void testPushArrayIfFull()
+	public void circularQueueenqueueTest()
 	{
 		try
 		{
-			queueUsingArray.push(3);
-			queueUsingArray.push(6);
-			queueUsingArray.push(5);
-			queueUsingArray.push(7);
-			queueUsingArray.push(2);
-			queueUsingArray.push(9);
-		}	
-		catch(AssertionError e)
+			CircularQueue<Integer> queue = new CircularQueue<>(5);
+			assertTrue(queue.enqueue(1));
+			assertTrue(queue.enqueue(2));
+			assertTrue(queue.enqueue(3));
+			assertTrue(queue.enqueue(4));
+			assertTrue(queue.enqueue(5));
+			assertFalse(queue.enqueue(6));
+		}
+		catch(AssertionError error)
 		{
-			assertEquals("Queue Overflow", e.getMessage());
+			assertEquals("The queue is full!", error.getMessage());
 		}
 	}
 
+	/**
+	 * test case to dequeue a value from the queue
+	 */
 	@Test
-	public void testPopAllPresentInArray()
+	public void circularQueuedequeueTestFirst()
+	{
+		CircularQueue<Integer> queue = new CircularQueue<>(5);
+		queue.enqueue(1);
+		queue.enqueue(2);
+		queue.enqueue(3);
+		int dequeuedValue = queue.dequeue();
+		assertEquals(1, dequeuedValue);
+	}
+
+	/**
+	 * test case to dequeue a value from the queue when it is empty
+	 */
+	@Test
+	public void circularQueuedequeueTestSecond()
 	{
 		try
 		{
-			queueUsingArray.push(3);
-			queueUsingArray.push(6);
-			queueUsingArray.pop();
-			queueUsingArray.pop();
-			queueUsingArray.pop();
+			CircularQueue<String> queue = new CircularQueue<>(5);
+			queue.enqueue("hello");
+			queue.dequeue();
+			queue.dequeue();
 		}
-		catch(AssertionError e)
+		catch(AssertionError error)
 		{
-			assertEquals("Queue Underflow", e.getMessage());
-		}	
+			assertEquals("The queue is empty!", error.getMessage());
+		}
 	}
 
+	/**
+	 * test case to check if the queue is empty when actually the queue is not empty
+	 */
 	@Test
-	public void testDeleteAllArray()
+	public void circularQueueIsEmptyTestFirst()
 	{
-		queueUsingArray.push(3);
-		queueUsingArray.push(6);
-		queueUsingArray.push(7);
-		queueUsingArray.push(2);
-		queueUsingArray.push(9);
-		queueUsingArray.pop();
-		queueUsingArray.pop();
-		queueUsingArray.pop();
-		queueUsingArray.pop();
-		assertEquals(9, queueUsingArray.pop());
+		CircularQueue<Integer> queue = new CircularQueue<>(5);
+		queue.enqueue(2);
+		assertFalse(queue.isEmpty());
 	}
 
+	/**
+	 * test case to check if the queue is empty when actually the queue is empty
+	 */
 	@Test
-	public void testDeleteAllArrayNegative()
+	public void circularQueueIsEmptyTestSecond()
 	{
-		queueUsingArray.push(3);
-		queueUsingArray.push(6);
-		queueUsingArray.push(7);
-		queueUsingArray.push(2);
-		queueUsingArray.push(9);
-		queueUsingArray.pop();
-		queueUsingArray.pop();
-		queueUsingArray.pop();
-		queueUsingArray.pop();
-		assertNotEquals(3, queueUsingArray.pop());
+		CircularQueue<Integer> queue = new CircularQueue<>(5);
+
+		assertTrue(queue.isEmpty());
 	}
-	
+
+	/**
+	 * test case to check if the queue is full when actually the queue is full
+	 */
 	@Test
-	public void testCircular()
+	public void circularQueueIsFullTestFirst()
 	{
-		queueUsingArray.push(3);
-		queueUsingArray.push(6);
-		queueUsingArray.push(7);
-		queueUsingArray.push(2);
-		queueUsingArray.push(9);
-		assertEquals(3, queueUsingArray.pop());
-		assertEquals(6, queueUsingArray.pop());
-		assertEquals(7, queueUsingArray.pop());
-		assertEquals(2, queueUsingArray.pop());
-		assertEquals(9, queueUsingArray.pop());
-		queueUsingArray.push(9);
-		assertEquals(9, queueUsingArray.pop());
+		CircularQueue<Integer> queue = new CircularQueue<>(5);
+		queue.enqueue(2);
+		queue.enqueue(2);
+		queue.enqueue(2);
+		queue.enqueue(2);
+		queue.enqueue(2);
+		assertTrue(queue.isFull());
+	}
+
+	/**
+	 * test case to check if the queue is full when actually the queue is not full
+	 */
+	@Test
+	public void circularQueueIsFullTestSecond()
+	{
+		CircularQueue<Integer> queue = new CircularQueue<>(5);
+		assertFalse(queue.isFull());
+		queue.enqueue(3);
+		assertFalse(queue.isFull());
+
+		try
+		{
+			queue.enqueue(2);
+			queue.enqueue(2);
+			queue.enqueue(2);
+			queue.enqueue(2);
+			queue.enqueue(2);
+			queue.dequeue();
+			queue.dequeue();
+			assertFalse(queue.isFull());
+		}
+		catch(AssertionError error)
+		{
+			assertEquals("The queue is full!", error.getMessage());
+		}
 	}
 }
