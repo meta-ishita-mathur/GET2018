@@ -1,72 +1,78 @@
 package queueArray;
 
 /**
- * class for the array implementation of the Queue class
+ * Class for the array implementation of the Queue class in a circular manner
  * @author Ishita_Mathur
  *
+ * @param <E> defines the type of value to be stored in the queue
  */
-public class CircularQueue implements Queue
+public class CircularQueue<E> implements Queue<E>
 {
-	private int capacity;
-	int queueArray[];
-	int front = 0, rear = -1, currentSize = 0;
+	private Object[] queue;
+	private int rear, front, maxSize;
 
 	//constructor
-	public CircularQueue(int capacity)
+	public CircularQueue(int maxSize)
 	{
-		this.capacity = capacity;
-		queueArray = new int[this.capacity];
-	}
-	
+		this.maxSize = maxSize;
+		queue = new Object[maxSize];
+		rear = -1;
+		front = -1;        
+	}   
+
 	/**
 	 * method to add a value at the rear of the queue
-	 * @param element to add
-	 * @return AssertionError if queue is full
+	 * @param value
+	 * @return true if element is added to the queue, false otherwise
 	 */
-	public void push(int element)
+	public boolean enqueue(E value)
 	{
-		if(isFull())
-			throw new AssertionError("Queue Overflow");
-		else
+		if(!isFull())
 		{
-			rear++;
-			if(rear == capacity)
-				rear = 0;
-			queueArray[rear] = element;
-			currentSize++;
+			if(rear == -1)
+			{
+				front++;
+				rear++;
+				queue[rear] = value;
+			}
+			else
+			{
+				rear = (rear + 1) % maxSize;
+				queue[rear] = value;
+			}
 		}
+		else
+			throw new AssertionError("The queue is full!");
+
+		return true; 
 	}
 
 	/**
 	 * method to remove a value from the front of the queue
 	 * @return value that is removed, and throws an AssertionError if queue is empty
 	 */
-	public int pop()
-	{
-		int popElement;
-		if (isEmpty())
-			throw new AssertionError("Queue Underflow");
-		else
+	public E dequeue() throws AssertionError
+	{        
+		E value = null;
+
+		if(!isEmpty())
 		{
-			front++;
-			currentSize--;
-			if(front == capacity)
+			if(front == rear)
 			{
-				popElement = queueArray[front - 1];
-				front = 0;
-				return popElement;
+				value = get(front);
+				front = -1;
+				rear = -1;
 			}
 			else
-				return queueArray[front - 1];
+			{
+				value = get(front);
+				front = (front + 1) % maxSize;
+			}
 		}
-	}
+		else
+			throw new AssertionError("The queue is empty!");
 
-	/**
-	 * @return the value at front of queue
-	 */
-	public int peek()
-	{
-		return queueArray[front];
+		return value;
 	}
 
 	/**
@@ -74,11 +80,13 @@ public class CircularQueue implements Queue
 	 * @return boolean value
 	 */
 	public boolean isEmpty()
-	{
-		boolean status = false;
-		if (currentSize == 0)
-			status = true;
-		return status;
+	{    
+		boolean isEmpty = false;
+
+		if(rear == -1 && front == -1)
+			isEmpty = true;
+
+		return isEmpty;
 	}
 
 	/**
@@ -86,10 +94,19 @@ public class CircularQueue implements Queue
 	 * @return boolean value
 	 */
 	public boolean isFull()
+	{    
+		return (rear + 1) % maxSize == front;
+	}
+
+	/**
+	 * helper method to get the value at the specific index from the queue
+	 * @param index
+	 * @return value
+	 */
+	private E get(int index)
 	{
-		boolean status = false;
-		if (currentSize == capacity)
-			status = true;
-		return status;
+		final E value = (E) this.queue[index];
+
+		return value;
 	}
 }
