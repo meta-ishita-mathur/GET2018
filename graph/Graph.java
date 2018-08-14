@@ -2,6 +2,11 @@ package graph;
 
 import java.util.List;
 
+/**
+ * This interface contains different methods on Undirected Weighted Graph
+ * @author Ishita_Mathur
+ *
+ */
 public interface Graph
 {
 	/**
