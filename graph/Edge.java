@@ -1,5 +1,10 @@
 package graph;
 
+/**
+ * This class represents an Edge of Graph
+ * @author Ishita_Mathur
+ *
+ */
 public class Edge implements Comparable<Edge>
 {
 	private int source, destination, weight;
