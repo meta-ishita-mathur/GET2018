@@ -16,7 +16,7 @@ public interface Graph
 	public boolean isConnected();
 
 	/**
-	 * Returns all the Nodes that are Reachable from node
+	 * Returns all the Nodes that are Reachable from source
 	 * @param source
 	 * @return
 	 */
@@ -29,7 +29,7 @@ public interface Graph
 	public List<Edge> minimumSpanningTree();
 
 	/**
-	 * Returns the Shortest Path from node1 to node2 using Dijkstra’s Algorithm
+	 * Returns the Shortest Path from source to destination
 	 * @param source
 	 * @param destination
 	 * @return
