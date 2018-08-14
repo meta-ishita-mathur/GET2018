@@ -8,9 +8,7 @@ public class Main
 	{
 		Cart cart = new Cart();
 		Scanner sc = new Scanner(System.in);
-		int choice, productId, quantity, productId1;
-		String name;
-		double price;
+		int choice;
 		
 		do
 		{
@@ -25,25 +23,27 @@ public class Main
 			switch(choice)
 			{
 				case 1: System.out.println("Enter the pid, name, price, quantity of the item");
-					productId = sc.nextInt();
-					name = sc.next();
-					price = sc.nextDouble();
-					quantity = sc.nextInt();
-					cart.addProduct(productId, name, price, quantity);
-					break;
+						int pid = sc.nextInt();
+						String name = sc.next();
+						double price = sc.nextDouble();
+						int quantity = sc.nextInt();
+						cart.addProduct(pid, name, price, quantity);
+						break;
 				
 				case 2: System.out.println("Enter the product ID of the item to be removed:");
-					productId1 = sc.nextInt();
-					cart.removeProduct(productId1);
-					break;
+						int pid1 = sc.nextInt();
+						cart.removeProduct(pid1);
+						break;
 				
 				case 3: cart.generateBill();
-					break;
+						break;
 				
 				case 4: break;
 		
-				default: System.out.println("Wrong input!! Try again!!");
+			default: System.out.println("Wrong input!! Try again!!");
+		
 			}
 		}while(choice != 4);
+
 	}
 }

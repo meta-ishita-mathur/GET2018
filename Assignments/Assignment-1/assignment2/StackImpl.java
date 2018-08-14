@@ -5,21 +5,20 @@ class Node
 	int data;
 	Node next;
 };
-
 class Stack
 {
 	private Node top;
 	public Stack()
 	{
-		this.top = null;
+		this.top=null;
 	}
 	public void push(int x)
 	{
 		Node node = new Node();
-		System.out.println("Inserting" + x);
-		node.data = x;
-		node.next = top;
-		top = node;
+		System.out.println("Inserting"+x);
+		node.data=x;
+		node.next=top;
+		top=node;
 	}
 	public boolean isEmpty()
 	{
@@ -41,13 +40,13 @@ class Stack
 	
 	public void pop()
 	{
-		if(top == null)
+		if(top==null)
 		{
 			System.out.print("\nStack underflow");
 			return;
 		}
-		System.out.println("Removing" + peek());
-		top = (top).next;
+		System.out.println("Removing"+peek());
+		top=(top).next;
 	}
 }
 public class StackImpl 
