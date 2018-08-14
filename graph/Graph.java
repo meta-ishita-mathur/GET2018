@@ -11,20 +11,20 @@ public interface Graph
 {
 	/**
 	 * Returns true if the Graph is a Connected Graph
-	 * @return
+	 * @return boolean value
 	 */
 	public boolean isConnected();
 
 	/**
 	 * Returns all the Nodes that are Reachable from source
 	 * @param source
-	 * @return
+	 * @return list of reachable vertices
 	 */
 	public List<Integer> reachable(int source);
 
 	/**
 	 * Return the Minimum Spanning Tree for the Graph
-	 * @return
+	 * @return list of edges in minimum spanning tree
 	 */
 	public List<Edge> minimumSpanningTree();
 
@@ -32,7 +32,7 @@ public interface Graph
 	 * Returns the Shortest Path from source to destination
 	 * @param source
 	 * @param destination
-	 * @return
+	 * @return distance of shortest path
 	 */
 	public int shortestPath(int source, int destination);
 }
