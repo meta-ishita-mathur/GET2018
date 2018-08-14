@@ -5,11 +5,17 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * This class implements Graph interface methods using Edge
+ * @author Ishita_Mathur
+ *
+ */
 public class GraphImplementation implements Graph
 {
 	int noOfVertices;
 	List<Edge>[] edgeList;
 
+	//constructor
 	public GraphImplementation(int noOfVertices)
 	{
 		this.noOfVertices = noOfVertices;
@@ -19,12 +25,22 @@ public class GraphImplementation implements Graph
 			edgeList[i] = new LinkedList<Edge>();
 	}
 
+	/**
+	 * method to add an edge to the graph.
+	 * @param source
+	 * @param destination
+	 * @param weight
+	 */
 	public void addEdge(int source, int destination, int weight) 
 	{
 		edgeList[source].add(new Edge(source, destination, weight));
 		edgeList[destination].add(new Edge(destination, source, weight));
 	}
 
+	/**
+	 * Returns true is the Graph is a Connected Graph
+	 * @return boolean value
+	 */
 	public boolean isConnected()
 	{
 		Boolean[] nodeTraversed = new Boolean[noOfVertices];
@@ -48,6 +64,11 @@ public class GraphImplementation implements Graph
 		return isConnected;
 	}
 
+	/**
+	 * Returns all the Nodes that are Reachable from source
+	 * @param source
+	 * @return list of rechable nodes
+	 */
 	public List<Integer> reachable(int source)
 	{
 		List<Integer> reachableNodes = new ArrayList<>();
@@ -68,6 +89,10 @@ public class GraphImplementation implements Graph
 		return reachableNodes;
 	}
 
+	/**
+	 * Return the Minimum Spanning Tree for the Graph
+	 * @return 
+	 */
 	public List<Edge> minimumSpanningTree()
 	{
 		List<Edge> minSpanningtree;
@@ -86,10 +111,10 @@ public class GraphImplementation implements Graph
 
 		for (int count = 0; count < noOfVertices - 1; count++) 
 		{
-			int node = minKey(key, minSpanningTreeSet);
+			int shortestPathNode = minKey(key, minSpanningTreeSet);
 
-			minSpanningTreeSet[node] = true;
-			List<Edge> edges = edgeList[node];
+			minSpanningTreeSet[shortestPathNode] = true;
+			List<Edge> edges = edgeList[shortestPathNode];
 
 			for (int v = 0; v < noOfVertices; v++) 
 			{
@@ -99,7 +124,7 @@ public class GraphImplementation implements Graph
 					{                        
 						if (listEdges.getWeight() != 0 && !minSpanningTreeSet[v] && listEdges.getWeight() < key[v]) 
 						{
-							parent[v] = node;
+							parent[v] = shortestPathNode;
 							key[v] = listEdges.getWeight();
 						}
 					}
@@ -123,6 +148,12 @@ public class GraphImplementation implements Graph
 		return minSpanningtree;
 	}
 
+	/**
+	 * Returns the Shortest Path from source to destination using Dijkstra’s Algorithm
+	 * @param source
+	 * @param destination
+	 * @return
+	 */
 	public int shortestPath(int source, int destination) 
 	{
 		int shortestDistanceNode;
