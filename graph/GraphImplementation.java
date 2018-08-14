@@ -15,7 +15,10 @@ public class GraphImplementation implements Graph
 	int noOfVertices;
 	List<Edge>[] edgeList;
 
-	//constructor
+	/**
+     	 * constructor
+     	 * @param noOfVertices
+    	 */
 	public GraphImplementation(int noOfVertices)
 	{
 		this.noOfVertices = noOfVertices;
@@ -91,7 +94,7 @@ public class GraphImplementation implements Graph
 
 	/**
 	 * Return the Minimum Spanning Tree for the Graph
-	 * @return 
+	 * @return list of edges in minimum spanning tree
 	 */
 	public List<Edge> minimumSpanningTree()
 	{
@@ -152,7 +155,7 @@ public class GraphImplementation implements Graph
 	 * Returns the Shortest Path from source to destination using Dijkstra’s Algorithm
 	 * @param source
 	 * @param destination
-	 * @return
+	 * @return distance of shortest path
 	 */
 	public int shortestPath(int source, int destination) 
 	{
@@ -187,6 +190,12 @@ public class GraphImplementation implements Graph
 		return distance[destination];
 	}
 
+	/**
+    	 * helper method to find the vertex with the minimum key
+    	 * @param key
+    	 * @param processed
+    	 * @return vertex with the minimum key
+    	 */
 	private int minKey(int distance[], Boolean processed[]) 
 	{
 		int min = Integer.MAX_VALUE, minIndex = -1;
@@ -202,6 +211,11 @@ public class GraphImplementation implements Graph
 		return minIndex;
 	}
 
+	/**
+    	 * helper method for Depth First Traversal
+    	 * @param graphNode
+     	 * @param nodeTraversed
+    	 */
 	private void DFSTraversal(int graphNode, Boolean[] nodeTraversed) 
 	{    
 		int node;
