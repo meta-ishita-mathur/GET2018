@@ -61,11 +61,12 @@ SET Shipping_Info = 'InActive'
 WHERE Order_Date <= Date_Sub(NOW(), INTERVAL 6 MONTH);
 SELECT * FROM Order_Details;
 
+#Given a category search keyword, display all the Products present in this category/categories.
 SELECT P.Product_Name
 FROM Product AS P
 LEFT JOIN Product_Category_Bridge AS PCB ON P.ProductID = PCB.ProductID
 LEFT JOIN Category AS C ON PCB.CategoryID = C.CategoryID
-WHERE C.Category_Name IN ("ELECTRONICS");
+WHERE C.Category_Name IN ("MOBILE");
 
 #Display top 10 Items which were cancelled most.
 SELECT Product.ProductID, Product.Product_Name, Count(C.ProductID) AS Times_Cancelled 
@@ -76,26 +77,45 @@ GROUP BY (C.ProductID)
 ORDER BY Times_Cancelled DESC
 LIMIT 10;
 
+#Assignment4:
+CREATE TABLE Zipcode
+(
+    Zip INT NOT NULL,
+    City VARCHAR(50) NOT NULL,
+    State VARCHAR(50) NOT NULL,
+    PRIMARY KEY(Zip)
+);
+
+INSERT INTO Zipcode VALUES
+(313001, 'Udaipur', 'Rajasthan'),
+(302019, 'Jaipur', 'Rajasthan'),
+(302020, 'Jaipur', 'Rajasthan'), 
+(302021, 'Jaipur', 'Rajasthan');
+
+SELECT Zip, City, State
+FROM Zipcode
+ORDER BY State, City;
+
+#Assignment5:
+
 #Create a view displaying the order information (Id, Title, Price, Shopper’s name,
 #Email, Orderdate, Status) with latest ordered items should be displayed first for
 #last 60 days.
-CREATE VIEW OrderInformation 
-    AS 
-    SELECT O.Order_Id, P.Product_Name,I.Total_Price,
-            CONCAT(U.First_Name, ' ', U.Last_Name) AS User_Name,U.Email_Id,O.Date_Of_Order,I.Order_Status
-    FROM OrderDetails O,OrderProductDetails I,Product P,User U
-    WHERE U.User_Id = O.User_Id AND O.Order_Id = I.Order_Id 
-    AND I.Product_Id = P.Product_Id AND O.Date_Of_Order>=Date_Sub(NOW(), INTERVAL 60 DAY)
-    ORDER BY O.Date_Of_Order DESC;
-
+CREATE VIEW Order_Information AS
+    SELECT O.OrderID, P.Product_Name, O.Total_Price,
+            CONCAT(U.First_Name, ' ', U.Last_Name) AS User_Name, U.Email, O.Order_Date, O.Shipping_Info
+    FROM Order_Details O, Product P, User U, Cart_Items C
+    WHERE U.UserID = O.UserID AND C.CartID = O.CartID AND O.Order_Date >= Date_Sub(NOW(), INTERVAL 60 DAY)
+    ORDER BY O.Order_Date DESC;
+    
 #Use the above view to display the Products(Items) which are in ‘shipped’ state.
-SELECT Order_Id,Product_Name 
-FROM OrderInformation
-WHERE Order_Status = 'Shipped'; 
+SELECT OrderID, Product_Name 
+FROM Order_Information
+WHERE Shipping_Info = 'Shipped';
 
 #Use the above view to display the top 5 most selling products
 SELECT Product_Name, COUNT(Product_Name) AS No_Of_Products_Sold
-FROM OrderInformation
+FROM Order_Information
 GROUP BY Product_Name
 ORDER BY No_Of_Products_Sold DESC
 LIMIT 3;
