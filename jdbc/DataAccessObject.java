@@ -107,12 +107,13 @@ public class DataAccessObject
     public static int markInactive()
     {
         int noOfUpdates = 0;
-        String query = "UPDATE Product "
+        String query =  "SET SQL_SAFE_UPDATES = 0;"
+        		+ "UPDATE Product "
                 + "SET Is_Active = FALSE "
                 + "WHERE ProductID NOT IN "
                 + "(SELECT DISTINCT ProductID "
-                + "FROM Order_Items INNER JOIN Orders "
-                + "WHERE Order_Date > (DATE_SUB(CURDATE(), INTERVAL 1 YEAR)));";
+                + "FROM Order_Items OI INNER JOIN Orders O ON OI.OrderID = O.OrderID"
+                + "WHERE O.Order_Date > (DATE_SUB(CURDATE(), INTERVAL 1 YEAR)));";
         
         try
         (
@@ -143,7 +144,8 @@ public class DataAccessObject
     public static List<TopCategory> countChildren()
     {
         List<TopCategory> listOfTopCategories = new ArrayList<TopCategory>();
-        String query1 = "CREATE FUNCTION count_children(parent_id INTEGER) "
+        String query1 = "DELIMITER $$"
+        		+ "CREATE FUNCTION count_children(parent_id INTEGER) "
                 + "RETURNS INTEGER NOT DETERMINISTIC "
                 + "BEGIN "
                 + "DECLARE count INTEGER; "
@@ -152,14 +154,14 @@ public class DataAccessObject
                 + "(SELECT @parent_set := parent_id) initialisation "
                 + "WHERE find_in_set(Parent_CategoryID, @parent_set) AND @parent_set := concat(@parent_set, ',', CategoryID); "
                 + "RETURN count; "
-                + "END";
+                + "END $$";
         
         String query2 = "SELECT Category_Name, count_children(CategoryID) AS children_count "
                 + "FROM Product_Category "
                 + "WHERE Parent_CategoryID IS NULL "
                 + "ORDER BY Category_Name ";
         
-        String query3 = "DROP FUNCTION count_children";
+        String query3 = "DROP FUNCTION IF EXISTS count_children $$";
         
         try
         (
@@ -175,7 +177,7 @@ public class DataAccessObject
             
             while(result.next())
             {
-                String parentCategoryName = result.getString("name");
+                String parentCategoryName = result.getString("Category_Name");
                 int noOfChildCategories = result.getInt("children_count");
                 
                 listOfTopCategories.add(new TopCategory(parentCategoryName, noOfChildCategories));
@@ -200,8 +202,8 @@ public class DataAccessObject
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/store_front";
-            connection = DriverManager.getConnection(url, "root", "12345");
+            String url = "jdbc:mysql://localhost/StoreFront";
+            connection = DriverManager.getConnection(url, "root", "ishu1996");
         }
         catch(ClassNotFoundException exception)
         {
