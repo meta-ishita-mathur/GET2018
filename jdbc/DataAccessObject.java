@@ -107,8 +107,7 @@ public class DataAccessObject
     public static int markInactive()
     {
         int noOfUpdates = 0;
-        String query =  "SET SQL_SAFE_UPDATES = 0;"
-        		+ "UPDATE Product "
+        String query = "UPDATE Product "
                 + "SET Is_Active = FALSE "
                 + "WHERE ProductID NOT IN "
                 + "(SELECT DISTINCT ProductID "
@@ -134,6 +133,7 @@ public class DataAccessObject
         {
             exception.printStackTrace();
         }
+        System.out.println(noOfUpdates);
         return noOfUpdates;
     }
     
@@ -144,8 +144,7 @@ public class DataAccessObject
     public static List<TopCategory> countChildren()
     {
         List<TopCategory> listOfTopCategories = new ArrayList<TopCategory>();
-        String query1 = "DELIMITER $$"
-        		+ "CREATE FUNCTION count_children(parent_id INTEGER) "
+        String query1 = "CREATE FUNCTION count_children(parent_id INTEGER) "
                 + "RETURNS INTEGER NOT DETERMINISTIC "
                 + "BEGIN "
                 + "DECLARE count INTEGER; "
@@ -154,14 +153,14 @@ public class DataAccessObject
                 + "(SELECT @parent_set := parent_id) initialisation "
                 + "WHERE find_in_set(Parent_CategoryID, @parent_set) AND @parent_set := concat(@parent_set, ',', CategoryID); "
                 + "RETURN count; "
-                + "END $$";
+                + "END";
         
         String query2 = "SELECT Category_Name, count_children(CategoryID) AS children_count "
                 + "FROM Product_Category "
                 + "WHERE Parent_CategoryID IS NULL "
                 + "ORDER BY Category_Name ";
         
-        String query3 = "DROP FUNCTION IF EXISTS count_children $$";
+        String query3 = "DROP FUNCTION IF EXISTS count_children";
         
         try
         (
