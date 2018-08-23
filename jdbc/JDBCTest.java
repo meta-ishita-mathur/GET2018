@@ -29,7 +29,7 @@ public class JDBCTest {
     @Test
     public void markInactiveTest()
     {        
-        assertEquals(1, DataAccessObject.markInactive());
+        assertEquals(0, DataAccessObject.markInactive());
     } 
     
     /**
