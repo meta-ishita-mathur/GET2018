@@ -40,9 +40,9 @@ public class DataAccessObject
             
             while(result.next())
             {
-                int orderId = result.getInt("order_id");
-                int productId = result.getInt("product_id");
-                String orderDate = result.getString("placed_date");
+                int orderId = result.getInt("OrderID");
+                int productId = result.getInt("ProductID");
+                String orderDate = result.getString("Order_Date");
                 float total = result.getFloat("total");
                 
                 listOfOrderLineItems.add(new OrderLineItem(orderId, productId, orderDate, total));
@@ -202,7 +202,7 @@ public class DataAccessObject
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://localhost/StoreFront";
+            String url = "jdbc:mysql://localhost:3306/StoreFront";
             connection = DriverManager.getConnection(url, "root", "ishu1996");
         }
         catch(ClassNotFoundException exception)
