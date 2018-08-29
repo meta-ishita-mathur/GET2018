@@ -1,0 +1,85 @@
+<!Doctype html>
+<html>
+<head>
+	<title>SignUp</title>
+	<script src="validateSignup.js"></script>
+	<link href="style.css" rel="stylesheet"></link>
+</head>
+
+<body>
+	<table class="topnav" width="80%" align="center">
+		<tr>
+			<td>
+				<img height="50px" src="Image/120px-HTML5.png" alt="HTML5">
+			</td>
+		
+			<td align="right">
+				<a href="home.html">Home</a>
+				<a href="home.html">About</a>
+				<a href="home.html">Product</a>
+				<a href="home.html">Gallery</a>
+				<a href="contact.html">Contact</a>
+				<a href="signup.html" class="active">Sign Up</a>
+				<a href="login.html">Login</a>
+			</td>
+		</tr>
+	</table>
+	<hr/>
+	
+	<h1 align="center">Sign Up</h1>
+	
+	<form name="signupForm" action="login.html" onsubmit="return validation()" method="post">
+		<table align="center" width="40px">
+			<tr align="left">
+				<td><b>First Name</td>
+				<td><input type="text" name="firstName"/></td>
+			</tr>
+			<tr><td></td><td><span class="errorMessage" id="errorFirstName"></span></td></tr>
+			<tr align="left">
+				<td><b>Last Name</td>
+				<td><input type="text" name="lastName"/></td>
+			</tr>
+			<tr><td></td><td><span class="errorMessage" id="errorLastName"></span></td></tr>
+			<tr align="left">
+				<td><b>Email</td>
+				<td><input type="text" name="email"/></td>
+			</tr>
+			<tr><td></td><td><span class="errorMessage" id="errorEmail"></span></td></tr>
+			<tr align="left">
+				<td><b>Password</td>
+				<td><input type="password" name="password"/></td>
+			</tr>
+			<tr><td></td><td><span class="errorMessage" id="errorPassword"></span></td></tr>
+			<tr align="left">
+				<td><b>Confirm Password</td>
+				<td><input type="password" name="confirmPassword"/></td>
+			</tr>
+			<tr><td></td><td><span class="errorMessage" id="errorConfirmPassword"></span></td></tr>
+			<tr align="left">
+				<td><b>Contact Number</td>
+				<td><input type="text" name="contact"/></td>
+			</tr>
+			<tr><td></td><td><span class="errorMessage" id="errorContact"></span></td></tr>
+			<tr align="left">
+				<td><b>Company/Institution</td>
+				<td>
+					<select style="font-weight: bold;">
+						<option>Metacube</option>
+						<option>Mindtree</option>
+						<option>TCS</option>
+						<option>Accenture</option>
+						<option>Pinnacle</option>
+					</select>
+				</td>	
+			</tr>
+			<tr>
+				<td><br/></td>
+			</tr>
+			<tr align="left">
+				<td align="right"><input class="button1" type="submit" value="Sign Up" style="font-weight: bold;"/></td>
+				<td><input class="button1" type="reset" value="Reset" style="font-weight: bold;"/></td>
+			</tr>
+		</table>
+	</form>				
+</body>
+</html>
