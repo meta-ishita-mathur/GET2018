@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" id="WebApp_ID" version="2.4">
+  <display-name>SankalpKaProject</display-name>
+  
+  <servlet>
+    <display-name>Firstservlet</display-name>
+    <servlet-name>AddServlet</servlet-name>
+    <servlet-class>com.servlets.AddEmployee</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddServlet</servlet-name>
+    <url-pattern>/addTheEmployee</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>Secondservlet</display-name>
+    <servlet-name>ShowServlet</servlet-name>
+    <servlet-class>com.servlets.ShowEmployee</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowServlet</servlet-name>
+    <url-pattern>/showEmployees</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ThirdServlet</display-name>
+    <servlet-name>SearchServlet</servlet-name>
+    <servlet-class>com.servlets.SearchEmployee</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchServlet</servlet-name>
+    <url-pattern>/searchTheEmployee</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>FourthServlet</display-name>
+    <servlet-name>UpdateEmployeeServlet</servlet-name>
+    <servlet-class>com.servlets.UpdateEmployee</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateEmployeeServlet</servlet-name>
+    <url-pattern>/UpdateEmployee</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>FifthServlet</display-name>
+    <servlet-name>UpdateDataOfEmployeeServlet</servlet-name>
+    <servlet-class>com.servlets.UpdateDataOfEmployee</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateDataOfEmployeeServlet</servlet-name>
+    <url-pattern>/UpdateDataOfEmployee</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+</web-app>
