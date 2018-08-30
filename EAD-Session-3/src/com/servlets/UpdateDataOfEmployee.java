@@ -2,7 +2,6 @@ package com.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,58 +12,51 @@ import com.model.Employees;
 /**
  * Servlet implementation class UpdateDataOfEmployee
  */
-
-public class UpdateDataOfEmployee extends HttpServlet {
+public class UpdateDataOfEmployee extends HttpServlet
+{
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public UpdateDataOfEmployee() {
+	public UpdateDataOfEmployee()
+	{
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * service method to update the details of given employee in database
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("called");
-
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		String firstName, lastName, email, message;
+		int age;
+		boolean isDataUpdate;
+		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-
 		out.println("<body><html>");
-		String firstName = request.getParameter("first_name");
-		String lastName = request.getParameter("last_name");
-		int age = Integer.parseInt(request.getParameter("age"));
-		String email = request.getParameter("email");
+		firstName = request.getParameter("first_name");
+		lastName = request.getParameter("last_name");
+		age = Integer.parseInt(request.getParameter("age"));
+		email = request.getParameter("email");
 
-		SearchEmployeeDaoImplementation empdao = new SearchEmployeeDaoImplementation();
+		SearchEmployeeDaoImplementation searchObject = new SearchEmployeeDaoImplementation();
 
-		boolean isDataUpdate = empdao.update(new Employees(firstName, lastName,
-				email, age));
-		String message = isDataUpdate ? "Data Has Been Update"
-				: "Data is Not Updated";
+		isDataUpdate = searchObject.update(new Employees(firstName, lastName, email, age));
+		message = isDataUpdate ? "Data Has Been Update" : "Data is Not Updated";
 
 		out.println("<h1 align = 'center'>" + message + "</h1>");
-
 		out.println("<a href = 'index.html'>Home</a>");
-
 		out.println("</body></hrml>");
 		System.out.println("data has been updtaed: " + isDataUpdate);
-
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+     	 * service method to update the details of given employee in database
+     	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		doGet(request, response);
 	}
-
 }
