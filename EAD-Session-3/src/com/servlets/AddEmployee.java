@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.daoModelLayer.AddEmployeeDaoImplementation;
 import com.model.Employees;
 
+/**
+ * Servlet implementation class AddEmployee
+ */
 public class AddEmployee extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
@@ -24,15 +27,7 @@ public class AddEmployee extends HttpServlet
     	}
 
 	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
-	public void init(ServletConfig config) throws ServletException
-	{
-		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * service method to add the employee details to the database
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
@@ -57,8 +52,8 @@ public class AddEmployee extends HttpServlet
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+     	 * service method to add the employee details to the database
+     	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		doGet(request, response);
