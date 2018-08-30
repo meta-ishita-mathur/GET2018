@@ -1,10 +1,20 @@
 package com.model;
 
+/**
+ * Class to store the Employee Details
+ */
 public class Employees
 {
 	private String firstName, lastName, email;
 	private int age;
 	
+	/**
+     	 * constructor
+     	 * @param firstName
+     	 * @param lastName
+     	 * @param email
+     	 * @param age
+     	 */
 	public Employees(String firstName, String lastName, String email, int age)
 	{
 		this.firstName = firstName;
@@ -13,41 +23,73 @@ public class Employees
 		this.age = age;
 	}
 
+	 /**
+     	 * getter method for firstName
+     	 * @return firstName
+     	 */
 	public String getFirstName()
 	{
 		return firstName;
 	}
 
+	 /**
+     	  * setter method for firstName
+     	  * @param firstName
+     	  */
 	public void setFirstName(String firstName)
 	{
 		this.firstName = firstName;
 	}
 
+	/**
+     	 * getter method for lastName
+     	 * @return lastName
+     	 */
 	public String getLastName()
 	{
 		return lastName;
 	}
 
+	/**
+     	 * setter method for lastName
+     	 * @param lastName
+     	 */
 	public void setLastName(String lastName)
 	{
 		this.lastName = lastName;
 	}
 
+	/**
+     	 * getter method for email
+     	 * @return email
+     	 */
 	public String getEmail()
 	{
 		return email;
 	}
 
+	/**
+     	 * setter method for email
+     	 * @param email
+     	 */
 	public void setEmail(String email)
 	{
 		this.email = email;
 	}
 
+	/**
+     	 * getter method for age
+     	 * @return age
+     	 */
 	public int getAge()
 	{
 		return age;
 	}
 
+	/**
+     	 * setter method for age
+     	 * @param age
+     	 */
 	public void setAge(int age)
 	{
 		this.age = age;
@@ -69,7 +111,8 @@ public class Employees
         	// Compare the data members and return accordingly 
         	return (this.getEmail().compareTo(employee.getEmail()) == 0);
     	}
-    	public int hashCode()
+    	
+	public int hashCode()
     	{
         	return (int) (this.age + Math.random());
     	}
