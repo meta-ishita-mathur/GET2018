@@ -5,133 +5,152 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.connection.Connect;
 import com.dao.DAO;
 import com.model.Employees;
 import com.mysql.jdbc.Connection;
 
-public class SearchEmployeeDaoImplementation implements DAO<Employees>{
+/**
+ * class to search the employees from the database having name like the given text
+ */
+public class SearchEmployeeDaoImplementation implements DAO<Employees>
+{
 	List<Employees> employeeList = new ArrayList<Employees>();
-	private String firstName;
-	private String lastName;
-	@Override
-	public List getAll() {
-		// TODO Auto-generated method stub
+	private String firstName, lastName;
+	
+	public List getAll()
+	{
 		return null;
 	}
-
-	@SuppressWarnings("resource")
-	@Override
-	public List<Employees> get(Employees t) {
-		PreparedStatement stmt = null;
+	
+	public List<Employees> get(Employees employee)
+	{
+		PreparedStatement statement = null;
 		try (
 				// Step 1: Allocate a database 'Connection' object
-				Connection conn = Connect.getConnection();
+				Connection connection = Connect.getConnection();
 				// In MySQL: "jdbc:mysql://hostname:port/databaseName", "username", "password"
-				// Step 2: Allocate a 'Statement' object in the Connection
-			){
-		if(t.getLastName() == "")
-		{	
-			firstName = t.getFirstName();
-			lastName = t.getFirstName();
-			String query = "SELECT firstName,lastName,email,age FROM Employees WHERE firstName like '%"+firstName+"%' OR lastName like '%"+lastName+"%'";
-			stmt = conn.prepareStatement(query);
-			ResultSet rset = stmt.executeQuery();
-			addToList(rset);
-		}
-		else
+		    )
 		{
-			firstName = t.getFirstName();
-			lastName = t.getLastName();
-			String query = "SELECT firstName,lastName,email,age FROM Employees WHERE firstName like '%"+firstName+"%' AND lastName like '%"+lastName+"%'";
-			stmt = conn.prepareStatement(query);
-			ResultSet rset1 = stmt.executeQuery();
-			addToList(rset1);
-		}
-	 }catch (SQLException ex) {
-		ex.printStackTrace();
-	}finally{
-		try{
-				stmt.close();
-		}catch(SQLException e)
+			if(employee.getLastName() == "")
+			{	
+				firstName = employee.getFirstName();
+				lastName = employee.getFirstName();
+				String query = "SELECT firstName, lastName, email, age FROM Employees WHERE firstName LIKE '%"+firstName+"%' OR lastName LIKE '%"+lastName+"%'";
+				statement = connection.prepareStatement(query);
+				ResultSet firstSet = statement.executeQuery();
+				addToList(firstSet);
+			}
+			else
+			{
+				firstName = employee.getFirstName();
+				lastName = employee.getLastName();
+				String query = "SELECT firstName, lastName, email, age FROM Employees WHERE firstName LIKE '%"+firstName+"%' AND lastName LIKE '%"+lastName+"%'";
+				statement = connection.prepareStatement(query);
+				ResultSet secondSet = statement.executeQuery();
+				addToList(secondSet);
+			}
+	 	}
+		catch (SQLException exception)
 		{
-			e.getMessage();
+			exception.printStackTrace();
 		}
-	}
+		finally
+		{
+			try
+			{
+				statement.close();
+			}
+			catch(SQLException exception)
+			{
+				exception.getMessage();
+			}
+		}
 		return  employeeList;
 	}
 
-	@Override
-	public boolean add(Employees t) {
-		// TODO Auto-generated method stub
+	public boolean add(Employees employee)
+	{
 		return false;
 	}
 	
-	public Employees get(String email){
+	public Employees get(String email)
+	{
 		String query = "SELECT firstName, lastName, email, age FROM employees WHERE email = '"+ email + "'";
-		Employees emp = null;
-		try (Connection conn = Connect.getConnection();
-				PreparedStatement pstmt = conn.prepareStatement(query);
-				ResultSet rset = pstmt.executeQuery();) {
-			rset.next();
-			String firstName = rset.getString("firstName");
-				String lastName = rset.getString("lastName");
-				int age = rset.getInt("age");
-				Employees employee = new Employees(firstName, lastName, email,
-						age);
-				emp = employee;
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
+		String firstName, lastName;
+		int age;
+		Employees employee, newEmployee = null;
+		
+		try (Connection connection = Connect.getConnection();
+		     PreparedStatement statement = connection.prepareStatement(query);
+		     ResultSet firstSet = statement.executeQuery();
+		    )
+		{
+			firstSet.next();
+			firstName = firstSet.getString("firstName");
+			lastName = firstSet.getString("lastName");
+			age = firstSet.getInt("age");
+			employee = new Employees(firstName, lastName, email, age);
+			newEmployee = employee;
 		}
-		return emp;
+		catch (Exception exception)
+		{
+			System.out.println(exception.getMessage());
+		}
+		return newEmployee;
 	}
 	
-	public boolean update(Employees emp){
-		String query  = "UPDATE employees SET firstName =  ? , lastName = ? , email = ? , age = ? WHERE email = ? ;";
+	public boolean update(Employees employee)
+	{
+		String query = "UPDATE employees SET firstName = ?, lastName = ?, email = ?, age = ? WHERE email = ?;";
 		boolean isEmployeeUpdateFalg = false;
 		
-		try(Connection conn = Connect.getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(query);	
-			){
-			pstmt.setString(1,emp.getFirstName());
-			pstmt.setString(2,emp.getLastName());
-			pstmt.setString(3,emp.getEmail());
-			pstmt.setInt(4,emp.getAge());
-
-			pstmt.setString(5,emp.getEmail());
-
-			isEmployeeUpdateFalg = pstmt.executeUpdate()==0?false:true;
-			
-		}catch(Exception e){
-			System.out.println(e.getMessage());
+		try(Connection connection = Connect.getConnection();
+		    PreparedStatement statement = connection.prepareStatement(query);
+		   )
+		{
+			statement.setString(1, employee.getFirstName());
+			statement.setString(2, employee.getLastName());
+			statement.setString(3, employee.getEmail());
+			statement.setInt(4, employee.getAge());
+			statement.setString(5, employee.getEmail());
+			isEmployeeUpdateFalg = statement.executeUpdate() == 0 ? false : true;
 		}
-		
+		catch(Exception exception)
+		{
+			System.out.println(exception.getMessage());
+		}
 		return isEmployeeUpdateFalg;
 	}
 	
-	public boolean addToList (ResultSet rsetOptional)
+	public boolean addToList (ResultSet setOptional)
 	{
-		boolean flag = false;
-		try{
-		while (rsetOptional.next()) { // Move the cursor to the next row, return false if no more row
-			String firstName = rsetOptional.getString("firstName");
-			String lastName = rsetOptional.getString("lastName");
-			String email = rsetOptional.getString("email");
-			int age = rsetOptional.getInt("age");
-			Employees object = new Employees(firstName,lastName,email,age);
-			if(!employeeList.contains(object))
-					{
-						employeeList.add(object);
-					}
-		}
-		flag = true;
-		}catch(SQLException e)
+		boolean addFlag = false;
+		String firstName, lastName, email;
+		int age;
+		Employees employee = null;
+		
+		try
 		{
-			flag = false;
-			e.printStackTrace();
+			while (setOptional.next())
+			{ 	// Move the cursor to the next row, return false if no more row
+				firstName = setOptional.getString("firstName");
+				lastName = setOptional.getString("lastName");
+				email = setOptional.getString("email");
+				age = setOptional.getInt("age");
+				employee = new Employees(firstName, lastName, email, age);
+				if(!employeeList.contains(employee))
+				{
+					employeeList.add(employee);
+				}
+			}
+			addFlag = true;
 		}
-		return flag;
+		catch(SQLException exception)
+		{
+			addFlag = false;
+			exception.printStackTrace();
+		}
+		return addFlag;
 	}
-	
 }
