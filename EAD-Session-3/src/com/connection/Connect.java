@@ -18,7 +18,7 @@ public class Connect
         	{
             		Class.forName("com.mysql.jdbc.Driver");
             		String url = "jdbc:mysql://localhost:3306/employee_forum";
-            		connection = DriverManager.getConnection(url, "root", "ishu1996");
+            		connection = (Connection) DriverManager.getConnection(url, "root", "ishu1996");
         	}
         	catch(ClassNotFoundException exception)
         	{
