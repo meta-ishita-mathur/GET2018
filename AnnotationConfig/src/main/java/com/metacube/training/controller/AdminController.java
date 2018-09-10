@@ -139,7 +139,7 @@ public class AdminController
 		return "redirect:/admin/jobs";
 	}
 	
-	/**
+	/*
 	 * code for skills start from here	
 	 */
 	@RequestMapping(path = "/skills",method = RequestMethod.GET)
@@ -165,7 +165,7 @@ public class AdminController
 		return "redirect:/admin/skills";
 	}
 
-	/**
+	/*
 	 * code for employee	
 	 */
 	@RequestMapping(path="/employee",method = RequestMethod.GET)
