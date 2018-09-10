@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import com.metacube.training.dao.interfaces.EmployeeDAO;
 import com.metacube.training.mappers.EmployeeMapper;
+import com.metacube.training.mappers.EmployeeTeamLeadMapper;
 import com.metacube.training.model.Employee;
 
 @Repository
@@ -23,10 +24,14 @@ public class EmployeeDAOImpl implements EmployeeDAO
 	private final String GET_LAST_EMPLOYEE = "SELECT * FROM employee ORDER BY emp_code DESC LIMIT 1;";
 	private final String SQL_INSERT_EMPLOYEE = "INSERT INTO employee "
 			+ "(emp_Code, first_Name, last_Name, dob, gender,"
-			+ "email_Id) values(?,?,?,?,?,?)";
-
+			+ "email_Id) values(?, ?, ?, ?, ?, ?)";
+	private final String GET_TEAM_LEADER = "SELECT employee.emp_code, first_name FROM employee LEFT JOIN job_details ON employee.emp_code = job_details.emp_code LEFT JOIN job_title_master ON job_details.job_code = job_title_master.job_id WHERE job_title = 'Team Leader'"; 
+	private final String GET_REPORTING_MANAGER = "SELECT employee.emp_code, first_name FROM employee LEFT JOIN job_details ON employee.emp_code = job_details.emp_code LEFT JOIN job_title_master ON job_details.job_code = job_title_master.job_id WHERE job_title = 'Manager'; "; 
+    private final String SQL_JOB_DETAILS = "INSERT INTO job_details (emp_code, job_code, reproting_mgr, team_lead, curr_proj_id) values (?, ?, ?, ?, ?)";    
+    private final String SQL_GET_EMPLOYEE_BY_ID = "SELECT * FROM employee WHERE emp_code = ?"; 
+   
 	public List<Employee> getAllEmployee()
-	{
+	{	
 		return null;
 	}
 
@@ -46,5 +51,27 @@ public class EmployeeDAOImpl implements EmployeeDAO
 	public Employee getLastAddedEmployee()
 	{
 		return jdbcTemplate.queryForObject(GET_LAST_EMPLOYEE, new EmployeeMapper());
+	}
+
+	public List<Employee> getTeamLeaders()
+	{
+		return jdbcTemplate.query(GET_TEAM_LEADER, new EmployeeTeamLeadMapper());
+	}
+
+	public List<Employee> getManagers()
+	{	
+		return jdbcTemplate.query(GET_REPORTING_MANAGER, new EmployeeTeamLeadMapper());
+	}
+	
+	public boolean addJobDetails(Employee employee)
+	{
+		return jdbcTemplate.update(SQL_JOB_DETAILS, employee.getEmpCode(),
+				employee.getJobTitle(), employee.getManager(),
+				employee.getTeamLeader(), employee.getProjectTitle()) > 0;
+	}	
+	
+	public Employee getEmployeeById(Employee employee)
+	{
+		return jdbcTemplate.queryForObject(SQL_GET_EMPLOYEE_BY_ID, new Object[]{employee.getEmpCode()}, new EmployeeMapper());
 	}
 }

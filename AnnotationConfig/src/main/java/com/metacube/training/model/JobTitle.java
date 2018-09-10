@@ -23,5 +23,5 @@ public class JobTitle
 	public void setJobTitle(String jobTitle)
 	{
 		this.jobTitle = jobTitle;
-	}	
+	}
 }

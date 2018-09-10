@@ -3,7 +3,7 @@ package com.metacube.training.dao.interfaces;
 import java.util.List;
 import com.metacube.training.model.JobTitle;
 
-public interface JobTitleDAO
+public interface JobTitleDAO 
 {
 	List<JobTitle> getAllJobTitle();
 

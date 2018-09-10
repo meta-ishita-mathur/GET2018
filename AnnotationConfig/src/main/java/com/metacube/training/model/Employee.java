@@ -4,13 +4,23 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Employee
-{
+{	
 	private String empCode, firstName, lastName, gender, primaryContactNumber, secondaryContactNumber;
-	private String emailId, skypeId, profilePicture, password, jobTitle;
+	private String emailId, skypeId, profilePicture, password, projectTitle, teamLeader, jobTitle, manager;
+	private boolean isEnabled;
 	
 	@DateTimeFormat(pattern = "yyyy-mm-dd")
 	Date dob;
-	private boolean isEnabled;
+	
+	public String getTeamLeader()
+	{
+		return teamLeader;
+	}
+	
+	public void setTeamLeader(String teamLeader)
+	{
+		this.teamLeader = teamLeader;
+	}
 	
 	public String getJobTitle()
 	{
@@ -21,7 +31,27 @@ public class Employee
 	{
 		this.jobTitle = jobTitle;
 	}
+	
+	public String getManager()
+	{
+		return manager;
+	}
+	
+	public void setManager(String manager)
+	{
+		this.manager = manager;
+	}
 
+	public String getProjectTitle()
+	{
+		return projectTitle;
+	}
+	
+	public void setProjectTitle(String projectTitle)
+	{
+		this.projectTitle = projectTitle;
+	}
+	
 	public String getEmpCode()
 	{
 		return empCode;
@@ -41,7 +71,7 @@ public class Employee
 	{
 		this.firstName = firstName;
 	}
-
+	
 	public String getLastName()
 	{
 		return lastName;

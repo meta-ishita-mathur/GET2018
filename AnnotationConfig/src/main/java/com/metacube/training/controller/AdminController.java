@@ -139,47 +139,52 @@ public class AdminController
 		return "redirect:/admin/jobs";
 	}
 	
-	/*
+	/**
 	 * code for skills start from here	
 	 */
-	@RequestMapping(path = "/skills",method = RequestMethod.GET)
+	@RequestMapping(path = "/skills", method = RequestMethod.GET)
 	public String getAllSkills(Model model)
 	{
-		model.addAttribute("skills",skillService.getAllSkills());
+		model.addAttribute("skills", skillService.getAllSkills());
 		return "admin/skills";
 	}
 	
 	@RequestMapping(path = "/skills/add", method = RequestMethod.GET)
 	public String createSkills(Model model)
 	{
-		model.addAttribute("skill",new Skill());
+		model.addAttribute("skill", new Skill());
 		return "admin/addSkill";	
 	}
 	
 	@RequestMapping(path = "/skills", method = RequestMethod.POST)
 	public String saveSkill(@ModelAttribute("skill") Skill skill)
 	{
-		if(skill!= null && skill.getId() == 0)
+		if(skill != null && skill.getId() == 0)
 			skillService.createSkill(skill);
 		
 		return "redirect:/admin/skills";
 	}
 
-	/*
+	/**
 	 * code for employee	
 	 */
-	@RequestMapping(path="/employee",method = RequestMethod.GET)
+	@RequestMapping(path="/employee", method = RequestMethod.GET)
 	public String goToEmployeePage(Model model)
 	{
-		model.addAttribute("employee",new Employee());
-		model.addAttribute("jobs",jobTitleService.getAllJobTitle());
+		model.addAttribute("employee", new Employee());
+		model.addAttribute("jobs", jobTitleService.getAllJobTitle());
+		model.addAttribute("projects", projectService.getAllProjects());
+		model.addAttribute("teamLeaders", employeeService.getTeamLeaders());
+		model.addAttribute("managers", employeeService.getManagers());
+		System.out.println(employeeService.getManagers().get(0).getFirstName());
 		return "admin/addEmployee";
 	}
 	
-	@RequestMapping(path="/employee",method = RequestMethod.POST)
+	@RequestMapping(path = "/employee", method = RequestMethod.POST)
 	public String addEmployee(@ModelAttribute("employee") Employee employee)
 	{
 		employeeService.createEmployee(employee);
+		employeeService.addJobDetails(employee);
 		return "admin/skills";
 	}
 }

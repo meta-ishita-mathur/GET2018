@@ -1,81 +1,53 @@
 package com.metacube.training.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+import javax.sql.DataSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import com.metacube.training.connection.Connect;
 import com.metacube.training.dao.interfaces.JobTitleDAO;
+import com.metacube.training.mappers.JobTitleMapper;
 import com.metacube.training.model.JobTitle;
 
 @Repository
 public class JobTitleDAOImpl implements JobTitleDAO
 {
-	private final String SQL_GET_ALL = "select * from job_title_master";
-	private final String SQL_INSERT_JOB_TITLE = "insert into job_title_master(job_title) values(?)";
-
-	public JobTitle getJobTitleById(int id)
+	private JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	public JobTitleDAOImpl(DataSource dataSource)
 	{
-		return null;
+		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
+	
+	private final String SQL_DELETE_JOB_TITLE = "DELETE FROM job_title_master WHERE job_id = ?";
+	private final String SQL_UPDATE_JOB_TITLE = "UPDATE job_title_master SET job_title = ? WHERE job_id = ?";
+	private final String SQL_GET_ALL = "SELECT * FROM job_title_master";
+	private final String SQL_INSERT_JOB_TITLE = "INSERT INTO job_title_master(job_title) VALUES(?)";
+	private final String SQL_GET_JOB_BY_ID = "SELECT * FROM job_title_master WHERE job_id = ?";
 
 	public List<JobTitle> getAllJobTitle()
 	{
-		List<JobTitle> resultList = new ArrayList<JobTitle>();
-
-		try
-		(
-			Connection connect = Connect.getConnection();
-			PreparedStatement statement =  connect.prepareStatement(SQL_GET_ALL);
-		){
-			ResultSet result = statement.executeQuery();
-			while(result.next())
-			{
-				int id = result.getInt("job_id");
-				String title = result.getString("job_title");
-				JobTitle newJob = new JobTitle();
-				newJob.setId(id);;
-				newJob.setJobTitle(title);
-				resultList.add(newJob);
-			}
-		}
-		catch(SQLException error)
-		{
-			error.printStackTrace();
-		}	
-		return resultList;
+		return jdbcTemplate.query(SQL_GET_ALL, new JobTitleMapper());
 	}
-
+	
 	public boolean deleteJobTitle(int id)
 	{
-		return false;
+		return jdbcTemplate.update(SQL_DELETE_JOB_TITLE, id) > 0;
 	}
 
 	public boolean updateJobTitle(JobTitle jobTitle)
 	{
-		return false;
+		return jdbcTemplate.update(SQL_UPDATE_JOB_TITLE, jobTitle.getId()) > 0;
 	}
 
 	public boolean createJobTitle(JobTitle jobTitle)
 	{
-		boolean created = false;
-		
-		try
-		(
-			Connection connect = Connect.getConnection();
-			PreparedStatement statement =  connect.prepareStatement(SQL_INSERT_JOB_TITLE);
-		){
-			statement.setString(1, jobTitle.getJobTitle());
-			statement.executeUpdate();
-			created = true;
-		}
-		catch(SQLException error)
-		{
-			created = false;
-		}	
-		return created;
+		return jdbcTemplate.update(SQL_INSERT_JOB_TITLE, jobTitle.getJobTitle()) > 0;
+	}
+	
+	public JobTitle getJobTitleById(int id)
+	{
+		return jdbcTemplate.queryForObject(SQL_GET_JOB_BY_ID, new Object[] {id}, new JobTitleMapper());
 	}
 }

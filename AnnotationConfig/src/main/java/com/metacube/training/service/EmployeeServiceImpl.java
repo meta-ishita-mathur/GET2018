@@ -12,7 +12,7 @@ import com.metacube.training.service.interfaces.EmployeeService;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService
-{
+{	
 	@Autowired
 	private EmployeeDAO employeeDAO;
 
@@ -25,7 +25,7 @@ public class EmployeeServiceImpl implements EmployeeService
 	{
 		return false;
 	}
-
+	
 	public boolean createEmployee(Employee employee)
 	{
 		employee.setEmpCode(getGeneratedEmployeeCode());
@@ -40,9 +40,8 @@ public class EmployeeServiceImpl implements EmployeeService
 		year = (Calendar.getInstance().get(Calendar.YEAR) + "").substring(2);
 		NumberFormat numFormat = new DecimalFormat("0000");
 
-		if (lastEmpCode == null || "".equals(lastEmpCode))
+		if(lastEmpCode == null || "".equals(lastEmpCode))
 			newGeneratedCode = "E" + year + "/" + numFormat.format(0);
-		
 		else
 		{
 			integerCode = Integer.parseInt(lastEmpCode.split("/")[1]);
@@ -50,4 +49,46 @@ public class EmployeeServiceImpl implements EmployeeService
 		}
 		return newGeneratedCode;
 	}
+	
+	public List<Employee> getTeamLeaders()
+	{
+		return employeeDAO.getTeamLeaders();
+	}
+
+	public List<Employee> getManagers()
+	{
+		return employeeDAO.getManagers();
+	}
+	
+	public boolean addJobDetails(Employee employee)
+	{
+		return employeeDAO.addJobDetails(employee);
+	}
+
+	public Employee getEmployeeById(Employee employee)
+	{
+		Employee employeeInDatabase = employeeDAO.getEmployeeById(employee);
+		boolean validateEmployeeFlag = false;
+		if (employeeInDatabase != null)
+		{
+			if ((employee.getEmpCode().equals(employeeInDatabase.getEmpCode()))
+					&& (employee.getPassword().equals(employeeInDatabase.getPassword())))
+			{
+				validateEmployeeFlag = true;
+			}
+		}
+		System.out.println("password:" + validateEmployeeFlag);
+		
+		if(validateEmployeeFlag)
+			return employeeInDatabase;
+		else
+			return null;
+	}
+
+	public Employee getEmployeeByIdString(String empCode)
+	{
+		Employee employee = new Employee();
+		employee.setEmpCode(empCode);
+		return employeeDAO.getEmployeeById(employee);
+	}	
 }

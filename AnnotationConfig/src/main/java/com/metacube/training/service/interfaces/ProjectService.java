@@ -4,7 +4,7 @@ import java.util.List;
 import com.metacube.training.model.Project;
 
 public interface ProjectService
-{
+{	
 	Project getProjectById(Long id);
 
 	List<Project> getAllProjects();
@@ -14,5 +14,4 @@ public interface ProjectService
 	boolean updateProject(Project project);
 
 	boolean createProject(Project project);
-
 }
