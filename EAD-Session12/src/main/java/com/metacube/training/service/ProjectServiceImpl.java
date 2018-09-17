@@ -1,11 +1,8 @@
 package com.metacube.training.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.metacube.training.dao.interfaces.ProjectDAO;
 import com.metacube.training.model.Project;
 import com.metacube.training.repository.ProjectRepository;
 import com.metacube.training.service.interfaces.ProjectService;
