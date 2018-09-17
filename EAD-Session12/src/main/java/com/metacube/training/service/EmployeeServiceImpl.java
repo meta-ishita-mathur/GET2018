@@ -4,13 +4,10 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Calendar;
 import java.util.List;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.metacube.training.dao.interfaces.EmployeeDAO;
 import com.metacube.training.model.Employee;
 import com.metacube.training.model.EmployeeSkill;
 import com.metacube.training.model.Skill;
@@ -22,12 +19,11 @@ import com.metacube.training.service.interfaces.EmployeeService;
 public class EmployeeServiceImpl implements EmployeeService
 {	
 	@Autowired
-    private EmployeeRepository<Employee> employeeRepository;
+    	private EmployeeRepository<Employee> employeeRepository;
 	
 	@Autowired
-    private SkillRepository<Skill> skillRepository;
+    	private SkillRepository<Skill> skillRepository;
 	
-	@Transactional(readOnly = true)
 	public Employee getEmployeeById(String empCode)
 	{
 		return employeeRepository.findOne(empCode);
