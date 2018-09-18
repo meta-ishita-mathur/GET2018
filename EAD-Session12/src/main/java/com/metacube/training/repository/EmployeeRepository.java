@@ -11,7 +11,6 @@ import com.metacube.training.model.Employee;
  */
 public interface EmployeeRepository<E> extends JpaRepository<Employee, Integer>
 {
-	public List<Employee> getAllEmployee();
 	public Employee getEmployeeByEmailId(Employee employee);
 	public Employee getLastAddedEmployee();
 
