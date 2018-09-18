@@ -61,7 +61,7 @@ public class EmployeeServiceImpl implements EmployeeService
 	public Employee getEmployeeByEmailId(String email)
 	{
 		Employee employee = new Employee();
-		employee.setEmpCode(email);
+		employee.setEmail(email);
 		return employeeRepository.getEmployeeByEmailId(employee);
 	}
 	
