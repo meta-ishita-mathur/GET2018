@@ -11,5 +11,5 @@ import com.metacube.training.model.Project;
  */
 public interface ProjectRepository<P> extends JpaRepository<Project, Integer>
 {	
-	public List<Project> getAllProjects();	
+
 }
