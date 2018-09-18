@@ -31,7 +31,7 @@ public class EmployeeServiceImpl implements EmployeeService
 	
 	public List<Employee> getAllEmployee()
 	{
-		return employeeRepository.getAllEmployee();
+		return employeeRepository.findAll();
 	}
 
 	public boolean createEmployee(Employee employee)
