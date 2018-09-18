@@ -16,7 +16,7 @@ public class JobTitleServiceImpl implements JobTitleService
 
 	public List<JobTitle> getAllJobTitle()
 	{
-		return jobTitleRepository.getAllJobTitle();
+		return jobTitleRepository.findAll();
 	}
 
 	public boolean deleteJobTitle(int id)
