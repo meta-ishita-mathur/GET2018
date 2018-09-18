@@ -11,5 +11,5 @@ import com.metacube.training.model.Skill;
  */
 public interface SkillRepository<S> extends JpaRepository<Skill, Integer>
 {
-	public List<Skill> getAllSkills();
+
 }
