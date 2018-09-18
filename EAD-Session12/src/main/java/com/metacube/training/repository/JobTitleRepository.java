@@ -11,6 +11,5 @@ import com.metacube.training.model.JobTitle;
  */
 public interface JobTitleRepository<T> extends JpaRepository<JobTitle, Integer>
 {
-	public List<JobTitle> getAllJobTitle();
-	
+
 }
