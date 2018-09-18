@@ -20,7 +20,7 @@ public class ProjectServiceImpl implements ProjectService
 
 	public List<Project> getAllProjects()
 	{
-		return projectRepository.getAllProjects();
+		return projectRepository.findAll();
 	}
 	
 	public boolean deleteProject(int id)
