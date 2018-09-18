@@ -17,7 +17,7 @@ public class SkillServiceImpl implements SkillService
 
 	public List<Skill> getAllSkills()
 	{
-		return skillRepository.getAllSkills();
+		return skillRepository.findAll();
 	}
 
 	public boolean createSkill(Skill skill)
