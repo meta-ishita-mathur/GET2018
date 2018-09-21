@@ -1,0 +1,50 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#container {
+    width: 140px;
+    height: 140px; 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.square {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    animation: pulse 2s infinite;
+}
+
+#yellow_square {
+    background-color: #FCC04E;
+    animation-delay: 0s;
+    
+}
+
+#blue_square {
+    background-color: #1B90F7;
+    animation-delay: -0.5s;
+}
+
+#pink_square {
+    background-color: #FB5667;
+    animation-delay: -1s;
+}
+
+#purple_square {
+    background-color: #7946E2;
+    animation-delay: -1.5s;
+}
+
+@keyframes pulse {
+    0%   {left: 0px; top: 0px;}
+    25%  {left: 0px; top: 70px;}
+    50%  {left: 70px; top: 70px;}
+    75%  {left: 70px; top: 0px;}
+    100% {left: 0px; top: 0px;}
+}
