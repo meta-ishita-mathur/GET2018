@@ -6,7 +6,7 @@
     </head>
     
     <body>
-        <div class="first_section">
+        <div class="header_section">
             <header class="header">
                 <div class="logo">
                     <img src="Images/logo.png" alt="Logo Title">
@@ -97,14 +97,24 @@
 
             <div class="screenshot_part">
                 <div class="mobile_img">
-                    <img src="Images/screen01.png" alt="Cloudy Phone Screen">
+                    <img src="Images/screen01.png" alt="Cloudy Phone Screen" id="weather_image">
+                    <div class="rotate">Cloudy</div>
+                    <span class="degree">15&#176</span>
+                    <span class="weather">Cloudy</span>
                 </div>
 
                 <div class="screenshot_content">
                     <img src="Images/cloud1.png" alt="Cloudy">
                     <h2>When the clouds</h2>
                     <p>Variable information on the air humidity, the feeling of the weather, and the ability to share this with your friends</p>
+                    
+                    <div id="circle_part">
+                        <div class="circles" id="percent_circle">95%</div>
+                        <div class="circles" id="degree_circle">9&#176</div>
+                        <div class="circles" id="weather_circle">Rainy</div>
+                    </div>
                 </div>
+                
             </div>
 
             <div class="screenshot_part">
@@ -112,22 +122,40 @@
                     <img src="Images/sun1.png" alt="Sunny">
                     <h2>When the clouds</h2>
                     <p>Variable information on the air humidity, the feelinf of the weather, and the ability to share this with your friends</p>
+                    
+                    <div id="circle_part">
+                        <div class="circles" id="percent_circle_sunny">95%</div>
+                        <div class="circles" id="degree_circle_sunny">9&#176</div>
+                        <div class="circles" id="weather_circle_sunny">Rainy</div>
+                    </div>
                 </div>
-
+                
                 <div class="mobile_img">
-                    <img src="Images/screen02.png" alt="Sunny Phone Screen">
+                    <img src="Images/screen02.png" alt="Sunny Phone Screen" id="weather_image">
+                    <div class="rotate">Sunny</div>
+                    <span class="degree">25&#176</span>
+                    <span class="weather">Cloudy</span>
                 </div>
             </div>
 
             <div class="screenshot_part">
                 <div class="mobile_img">
-                    <img src="Images/screen03.png" alt="Rainy Phone Screen">
+                    <img src="Images/screen03.png" alt="Rainy Phone Screen" id="weather_image">
+                    <div class="rotate">Rainy</div>
+                    <span class="degree">9&#176</span>
+                    <span class="weather">Rainy</span>
                 </div>
 
                 <div class="screenshot_content">
                     <img src="Images/rainy1.png" alt="Rainy">
                     <h2>When the rain</h2>
                     <p>Variable information on the air humidity, the feelinf of the weather, and the ability to share this with your friends</p>
+                    
+                    <div id="circle_part">
+                        <div class="circles" id="percent_circle">95%</div>
+                        <div class="circles" id="degree_circle">9&#176</div>
+                        <div class="circles" id="weather_circle">Rainy</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -203,7 +231,7 @@
             
             <hr>
             
-            <p id="rights">All Rights Reserved</p>
+            <p id="right">All Rights Reserved</p>
         </footer>
     </body>
 </html>
