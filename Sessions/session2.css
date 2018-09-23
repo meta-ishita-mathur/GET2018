@@ -1,11 +1,11 @@
 body {
     margin: 0px;
-    font-family:Verdana;
+    font-family: Verdana;
     font-size: 12px;
     background-image: url(Images/bodybg.png);
 }
 
-.first_section {
+.header_section {
     background-image: url("Images/homebg.png");
     background-size: 100% 100%;
     height: 650px;
@@ -15,9 +15,10 @@ body {
 .header div {
     width: 33%;
     text-align: center;
+    display: inline-block;
 }
 
-.header div, .cover div, .features div, li{
+li{
     display: inline-block;
 }
 
@@ -43,8 +44,7 @@ body {
 }
 
 .cover div {
-    width: 50%
-    text-align: left;
+    display: inline-block;
 }
 
 #phone_image img {
@@ -82,7 +82,7 @@ body {
     margin-left: 5px;
 }
 
-.features_section, .screenshot_section, .review_section {
+.features_section, .screenshot_section {
     padding-top: 80px;
     margin: 0px 70px;
 }
@@ -95,18 +95,18 @@ body {
     color: #6388FB;
 }
 
-.content_headings span, .screenshot_part p{
-    color: 	#808080;
+.content_headings span, .screenshot_part p {
+    color: #808080;
 }
 
-.features, .features_part, .screenshot_part {
-    display: flex !important;
+.features {
+    display: flex;
     flex-direction: row;
     padding-top: 40px;
 }
 
 .features img {
-    margin-top:7px;
+    margin-top: 7px;
     width: 60px;
 }
 
@@ -121,6 +121,9 @@ body {
 }
 
 .features_part {
+    display: flex;
+    flex-direction: row;
+    padding-top: 40px;
     text-align: left;
     padding-left: 10px;
     width: 31%;
@@ -137,6 +140,8 @@ body {
 }
 
 .screenshot_part {
+    display: flex;
+    flex-direction: row;
     width: 100%;
     padding-top: 200px;
 }
@@ -160,10 +165,93 @@ body {
 }
 
 .mobile_img {
-    text-align: center;
+    position: relative;
 }
 
-.review_part, .download{
+#weather_image {
+    padding-left: 10%;
+}
+
+.rotate {
+    position: absolute;
+	z-index: -1;
+	display: block;
+	color: #DCDCDC;
+	transform: rotate(90deg);
+    top: 0px;
+	left: 250px;
+	font-size: 190px;
+}
+
+.degree, .weather {
+    border-radius: 100%;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    z-index: 1;
+    text-align: center;
+    padding-top: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #FFFFFF;
+    position: absolute;
+}
+
+.degree {
+    top: 350px;
+    left: -20px;
+    background-color: #6A9FFB;
+}
+
+.weather {
+    top: 200px;
+    left: 300px;
+    background-color: #FCED6E;
+}
+
+#circle_part {
+    padding-top: 30px;
+}
+
+.circles {
+    display: flex;
+    flex-direction: row;
+    max-width: 30px;
+    height: 30px;
+    border-color: #DCDCDC;
+    border-style: dashed;
+    color: #DCDCDC;
+    position: absolute;
+    background-color: #FFFFFF;
+    text-align: center;
+    padding-left: 10px;
+    border-radius: 100%;
+    z-index: 1;
+    padding-top: 20px;
+    padding-right: 10px;
+}
+
+#degree_circle {
+    left: 585px;
+    z-index: -1;
+}
+
+#weather_circle {
+    left: 628px;
+    z-index: -2;
+}
+
+#degree_circle_sunny {
+    left: 115px;
+    z-index: -1;
+}
+
+#weather_circle_sunny {
+    left: 160px;
+    z-index: -2;
+}
+
+.review_part {
     display: flex;
     flex-direction: row;
     padding-top: 60px;
@@ -176,17 +264,39 @@ body {
 .review_part p {
     font-size: 14px;
     font-weight: bold;
+    padding-top: 30px;
+}
+
+.review_part div div:before {
+    vertical-align: 10px;
+    content: open-quote;
+    font-size: 40px;
+    position: absolute;
+    color: #6388FB;
+}
+
+.review_part div div:after {
+    content: close-quote;
+    font-size: 40px;
+    padding-left: 300px;
+    position: absolute;
+    color: #6388FB;
 }
 
 .review_section {
     padding-bottom: 40px;
+    padding-top: 80px;
+    margin: 0px 70px;
 }
 
 .first_review div {
-    padding-left: 0;
+    padding-left: 0px;
 }
 
 .download {
+    display: flex;
+    flex-direction: row;
+    padding-top: 60px;
     background-image: url(Images/downloadbg.png);
     color: #FFFFFF;
 }
@@ -227,10 +337,9 @@ hr {
     background-color: #808080;
 }
 
-#rights {
+#right {
     color: #808080;
     padding-top: 20px;
     padding-bottom: 30px;
     text-align: center;
 }
-
