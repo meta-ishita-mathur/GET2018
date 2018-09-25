@@ -105,4 +105,11 @@ public class EmployeeServiceImpl implements EmployeeService
 	{
 		employeeDAO.addSkill(employeeSkill);
 	}
+
+	public boolean checkValidCredentials(String empCode, String password)
+	{
+		if(employeeDAO.findByEmpCodeAndPassword(empCode, password) != null)
+			return true;
+		return false;
+	}
 }

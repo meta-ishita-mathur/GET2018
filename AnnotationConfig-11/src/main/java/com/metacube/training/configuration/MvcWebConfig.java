@@ -1,7 +1,6 @@
 package com.metacube.training.configuration;
 
 import java.util.Properties;
-
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -25,6 +24,7 @@ import com.metacube.training.model.EmployeeSkill;
 import com.metacube.training.model.JobTitle;
 import com.metacube.training.model.Project;
 import com.metacube.training.model.Skill;
+import com.metacube.training.model.UserRole;
 
 @Configuration
 @EnableWebMvc
@@ -90,7 +90,7 @@ public class MvcWebConfig implements WebMvcConfigurer
 		properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
 
 		factoryBean.setHibernateProperties(properties);
-		factoryBean.setAnnotatedClasses(Project.class, Employee.class, JobTitle.class, Skill.class, EmployeeSkill.class);
+		factoryBean.setAnnotatedClasses(Project.class, Employee.class, JobTitle.class, Skill.class, EmployeeSkill.class, UserRole.class);
 		return factoryBean;
 	}
 

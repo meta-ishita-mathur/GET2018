@@ -26,4 +26,6 @@ public interface EmployeeService
 	public String getGeneratedEmployeeCode();
 	
 	public Employee getEmployeeByEmailId(String email);
+	
+	public boolean checkValidCredentials(String empCode, String password);
 }

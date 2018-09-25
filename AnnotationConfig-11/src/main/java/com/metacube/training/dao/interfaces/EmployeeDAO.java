@@ -24,4 +24,6 @@ public interface EmployeeDAO
 	public boolean addSkill(EmployeeSkill employeeSkill);
 
 	public Employee getEmployeeByEmailId(Employee employee);
+	
+	public Employee findByEmpCodeAndPassword(String empCode, String password);
 }

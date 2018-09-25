@@ -88,4 +88,12 @@ public class EmployeeDAOImpl implements EmployeeDAO
 		sessionFactory.getCurrentSession().save(employeeSkill);
 		return true;
 	}
+	
+	public Employee findByEmpCodeAndPassword(String empCode, String password)
+	{
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Employee.class);
+		criteria.add(Restrictions.eq("empCode", empCode));
+		criteria.add(Restrictions.eq("password", password));
+		return (Employee) criteria.uniqueResult();
+	}
 }

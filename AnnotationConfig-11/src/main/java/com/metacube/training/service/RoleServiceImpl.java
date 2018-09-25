@@ -1,5 +1,7 @@
 package com.metacube.training.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,7 @@ public class RoleServiceImpl implements RoleService
 	@Autowired
 	RoleDAO roleDAO;
 	
-	public UserRole getRoleByEmpCode(String empCode)
+	public List<UserRole> getRoleByEmpCode(String empCode)
 	{
 		return roleDAO.getRoleByEmpCode(empCode);
 	}

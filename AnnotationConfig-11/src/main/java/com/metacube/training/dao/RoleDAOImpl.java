@@ -1,5 +1,6 @@
 package com.metacube.training.dao;
 
+import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -16,10 +17,10 @@ public class RoleDAOImpl implements RoleDAO
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	public UserRole getRoleByEmpCode(String empCode)
+	public List<UserRole> getRoleByEmpCode(String empCode)
 	{
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(UserRole.class);
 		criteria.add(Restrictions.eq("empCode", empCode));
-		return (UserRole) criteria.uniqueResult();
+		return criteria.list();
 	}
 }

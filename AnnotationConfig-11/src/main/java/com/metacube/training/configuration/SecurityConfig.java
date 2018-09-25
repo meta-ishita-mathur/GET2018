@@ -15,13 +15,26 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter
 {
 	@Autowired
+	CustomAuthenticationProvider customAuthenticationProvider;
+	
+/*
+	@Autowired
 	DataSource dataSource;
 	
+	//usingDB
 	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder authenticate) throws Exception {
+	public void configureGlobal(AuthenticationManagerBuilder authenticate) throws Exception
+	{
 		authenticate.jdbcAuthentication().dataSource(dataSource).passwordEncoder(NoOpPasswordEncoder.getInstance())
 		.usersByUsernameQuery("select emp_code, password, enabled from employee where emp_code = ?")
 		.authoritiesByUsernameQuery("select emp_code, role from user_role where emp_code = ?");
+	}*/
+	
+	//usingCustomDB
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder authenticate) throws Exception
+	{
+		authenticate.authenticationProvider(customAuthenticationProvider);
 	}
 
 	@Override
