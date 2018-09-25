@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+	<title>Add Employee</title>
+</head>
+<body>
+	<div>
+		<form th:object="${employee}" th:action="@{./employee}" method="post">
+			<input type="hidden"  th:field="*{empCode}" />
+			<br>
+			<label>First Name:</label> 
+			<input type="text" th:field="*{firstName}" /> 
+			<br>
+			<label>Last Name</label> 
+			<input type="text"  th:field="*{lastName}" /> 
+			<br>
+			<label>DOB:</label> 
+			<input type="text"  th:field="*{dob}" /> 
+			<br>
+			<label>Email:</label> 
+			<input type="text" th:field="*{emailId}" />
+			<br>
+			<label>Gender:</label>
+		    <select th:field="*{gender}">
+		    	<option value=""> -- </option>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+             </select>
+             <br>
+             <label>Job</label>
+             <select th:field="*{jobTitle}">
+                <option value=""> -- </option>
+                <option th:each="job : ${jobs}"
+                        th:value="${job.id}"
+                        th:utext="${job.jobTitle}"/>
+             </select>
+             <br>   
+             <label>Project</label>
+             <select th:field="*{projectTitle}">
+             	<option value=""> -- </option>
+                <option th:each="project : ${projects}"
+                        th:value="${project.id}"
+                        th:utext="${project.name}"/>
+             </select>
+             <br>
+			<label>Skills</label>
+			<select th:field="*{skills}" multiple>
+				<option th:each="skill : ${skillList}"
+						th:value="${skill.id}"
+						th:utext="${skill.name}" />
+			</select>
+			<br>
+			<button type="submit">Save</button>
+		</form>
+	</div>
+</body>
+</html>
