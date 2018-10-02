@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+    
+  <body>
+    <canvas id="squareCanvas" width="300" height="300"></canvas>
+    <script>
+      var canvas = document.getElementById("squareCanvas");
+      var context = canvas.getContext("2d");
+      context.beginPath();
+      context.rect(10, 10, 300, 300);
+	  context.fillStyle = "#166432";
+      context.fill();
+    </script>
+  </body>
+</html>   

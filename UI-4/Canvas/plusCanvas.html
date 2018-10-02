@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+    
+  <body>
+    <canvas id="plusCanvas" width="300" height="300"></canvas>
+    <script>
+      var canvas = document.getElementById("plusCanvas");
+      var context = canvas.getContext("2d");
+      context.beginPath();
+	  context.arc(150, 150, 150, 0, 2 * Math.PI);
+	  context.fillStyle = "#d3a438";
+	  context.fill(); 
+	  context.beginPath();
+      context.rect(125, 10, 50, 280);
+	  context.fillStyle = "#ffffff";
+      context.fill();
+	  context.beginPath();
+      context.rect(10, 125, 280, 50);
+	  context.fillStyle = "#ffffff";
+      context.fill();
+	 </script>
+  </body>
+</html>    

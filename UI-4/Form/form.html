@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="style.css" >
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	</head>
+    
+	<body>
+		<div class="container">
+			<h2>Contact Us Today!</h2>
+			<form>
+				<div class="row">
+					<div><label>First Name</label></div>
+					<div class="input_field ">
+						<i class="fas fa-user"></i>
+						<input type="text" name="firstName" pattern="^[a-zA-Z]{2,}$"
+						oninvalid="this.setCustomValidity('Name should contain alphabets only and of minimum length 2')" placeholder="First Name" required />					
+					</div>
+				</div>
+                
+				<div class="row">
+					<div><label>Last Name</label></div>
+					<div class="input_field">
+						<i class="fas fa-user"></i>
+						<input type="text" name="lastName" pattern="^[a-zA-Z]{2,}$" oninvalid="this.setCustomValidity('Name should contain alphabets only and of minimum length 2')" placeholder="Last Name" required />
+					</div>
+				</div>
+                
+				<div class="row">
+					<div><label>Email</label></div>
+					<div class="input_field">
+						<i class="fas fa-envelope"></i>
+						<input type="text" name="text" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" 
+						oninvalid="this.setCustomValidity('Enter a valid emailId')" placeholder="Email Address" required/>
+					</div>
+				</div>
+                
+				<div class="row">
+					<div><label>Phone #</label></div>
+					<div class="input_field">
+						<i class="fas fa-phone"></i>
+						<input type="text" name="contact" pattern="^[0-9]{10,12}" oninvalid="this.setCustomValidity('Phone Number should be digits only')" placeholder="(845)555-1212" required />
+					</div>
+				</div>
+                
+				<div class="row">
+					<div><label>Address</label></div>
+					<div class="input_field">
+						<i class="fas fa-home"></i>
+						<input type="text" name="address" placeholder="Address" required />
+					</div>
+				</div>
+                
+				<div class="row">
+					<div><label>City</label></div>
+					<div class="input_field">
+						<i class="fas fa-home"></i>
+						<input type="text" name="city" pattern="^[a-zA-Z]{3,}$" oninvalid="this.setCustomValidity('Please enter a valid city name')" placeholder="City" required />
+					</div>
+				</div>
+                
+				<div class="row">
+					<div><label>State</label></div>
+					<div class="input_field">
+						<i class="fas fa-list-ul"></i>
+						<select name="state" id="state">
+							<option value="" selected disabled>Please Select Your State</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Haryana">Haryana</option>
+						</select>
+					</div>
+				</div>
+                
+				<div class="row">
+					<div><label>Zip Code</label></div>
+					<div class="input_field">
+						<i class="fas fa-home"></i>
+						<input type="text" name="zip" pattern="^[0-9]{6,6}$" oninvalid="this.setCustomValidity('Please enter a valid zip code')" placeholder="Zip Code" required />
+					</div>
+				</div>
+                
+				<div class="row">
+					<div><label>Website or Domain Name</label></div>
+					<div class="input_field">
+						<i class="fas fa-globe-asia"></i>
+						<input type="text" name="website" placeholder="Website or domain name" />
+					</div>
+				</div>
+                
+				<div class="row">
+					<div><label>Do you have a hosting?</label></div>
+					<div>
+						<p><input type="radio" name="haveHosting" value="1" /> Yes</p>
+						<p><input type="radio" name="haveHosting" value="0" /> No</p>
+					</div>
+				</div>
+                
+				<div class="row">
+					<div><label>Project Description</label></div>
+					<div class="input_field pen">
+						<i class="fas fa-pen"></i>
+						<textarea rows="3" cols="25" placeholder="Project Description"></textarea> 
+					</div>
+				</div>
+                
+				<div class="row">
+					<div></div>
+					<div>
+						<button type="submit" class="btn">Send <i class="fa fa-paper-plane"></i></button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+    
+  <body>
+    <canvas id = "halfCircleCanvas" width="300" height="300"></canvas>
+    <script>
+      var canvas = document.getElementById("halfCircleCanvas");
+      var context = canvas.getContext("2d");
+      context.beginPath();
+      var startAngle = (Math.PI / 180) * 90;
+      var endAngle   = (Math.PI / 180) * 270;
+      context.arc(150, 150, 135, startAngle, endAngle, false);
+      context.fillStyle = "#2f95dc";
+      context.fill();
+      context.closePath();
+        
+      context.lineWidth = 20;
+      context.beginPath();
+      context.arc(150, 150, 125, startAngle, endAngle, true);
+      context.strokeStyle = "#828282";
+      context.stroke();
+      context.closePath();
+    </script>
+  </body>
+</html>  

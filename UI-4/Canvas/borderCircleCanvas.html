@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+    
+  <body>
+	<canvas id="borderCircleCanvas" width="300" height="300" ></canvas>
+	<script>
+		var canvas = document.getElementById("borderCircleCanvas");
+		var context = canvas.getContext("2d");
+		context.beginPath();
+		context.arc(150, 150, 130, 0, 2 * Math.PI);
+		context.lineWidth = 30;
+		context.strokeStyle = "#982068";
+		context.stroke();
+	</script>
+  </body>
+</html>
