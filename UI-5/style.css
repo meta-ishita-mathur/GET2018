@@ -1,0 +1,19 @@
+#page-heading {
+    font-family: "Playfair Display";
+}
+
+nav {
+    overflow: hidden;
+}
+
+h1, h2, h3 {
+    font-family: "Playfair Display";
+}
+
+#cover-para {
+    font-size: 20px;
+}
+
+.round-button {
+    border-radius: 30px;
+}
