@@ -7,11 +7,11 @@
 body {
 	margin: 0px;
 	padding: 0px;
-    padding: 20px 0px;
+    	padding: 20px 0px;
 }
 
 form {
-    padding: 30px 0px;
+    	padding: 30px 0px;
 }
 
 .container {
@@ -19,7 +19,7 @@ form {
 	margin: auto;
 	padding: 20px 10px;
 	background-color: #d8d8d8;
-    border-radius: 3px;
+    	border-radius: 3px;
 }
 
 .row {
@@ -36,36 +36,36 @@ form {
 	flex-basis: 40%
 }
 
-.input_field {
+.input-field {
 	display: flex;
-    border: 1px solid #afafaf;
-    border-radius: 3px;
+    	border: 1px solid #afafaf;
+    	border-radius: 3px;
 }
 
-.input_field input, select {
+.input-field input, select {
 	padding: 5px;
-    width: 190px;
+    	width: 190px;
 }
 
-.input_field i {
+.input-field i {
 	border: 1px solid #afafaf;
 	border-right: 0px;
-    text-align: center;
-    padding: 5px 0px;
-    margin: 0px;
-    width: 40px;
+    	text-align: center;
+    	padding: 5px 0px;
+    	margin: 0px;
+    	width: 40px;
 }
 
 input[type=text]:inValid {
 	border: 1px solid #ff0000;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+    	border-top-right-radius: 3px;
+    	border-bottom-right-radius: 3px;
 }
 
 input[type=text]:valid, textarea {
 	border: 1px solid #008000;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+    	border-top-right-radius: 3px;
+    	border-bottom-right-radius: 3px;
 }
 
 input[type=text]:focus {
@@ -73,18 +73,18 @@ input[type=text]:focus {
 }
 
 .pen i {
-    padding-top: 15px;
+    	padding-top: 15px;
 }
 
 .btn {
-    background-color: #EC9832;
-    width: 80px;
-    border-radius: 3px;
-    border: none;
-    color: #ffffff;
-    padding: 10px;
+    	background-color: #EC9832;
+    	width: 80px;
+    	border-radius: 3px;
+    	border: none;
+    	color: #ffffff;
+    	padding: 10px;
 }
 
 .btn i {
-    border: none;
+    	border: none;
 }
