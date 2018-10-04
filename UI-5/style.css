@@ -1,15 +1,19 @@
-#page-heading {
+.page-heading, h1, h2, h3 {
     font-family: "Playfair Display";
 }
 
-h1, h2, h3 {
-    font-family: "Playfair Display";
+.sign-up {
+    white-space: nowrap;
 }
 
-#cover-para {
+.cover-para {
     font-size: 20px;
 }
 
 .round-button {
     border-radius: 30px;
+}
+
+.nav-scroller {
+    overflow-y: hidden;
 }
