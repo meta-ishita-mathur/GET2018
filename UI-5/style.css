@@ -16,4 +16,11 @@
 
 .nav-scroller {
     overflow-y: hidden;
+    height: 65px;
+    overflow-x: scroll;
+}
+
+.nav-main {
+    height: 50px;
+    overflow: hidden;
 }
