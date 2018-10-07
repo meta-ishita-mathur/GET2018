@@ -1,5 +1,14 @@
 var errors = new Map();
 
+window.addEventListener("pageshow", function (event) {
+    var historyTraversal = event.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2);
+    
+    if(historyTraversal) {
+        // Handle page restore.
+        window.location.reload();
+    }
+});
+
 function validateFirstName() {
 	var regEx = /^[a-zA-Z]{2,}$/;
     	var firstName = document.getElementById("firstName");
@@ -8,7 +17,7 @@ function validateFirstName() {
     	if(firstName.value == "") {
 		firstName.style.border = "solid 1px #ff0000";
 	    	firstNameError.innerHTML = "This field is required";
-	    	errors.set("First Name", "First Name is required");
+	    	errors.set("First Name", "This field is required");
     	}
     
 	else if (!regEx.test(firstName.value)) {
@@ -38,7 +47,7 @@ function validateLastName() {
 	if(lastName.value == "") {
         	lastName.style.border = "solid 1px #ff0000";
 		lastNameError.innerHTML = "This field is required";
-        	errors.set("Last Name", "Last Name is required");
+        	errors.set("Last Name", "This field is required");
     	}
     
 	else if (!regEx.test(lastName.value)) {
@@ -68,7 +77,7 @@ function validateEmail() {
 	if(email.value == "") {
         	email.style.border = "solid 1px #ff0000";
 		emailError.innerHTML = "This field is required";
-        	errors.set("Email", "Email is required");
+        	errors.set("Email", "This field is required");
     	}
     
 	else if (!regEx.test(email.value)) {
@@ -165,7 +174,7 @@ function validateState() {
     	if (state.value == "") {
         	state.style.border = "solid 1px #ff0000";
 		stateError.innerHTML = "This field is required";
-        	errors.set("State", "State is required");
+        	errors.set("State", "This field is required");
     	}
     
     	else {
@@ -189,7 +198,7 @@ function validateZip() {
     	if (zip.value == "") {
         	zip.style.border = "solid 1px #ff0000";
 		zipError.innerHTML = "This field is required";
-        	errors.set("Zip Code", "Zip Code is required");
+        	errors.set("Zip Code", "This field is required");
     	}
     
     	else if(!regEx.test(zip.value)) {
@@ -218,7 +227,7 @@ function validateProject() {
     	if (project.value == "") {
         	project.style.border = "solid 1px #ff0000";
 		projectError.innerHTML = "This field is required";
-        	errors.set("Project Description", "Project Description is required");
+        	errors.set("Project Description", "This field is required");
     	}
     
     	else {
@@ -270,7 +279,7 @@ function validateWebsite() {
 
 function stateChange() {
 	var state = document.getElementById("state");
-    	var referenceNode = state.parentNode.parentNode;
+    	var referenceNode = state.parentNode.parentNode.parentNode;
     	var optionalElement = document.getElementsByClassName("optionalElement");
     
     	while (optionalElement.length > 0) {
@@ -298,7 +307,7 @@ function getWebsite() {
 	var website = document.createElement('div');
         
     	website.className = "form-element optionalElement";
-    	website.innerHTML = "<div class='row'><div>Website or Domain Name</div><div class='input-field'><i class='fas fa-globe-asia'></i><input type='text' id='website' placeholder='Website or domain name' onblur='validateWebsite()' /><p id='websiteError'></p></div></div>";
+    	website.innerHTML = "<div class='row'><div>Website or Domain Name</div><div class='input-field'><div><i class='fas fa-globe-asia'></i></div><div><input type='text' id='website' placeholder='Website or domain name' onblur='validateWebsite()' /><p id='websiteError'></p></div></div></div>";
     
     	return website;
 }
@@ -308,7 +317,7 @@ function getHosting() {
 	var hosting = document.createElement('div');
     
     	hosting.className = "form-element optionalElement";
-   	hosting.innerHTML = "<div class='row'><div>Do you have a hosting?</div><div><p><input type='radio' id='yesHosting' value='Yes' /> Yes</p><p><input type='radio' id='noHosting' value='No' /> No</p></div></div>";
+   	hosting.innerHTML = "<div class='row'><div>Do you have a hosting?</div><div class='input-radio-field'><p><input type='radio' id='yesHosting' value='Yes' /> Yes</p><p><input type='radio' id='noHosting' value='No' /> No</p></div></div>";
     
     	return hosting;
 }
@@ -318,7 +327,7 @@ function getZipCode() {
     	var zipcode = document.createElement('div');
         
     	zipcode.className = "form-element optionalElement";
-    	zipcode.innerHTML = "<div class='row'><div>Zip Code</div><div class='input-field'><i class='fas fa-home'></i><input type='text' id='zip' placeholder='Zip Code' onblur='validateZip()' /></div><p id='zipError'></p></div>";
+    	zipcode.innerHTML = "<div class='row'><div>Zip Code</div><div class='input-field'><div><i class='fas fa-home'></i></div><div><input type='text' id='zip' placeholder='Zip Code' onblur='validateZip()' /><p id='zipError'></p></div></div></div>";
     
     	return zipcode;
 }
@@ -328,7 +337,7 @@ function getProject() {
     	var project = document.createElement('div');
         
     	project.className = "form-element optionalElement";
-    	project.innerHTML = "<div class='row'><div>Project Description</div><div class='input-field pen'><i class='fas fa-pen'></i><textarea rows='3' cols='25' id='project' placeholder='Project Description' onblur='validateProject()'></textarea></div><p id='projectError'></p></div>";
+    	project.innerHTML = "<div class='row'><div>Project Description</div><div class='input-field pen'><div><i class='fas fa-pen'></i></div><div><textarea rows='3' cols='25' id='project' placeholder='Project Description' onblur='validateProject()'></textarea><p id='projectError'></p></div></div></div>";
     
     	return project;
 }
