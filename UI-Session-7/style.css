@@ -9,7 +9,7 @@ body {
 }
 
 form {
-    padding: 30px 0px;
+    	padding: 30px 0px;
 }
 
 .container {
@@ -17,7 +17,7 @@ form {
 	margin: auto;
 	padding: 20px 10px;
 	background-color: #d8d8d8;
-    border-radius: 3px;
+    	border-radius: 3px;
 }
 
 .row {
@@ -54,18 +54,18 @@ form {
 }
 
 .input-field p {
-    color: #ff0000;
-    font-size: 12px;
-    text-align: left;
-    padding-top: 5px;
+    	color: #ff0000;
+	font-size: 12px;
+	text-align: left;
+	padding-top: 5px;
 }
 
 .pen i {
-    padding: 14px 0px; 
+    	padding: 14px 0px; 
 }
 
 .btn {
-    background-color: #EC9832;
+    	background-color: #EC9832;
 	width: 80px;
 	border-radius: 3px;
 	border: none;
@@ -74,7 +74,7 @@ form {
 }
 
 .send, .input-radio-field p {
-    text-align: left !important;
+    	text-align: left !important;
 }
 
 .btn i {
