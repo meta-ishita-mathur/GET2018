@@ -1,92 +1,106 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="style.css" >
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-        
-        	<script src="script.js"></script>
-	</head>
-    
-	<body>
-		<div class="container">
-			<h2>Contact Us Today!</h2>
-			<form id="contactForm" action="profile.html" onsubmit="return validateForm()" method="post">
-				<div class="row">
-					<div>First Name</div>
-					<div class="input-field">
-						<i class="fas fa-user"></i>
-						<input type="text" id="firstName"
-						placeholder="First Name" onblur="validateFirstName()" />
-					</div>
-                    			<p id="firstNameError"></p>
-				</div>
-                
-				<div class="row">
-					<div>Last Name</div>
-					<div class="input-field">
-						<i class="fas fa-user"></i>
-						<input type="text" id="lastName" placeholder="Last Name" onblur="validateLastName()" />
-					</div>
-                    			<p id="lastNameError"></p>
-				</div>
-                
-				<div class="row">
-					<div>Email</div>
-					<div class="input-field">
-						<i class="fas fa-envelope"></i>
-						<input type="text" id="email" placeholder="Email Address" onblur="validateEmail()" />
-					</div>
-                    			<p id="emailError"></p>
-				</div>
-                
-				<div class="row">
-					<div>Phone #</div>
-					<div class="input-field">
-						<i class="fas fa-phone"></i>
-						<input type="text" id="contact" placeholder="(845)555-1212" onblur="validateContact()" />
-					</div>
-                    			<p id="contactError"></p>
-				</div>
-                
-				<div class="row">
-					<div>Address</div>
-					<div class="input-field">
-						<i class="fas fa-home"></i>
-						<input type="text" id="address" placeholder="Address" />
-					</div>
-                		</div>
-                
-				<div class="row">
-					<div>City</div>
-					<div class="input-field">
-						<i class="fas fa-home"></i>
-						<input type="text" id="city" placeholder="City" onblur="validateCity()" />
-					</div>
-                    			<p id="cityError"></p>
-				</div>
-                
-				<div class="row">
-					<div>State</div>
-					<div class="input-field">
-						<i class="fas fa-list-ul"></i>
-						<select id="state" onblur="validateState()" onchange="stateChange()">
-							<option value="" selected disabled>Please Select Your State</option>
-                            				<option value="Rajasthan">Rajasthan</option>
-                            				<option value="Maharashtra">Maharashtra</option>
-                            				<option value="Haryana">Haryana</option>
-						</select>
-					</div>
-                    			<p id="stateError"></p>
-				</div>
-            
-                		<div class="row">
-					<div></div>
-					<div>
-						<button type="submit" class="btn">Send <i class="fa fa-paper-plane"></i></button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</body>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css" >
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+            <script src="script.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <h2>Contact Us Today!</h2>
+            <form id="contactForm" action="profile.html" onsubmit="return validateForm()" method="post">
+                <div class="row">
+                    <div>First Name</div>
+                    <div class="input-field">
+                        <div><i class="fas fa-user"></i></div>
+                        <div>
+                            <input type="text" id="firstName"
+                                    placeholder="First Name" onblur="validateFirstName()" />
+                            <p id="firstNameError"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>Last Name</div>
+                    <div class="input-field">
+                        <div><i class="fas fa-user"></i></div>
+                        <div>
+                            <input type="text" id="lastName" placeholder="Last Name" onblur="validateLastName()" />
+                            <p id="lastNameError"></p>
+                        </div>
+                    </div>   
+                </div>
+
+                <div class="row">
+                    <div>Email</div>
+                    <div class="input-field">
+                        <div><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <input type="text" id="email" placeholder="Email Address" onblur="validateEmail()" />
+                            <p id="emailError"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>Phone #</div>
+                    <div class="input-field">
+                        <div><i class="fas fa-phone"></i></div>
+                        <div>
+                            <input type="text" id="contact" placeholder="(845)555-1212" onblur="validateContact()" />
+                            <p id="contactError"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>Address</div>
+                    <div class="input-field">
+                        <div><i class="fas fa-home"></i></div>
+                        <div>
+                            <input type="text" id="address" placeholder="Address" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>City</div>
+                    <div class="input-field">
+                        <div><i class="fas fa-home"></i></div>
+                        <div>
+                            <input type="text" id="city" placeholder="City" onblur="validateCity()" />
+                            <p id="cityError"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>State</div>
+                    <div class="input-field">
+                        <div><i class="fas fa-list-ul"></i></div>
+                        <div>
+                            <select id="state" onblur="validateState()" onchange="stateChange()">
+                                <option value="" selected disabled>Please Select Your State</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Haryana">Haryana</option>
+                            </select>
+                            <p id="stateError"></p>
+                        </div>
+                    </div>       
+                </div>
+
+                <div class="row">
+                    <div></div>
+                    <div class="send">
+                        <button type="submit" class="btn">Send <i class="fa fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
 </html>
