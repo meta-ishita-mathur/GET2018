@@ -1,13 +1,6 @@
 var errors = new Map();
 
-window.addEventListener("pageshow", function (event) {
-    var historyTraversal = event.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2);
-    
-    if(historyTraversal) {
-        // Handle page restore.
-        window.location.reload();
-    }
-});
+window.addEventListener('load', stateChange());
 
 function validateFirstName() {
 	var regEx = /^[a-zA-Z]{2,}$/;
@@ -289,17 +282,36 @@ function stateChange() {
     	if(state.value == "Rajasthan") {
         	referenceNode.parentNode.insertBefore(getProject(), referenceNode.nextSibling);    
         	referenceNode.parentNode.insertBefore(getWebsite(), referenceNode.nextSibling);
+		
+		if(localStorage.getItem("Project Description").length > 0)
+                	document.getElementById("project").value = localStorage.getItem("Project Description");
+            
+            	if(localStorage.getItem("Website or domain name").length > 0)
+                	document.getElementById("website").value = localStorage.getItem("Website or domain name");
     	}
     
     	else if(state.value == "Haryana") {
         	referenceNode.parentNode.insertBefore(getHosting(), referenceNode.nextSibling);
         	referenceNode.parentNode.insertBefore(getZipCode(), referenceNode.nextSibling);
+		
+		if(localStorage.getItem("Zip Code").length > 0)
+                	document.getElementById("zip").value = localStorage.getItem("Zip Code");
     	}
     
     	else if(state.value == "Maharashtra") {
         	referenceNode.parentNode.insertBefore(getProject(), referenceNode.nextSibling);
         	referenceNode.parentNode.insertBefore(getZipCode(), referenceNode.nextSibling);
+		
+		if(localStorage.getItem("Zip Code").length > 0)
+                	document.getElementById("zip").value = localStorage.getItem("Zip Code");
+            
+            	if(localStorage.getItem("Project Description").length > 0)
+                	document.getElementById("project").value = localStorage.getItem("Project Description");
     	}
+	
+	else {
+            localStorage.clear();
+        }
 }
 
 
