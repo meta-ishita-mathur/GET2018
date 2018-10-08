@@ -51,6 +51,7 @@ form {
 	padding: 5px 0px;
 	margin: 0px;
 	width: 40px;
+    	height: 29px;
 }
 
 .input-field p {
@@ -61,7 +62,8 @@ form {
 }
 
 .pen i {
-    	padding: 14px 0px; 
+    	padding: 14px 0px;
+    	height: 47px;
 }
 
 .btn {
