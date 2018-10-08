@@ -272,16 +272,18 @@ function validateWebsite() {
 
 function stateChange() {
 	var state = document.getElementById("state");
-    	var referenceNode = state.parentNode.parentNode.parentNode;
+    	var referenceNode = document.getElementById("stateRow");
     	var optionalElement = document.getElementsByClassName("optionalElement");
+        var formNode = document.getElementById("contactForm");
+    	var submitNode = document.getElementById("submitRow"); 
     
     	while (optionalElement.length > 0) {
-        	optionalElement[0].parentNode.removeChild(optionalElement[0]);
+        	formNode.removeChild(optionalElement[0]);
     	}
                     
     	if(state.value == "Rajasthan") {
-        	referenceNode.parentNode.insertBefore(getProject(), referenceNode.nextSibling);    
-        	referenceNode.parentNode.insertBefore(getWebsite(), referenceNode.nextSibling);
+        	formNode.insertBefore(getProject(), submitNode);    
+        	formNode.insertBefore(getWebsite(), submitNode);
 		
 		if(localStorage.getItem("Project Description").length > 0)
                 	document.getElementById("project").value = localStorage.getItem("Project Description");
@@ -291,16 +293,16 @@ function stateChange() {
     	}
     
     	else if(state.value == "Haryana") {
-        	referenceNode.parentNode.insertBefore(getHosting(), referenceNode.nextSibling);
-        	referenceNode.parentNode.insertBefore(getZipCode(), referenceNode.nextSibling);
+        	formNode.insertBefore(getHosting(), submitNode);
+        	formNode.insertBefore(getZipCode(), submitNode);
 		
 		if(localStorage.getItem("Zip Code").length > 0)
                 	document.getElementById("zip").value = localStorage.getItem("Zip Code");
     	}
     
     	else if(state.value == "Maharashtra") {
-        	referenceNode.parentNode.insertBefore(getProject(), referenceNode.nextSibling);
-        	referenceNode.parentNode.insertBefore(getZipCode(), referenceNode.nextSibling);
+        	formNode.insertBefore(getProject(), submitNode);
+        	formNode.insertBefore(getZipCode(), submitNode);
 		
 		if(localStorage.getItem("Zip Code").length > 0)
                 	document.getElementById("zip").value = localStorage.getItem("Zip Code");
