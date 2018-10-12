@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+        "id": "1",
+        "name": "Aakanksha",
+        "city": "Jaipur",
+        "contact": "8436583356"
+      
+    },
+    {
+        "id": "2",
+        "name": "Jay",
+        "city": "Udaipur",
+        "contact": "74856345779"
+    },
+    {
+        "id": "3",
+        "name": "Deepak",
+        "city": "Hyderabad",
+        "contact": "7445548389"
+    },
+    {
+        "name": "Ishita",
+        "city": "fdgbdvhfjg",
+        "id": "MsF2D_3",
+        "contact": "2345678904"
+    }
+  ]
+}
