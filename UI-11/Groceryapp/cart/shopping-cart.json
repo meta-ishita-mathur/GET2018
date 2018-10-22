@@ -1,0 +1,195 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Spinach",
+      "price": 2.5,
+      "imageUrl": "img/spinach.jpg",
+      "category": "Vegetables",
+      "showAddToCart": true
+    },
+    {
+      "id": 2,
+      "title": "Freshly Baked Bread",
+      "price": 3.5,
+      "imageUrl": "img/Bread.jpg",
+      "category": "Bread",
+      "showAddToCart": true
+    },
+    {
+      "id": 3,
+      "title": "Saffron",
+      "price": 4.5,
+      "imageUrl": "img/saffron.jpg",
+      "category": "Seasonings and Spice",
+      "showAddToCart": true
+    },
+    {
+      "id": 4,
+      "title": "Mango",
+      "price": 3,
+      "imageUrl": "img/mango.jpg",
+      "category": "Fruits",
+      "showAddToCart": true
+    },
+    {
+      "id": 5,
+      "title": "Butter",
+      "price": 5.5,
+      "imageUrl": "img/butter.jpg",
+      "category": "Dairy",
+      "showAddToCart": true
+    }
+  ],
+  "cart": [],
+  "orders": [
+    {
+      "items": [
+        {
+          "id": 1,
+          "title": "Spinach",
+          "price": 2.5,
+          "imageUrl": "img/spinach.jpg",
+          "count": 1
+        }
+      ],
+      "customerName": "Ishita",
+      "date": "10/17/2018",
+      "id": 14
+    },
+    {
+      "items": [],
+      "customerName": "Joe",
+      "date": "10/17/2018",
+      "id": 15
+    },
+    {
+      "items": [
+        {
+          "id": 3,
+          "title": "Saffron",
+          "price": 4.5,
+          "imageUrl": "img/saffron.jpg",
+          "count": 1
+        }
+      ],
+      "customerName": "Josh",
+      "date": "10/17/2018",
+      "id": 16
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "title": "Spinach",
+          "price": 2.5,
+          "imageUrl": "img/spinach.jpg",
+          "count": 2
+        },
+        {
+          "id": 4,
+          "title": "Mango",
+          "price": 3,
+          "imageUrl": "img/mango.jpg",
+          "count": 1
+        },
+        {
+          "id": 2,
+          "title": "Freshly Baked Bread",
+          "price": 3.5,
+          "imageUrl": "img/Bread.jpg",
+          "count": 1
+        }
+      ],
+      "customerName": "Leonl",
+      "date": "10/22/2018",
+      "id": 17
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "title": "Spinach",
+          "price": 2.5,
+          "imageUrl": "img/spinach.jpg",
+          "count": 1
+        }
+      ],
+      "customerName": "Samir",
+      "date": "10/22/2018",
+      "id": 18
+    },
+    {
+      "items": [
+        {
+          "id": 2,
+          "title": "Freshly Baked Bread",
+          "price": 3.5,
+          "imageUrl": "img/Bread.jpg",
+          "count": 1
+        },
+        {
+          "id": 3,
+          "title": "Saffron",
+          "price": 4.5,
+          "imageUrl": "img/saffron.jpg",
+          "count": 1
+        }
+      ],
+      "customerName": "om",
+      "date": "10/22/2018",
+      "id": 19
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "title": "Spinach",
+          "price": 2.5,
+          "imageUrl": "img/spinach.jpg",
+          "count": 1
+        },
+        {
+          "id": 2,
+          "title": "Freshly Baked Bread",
+          "price": 3.5,
+          "imageUrl": "img/Bread.jpg",
+          "count": 1
+        }
+      ],
+      "customerName": "omi",
+      "date": "10/22/2018",
+      "id": 20
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "title": "Spinach",
+          "price": 2.5,
+          "imageUrl": "img/spinach.jpg",
+          "count": 2
+        },
+        {
+          "id": 2,
+          "title": "Freshly Baked Bread",
+          "price": 3.5,
+          "imageUrl": "img/Bread.jpg",
+          "count": 1
+        }
+      ],
+      "customerName": "omi",
+      "date": "10/22/2018",
+      "id": 21
+    }
+  ],
+  "shipping": [
+    {
+      "id": 1,
+      "name": "omi",
+      "address1": "sedf",
+      "address2": "ramaraj road",
+      "city": "jaipur"
+    }
+  ]
+}
